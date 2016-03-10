@@ -1,0 +1,208 @@
+
+/*
+@font-face { 
+	font-family: 'PT Sans'; 
+	src: url("../fonts/PTS55F-webfont.eot"); 
+	text-rendering: optimizeLegibility; 
+}
+
+*/
+* {
+	font-family:'PT Sans', Verdana, sans-serif;
+	margin:0;
+	padding:0;
+}
+
+.Sup_File {
+	max-width:100%;
+}
+
+req {
+	font-size:16px;
+	color:red;
+	font-weight:bold;
+}
+
+label {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+}
+
+#Form_Container {
+	max-width:640px;
+	margin:15px;
+	
+}
+
+.form-header {
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:15px;
+	border-bottom:2px solid lightgray;
+}
+
+.form-body {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.form-footer {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.row {
+	margin-top:15px;
+}
+
+.hidden {
+	display:block;
+}
+
+fieldset {
+    padding: 8px !important;
+    margin: 8px !important;
+	padding-bottom:15px !important;
+}
+
+legend {
+	font-size: 14px !important;
+	font-weight: bold !important;
+	text-align: left !important;
+	width:auto;
+	padding:0 10px;
+	margin-bottom:0 !important;
+}
+
+.form-legal {
+	margin:15px;
+	padding:10px;
+}
+
+#form-submit {
+	margin-top:20px;
+	width:60%;
+}
+
+#form-reset {
+	margin-top:20px;
+	width:25%;
+}
+
+
+.form-legal-input {
+	margin:10px;
+}
+
+input[required=true]:before {
+	content: "blah";
+}
+
+.form-legal-text {
+	font-weight:bold;
+}
+
+.ui-datepicker-month {
+	color:#333;
+}
+
+.ui-datepicker-year {
+	color:#333;
+}
+
+.form-agree {
+	width:200px;
+	border:2px solid gray;
+	margin:10px;
+	padding:10px;
+	text-align:center;
+	cursor:pointer;
+}
+
+.form-agree.choose {
+	background-color:gray;
+	color:white;
+}
+
+.form-agree.agree {
+	background-color:green;
+	color:white;
+}
+
+.ui-widget-header {
+	background-color:#286090 !important;
+}
+
+.ui-datepicker-title span {
+	color: white;
+}
+
+#dateTimeStamp {
+	border:none;
+	background-color:white;
+}
+
+.dateTimeStamp {
+	border:none;
+	background-color:white;
+	padding:15px;
+	border:1px dashed red;
+	text-align:center;
+	color:red;
+	font-size:18px;
+	z-index:99999;
+}
+
+.service_row_hidden {
+	display:none;
+}
+
+.service_row_first {
+	display:block;
+}
+
+#Add_More_Addresses_hide {
+	display:none;
+	visibility:hidden;
+	width:0px;
+	height:0px;
+}
+
+.description {
+	padding:10px;
+	margin:10px;
+	font-size:16px;
+	text-align:left;
+}
+
+
+.form-title {
+	font-size:18px;
+	font-weight:900;
+	text-align:center;
+}
+
+.form-title h2 {
+	color:#315DA6;
+}
+
+.bottom-verbiage {
+	font-size:14px;
+	margin:5px;
+	border-radius:25px;
+	padding:15px;
+	margin-right:8.66%;
+}
+
+.logo {
+	display:block;
+	width:450px;
+	margin:0 auto;
+	padding-bottom:10px;
+}
+
+.emergency {
+	border:0px !important;
+	margin:8px; 
+	padding:8px;
+}

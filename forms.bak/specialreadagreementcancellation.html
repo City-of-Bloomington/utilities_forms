@@ -1,0 +1,128 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	})
+</script>
+<form method="post" action="processor/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
+	<input type="hidden" name="DocumentTypeNum" value="339">
+	<input type="hidden" name="DocumentType" value="specialreadagreementcancellation">
+	<div class="form-header">
+		<div class="form-title">City of Bloomington Utilities</div>
+		<div class="form-title">Special Read Agreement Cancellation</div>
+		<div><req>*</req> <b>Field is Required</b></div>		
+	</div>
+
+	<div class="form-body">
+		<div class="row">		
+			<div class="col-xs-12">
+				<div class="form-legal-text">				
+					Please cancel the special read agreement on the following property/properties:
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<label for="Service_St_Num">Service Street Number</label>
+				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" numeric required>
+			</div>
+			<div class="col-xs-4">
+				<label for="Service_St_Dir">Service Street Direction</label>
+				<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">
+			</div>
+			<div class="col-xs-4">
+				<label for="Service_St_Name">Service Street Name</label>
+				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
+			</div>
+		</div>
+		<div class="row">		
+			<div class="col-xs-12">
+				<div class="form-legal-text">				
+					Name of Owners
+				</div>
+			</div>
+		</div>	
+		<div class="row">			
+			<div class="col-xs-6">
+				<label for="Owner_First_Name">Owner First Name</label>
+				<input type="text" class="form-control" name="OBKey__390_1" id="Owner_First_Name" required>
+			</div>		
+			<div class="col-xs-6">
+				<label for="Owner_Last_Name">Owner Last Name</label>
+				<input type="text" class="form-control" name="OBKey__388_1" id="Owner_Last_Name" required>
+			</div>
+		</div>
+		<div class="row">		
+			<div class="col-xs-12">
+				<div class="form-legal-text">				
+					Name on special read agreement (if different from owner)
+				</div>
+			</div>
+		</div>		
+		<div class="row">			
+			<div class="col-xs-6">
+				<label for="SRA_First_Name">First Name</label>
+				<input type="text" class="form-control" id="SRA_First_Name" name="OBKey__391_1">
+			</div>		
+			<div class="col-xs-6">
+				<label for="SRA_Last_Name">Last Name</label>
+				<input type="text" class="form-control" id="SRA_Last_Name" name="OBKey__389_1">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="Email_Address">Email Address</label>
+				<input type="text" class="form-control" id="Email_Address" name="OBKey__393_1" required>
+			</div>
+		</div>		
+		<div class="row">
+		
+			<div class="col-xs-12">
+				<label for="Reason_for_Canc">Reason for Cancellation</label>
+				<input type="text" class="form-control" id="Reason_for_Canc" name="OBKey__143_1" required>
+			</div>
+		</div>
+		<div class="row">			
+			<div class="col-xs-4">
+				<label for="Auth_First_Name">Authorizer First Name</label>
+				<input type="text" class="form-control" id="Auth_First_Name" name="Auth_First_Name" required>
+			</div>		
+			<div class="col-xs-4">
+				<label for="Auth_Last_Name">Authorizer Last Name</label>
+				<input type="text" class="form-control" id="Auth_Last_Name" name="Auth_Last_Name" required>
+			</div>
+			<div class="col-xs-4">
+				<label for="Authorizer_Title">Authorizer Title</label>
+				<input type="text" class="form-control" id="Authorizer_Title" name="Authorizer_Title" required>
+			</div>			
+		</div>
+		
+
+	</div>
+
+	<div class="form-footer">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-legal-text">				
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-legal-input">
+					<div class="checkbox" style="display:none;">
+						<input id="Agree" name="Agree" type="checkbox" value="Yes"> I Agree
+					</div>		
+					<div class="form-agree choose"><i class=""></i> <span>Click if you Agree</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+				<button type="submit" name="OBBtn_Save" value="Submit" class="btn btn-primary" id="form-submit" disabled><i class="fa fa-check"></i> Submit</button>
+			</div>
+			<div class="col-xs-2"></div>
+		</div>
+	</div>
+</form>

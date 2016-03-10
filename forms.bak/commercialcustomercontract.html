@@ -1,0 +1,222 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#Date_of_Change").datepicker({
+			minDate: 0, 
+			maxDate: "+2M"
+		});
+		
+		$("#Date_of_Inc").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-150:-0",
+			defaultDate: '01/01/1970'
+		});
+		
+	})
+</script>
+<form method="post" action="processor/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
+	<input type="hidden" name="DocumentTypeNum" value="213">
+	<input type="hidden" name="DocumentType" value="commercialcustomercontract">
+	<div class="form-header">
+		<div class="form-title">City of Bloomington Utilities</div>
+		<div class="form-title">Commercial Customer Contract</div>
+		<div><req>*</req> <b>Field is Required</b></div>						
+	</div>
+
+	<div class="form-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="Company_Name">Company Name</label>
+				<input type="text" class="form-control" id="Company_Name" name="OBKey__257_1" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="Company_CKA">Name most commonly known as</label>
+				<input type="text" class="form-control" name="Company_CKA" id="Company_CKA">
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-xs-4">
+				<label for="Service_St_Num">Service Street Number</label>
+				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" numeric required>
+			</div>
+			<div class="col-xs-4">
+				<label for="Service_St_Dir">Service Street Direction</label>
+				<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">
+			</div>
+			<div class="col-xs-4">
+				<label for="Service_St_Name">Service Street Name</label>
+				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Mailing_First_Name">Mail Attention First Name</label>
+				<input type="text" class="form-control" name="Mailing_First_Name" id="Mailing_First_Name" required>
+			</div>	
+			<div class="col-xs-6">
+				<label for="Mailing_Last_Name">Mail Attention Last Name</label>
+				<input type="text" class="form-control" name="Mailing_Last_Name" id="Mailing_Last_Name" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="Email_Address">Email Address</label>
+				<input type="text" class="form-control" id="Email_Address" name="OBKey__393_1" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="Mailing_Address">Mailing Address</label>
+				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address">
+			</div>				
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<label for="Mailing_City">City</label>
+				<input type="text" class="form-control" name="Mailing_City" id="Mailing_City" required>		
+			</div>
+			<div class="col-xs-4">
+				<label for="Mailing_State">State</label>
+				<input type="text" class="form-control" name="Mailing_State" id="Mailing_State" required>		
+			</div>
+			<div class="col-xs-4">
+				<label for="Mailing_Zipcode">ZIP Code</label>
+				<input type="text" class="form-control" name="Mailing_Zipcode" id="Mailing_Zipcode" mask="99999" numeric required>
+			</div>			
+		</div>		
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Date_of_Inc">Date of Incorporation</label>
+				<input meta="datetime" type="text" class="form-control" id="Date_of_Inc" name="Date_of_Inc" mask="99/99/9999" required>		
+			</div>
+			<div class="col-xs-6">
+				<label for="State_of_Inc">State of Incorporation</label>
+				<input type="text" class="form-control" name="State_of_Inc" id="State_of_Inc" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Federal_ID">Federal ID</label>
+				<input type="text" class="form-control" name="Federal_ID" id="Federal_ID" >		
+			</div>			
+			<div class="col-xs-6">
+				<label for="Bus_Phone_Number">Business Phone Number</label>
+				<input type="text" class="form-control" name="Bus_Phone_Number" id="Bus_Phone_Number" mask="(999) 999-9999" phone required>		
+			</div>	
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-4">
+				<label for="Contact_First_Name">First Name</label>
+				<input type="text" class="form-control" name="OBKey__137_1" id="Contact_First_Name" required>
+			</div>
+			<div class="col-xs-4">
+				<label for="Contact_Last_Name">Last Name</label>
+				<input type="text" class="form-control" name="OBKey__121_1" id="Contact_Last_Name">
+			</div>					
+			<div class="col-xs-4">
+				<label for="Contact_Phone_Num">Contact Phone Number</label>
+				<input type="text" class="form-control" name="Contact_Phone_Num" id="Contact_Phone_Num" mask="(999) 999-9999" phone required>		
+			</div>	
+		</div>		
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Person">Who are you?</label>
+				<select name="Person" class="form-control" required id="Person">
+					<option value="">Please Select...</option>
+					<option value="Owner">Property Owner</option>
+					<option value="Tenant">Tenant</option>
+					<option value="Other">Other - Please Explain</option>
+				</select>
+			</div>
+			<div class="col-xs-6">
+				<div class="hidden">
+					<label for="Other_Explain">Please explain</label>
+					<input type="text" class="form-control" name="Other_Explain" id="Other_Explain">
+				</div>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-xs-7">
+				<label for="Property_Owner">Name of the Property Owner</label>
+				<input type="text" class="form-control" name="Property_Owner" id="Property_Owner" required>		
+			</div>
+			<div class="col-xs-5">
+				<label for="Owner_Phone_Number">Owner's Phone Number</label>
+				<input type="text" class="form-control" name="Owner_Phone_Number" id="Owner_Phone_Number" mask="(999) 999-9999" required phone>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Date_of_Change">Requested Date of Change</label>
+				<input type="text" class="form-control" id="Date_of_Change" name="OBKey__173_1" mask="99/99/9999" required>
+			</div>
+			<div class="col-xs-6">
+				<label for="Customer_Acct_Num">Customer Account Number</label>
+				<input type="text" class="form-control" name="OBKey__125_1" id="Customer_Acct_Num" required spec>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="New_Customer">Are you a new customer to City of Bloomington Utilities</label>
+				<select name="New_Customer" class="form-control" style="width:100%;" id="New_Customer" required>
+					<option value="">Please Select...</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+			</div>
+			<div class="col-xs-6">
+				<label for="Title">Title of individual signing for business or organization</label>
+				<input type="text" class="form-control" name="Title" id="Title" required>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-xs-12">
+				<fieldset>
+					<legend><label>Emergency Contact Information</label></legend>
+					<div style="margin-bottom:8px; margin-top:8px;">
+						In the Event of an emergency concerning your water and/or wastewater service, please provide us with the following emergency contact information.
+					</div>
+					<div class="col-xs-8">
+						<label for="Emergency_Name">Emergency Name</label>
+						<input type="text" class="form-control" id="Emergency_Name" name="Emergency_Name" required>
+					</div>				
+					<div class="col-xs-4">
+						<label for="Emergency_Phone">Phone Number</label>
+						<input type="text" class="form-control" id="Emergency_Phone" name="Emergency_Phone" mask="(999) 999-9999" phone required>
+					</div>
+				</fieldset>
+			</div>
+		</div>		
+	</div>
+
+	<div class="form-footer">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-legal-text">
+					I hereby contract with City of Bloomington Utilities (CBU) for service and agree to pay CBU for such service in accordance with its established rates. I also agree to conform to all CBU Rules, Regulations, and Standards of Service and applicable Indiana law, governing the user of water, wastewater, and stormwater, now in force or which may hereafter be adopted.
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-legal-input">
+					<div class="checkbox" style="display:none;">
+						<input id="Agree" name="Agree" type="checkbox" value="Yes"> I Agree
+					</div>		
+					<div class="form-agree choose"><i class=""></i> <span>Click if you Agree</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+				<button type="submit" name="OBBtn_Save" value="Submit" class="btn btn-primary" id="form-submit" disabled><i class="fa fa-check"></i> Submit</button>
+			</div>
+			<div class="col-xs-2"></div>
+		</div>
+	</div>
+</form>
