@@ -9,30 +9,15 @@
 	<div class="form-header">
 
 	<div class="form-header">
-		<div class="form-title logo"><img src="assets/images/logo.png"> City of Bloomington Utilities <img src="assets/images/logo.png"></div>
+        <?php include __DIR__.'/partials/form-title-logo.inc'; ?>
 		<div class="form-title"><h2>Request for Individual Name Change</h2></div>
 		<div class="description">
 			<b>Name change</b> request form. You will need a substantiating document (marriage license, divorce decree, etc.) to attach as a file to this form.
 		</div>
-		<div class="contact-info" style="font-size:14px; margin:5px; padding:5px; border:1px solid #315DA6; border-radius:25px; padding:10px; margin-bottom:25px;">
-			<span style="font-weight:bold; font-size:16px; padding:5px;"><center>Customer Service Office Contact Information</center></span>
-			<br />
-			<table class="table">
-				<tr>
-					<td>Operating Hours</td><td>8:00 am to 5:00 pm M-F</td>
-				</tr>
-				<tr>
-					<td>Address</td><td>600 E Miller Dr <br />Bloomington IN 47401</td>
-				</tr>
-				<tr>
-					<td>Phone Number</td><td>(812) 349-3930</td>
-				</tr>
-				<tr>
-					<td>Email Address</td><td><a href="mailto:utilities.cs@bloomington.in.gov">utilities.cs@bloomington.in.gov</td>
-				</tr>
-			</table>
-		</div>
-		<div><req>*</req> <b>Field is Required</b></div>
+		<?php
+            include __DIR__.'/partials/contact-info.inc';
+            include __DIR__.'/partials/required-fields.inc';
+        ?>
 	</div>
 
 	<div class="form-body">

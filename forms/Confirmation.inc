@@ -1,26 +1,9 @@
-	<div class="form-header">
-		<div class="form-title logo"><img src="assets/images/logo.png"> City of Bloomington Utilities <img src="assets/images/logo.png"></div>
-		<div class="description">
-		</div>
-		<div class="contact-info" style="font-size:14px; margin:5px; padding:5px; border:1px solid #315DA6; border-radius:25px; padding:10px; margin-bottom:25px;">
-			<span style="font-weight:bold; font-size:16px; padding:5px;"><center>Customer Service Office Contact Information</center></span>
-			<br />
-			<table class="table">
-				<tr>
-					<td>Operating Hours</td><td>8:00 am to 5:00 pm M-F</td>
-				</tr>
-				<tr>
-					<td>Address</td><td>600 E Miller Dr <br />Bloomington IN 47401</td>
-				</tr>
-				<tr>
-					<td>Phone Number</td><td>(812) 349-3930</td>
-				</tr>
-				<tr>
-					<td>Email Address</td><td><a href="mailto:utilities.cs@bloomington.in.gov">utilities.cs@bloomington.in.gov</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+<div class="form-header">
+<?php
+    include __DIR__.'/partials/form-title-logo.inc';
+    include __DIR__.'/partials/contact-info.inc';
+?>
+</div>
 
 <?php
 
@@ -52,9 +35,3 @@ else {
 <h2>Your Confirmation Number is: <br /><b><?= $Confirmation_Number; ?></b></h2>
 <a target="_blank" href="https://docs.google.com/a/bloomington.in.gov/forms/d/1sfKE7WKSkFAnGsB7UyVUGEkzAHWOFFeOTRmHH5MaY4k/viewform">Provide feedback</a>
 </center>
-
-<?php
-//if(isset($_GET['Message'])) {
-	//include("SuppConfirmation.php");
-//}
-?>

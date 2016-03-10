@@ -1,22 +1,8 @@
 	<div class="form-header">
 		<div class="form-title">City of Bloomington Utilities</div>
-		<div class="contact-info" style="font-size:14px; margin:5px; padding:5px; border:2px solid lightgray; border-radius:5px;">
-			<br />
-			<table class="table">
-				<tr>
-					<td>Operating Hours</td><td>8:00 am to 5:00 pm M-F</td>
-				</tr>
-				<tr>
-					<td>Address</td><td>600 E Miller Dr <br />Bloomington IN 47401</td>
-				</tr>
-				<tr>
-					<td>Phone Number</td><td>(812) 349-3930</td>
-				</tr>
-				<tr>
-					<td>Email Address</td><td><a href="mailto:utilities.cs@bloomington.in.gov">utilities.cs@bloomington.in.gov</td>
-				</tr>
-			</table>
-		</div>
+		<?php
+            include __DIR__.'/partials/contact-info.inc';
+        ?>
 	</div>
 <script type="text/javascript">
 	var url = window.location.toString().split("?")[0];
