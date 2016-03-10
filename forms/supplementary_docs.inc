@@ -1,10 +1,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		Global.Add_Supporting_Document_Upload();
-		
+
 	})
 </script>
-<form method="post" action="processor/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
+<form method="post" action="<?= BASE_URI; ?>/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
 	<input type="hidden" name="DocumentTypeNum" name="DocumentTypeNum" value="340">
 	<input type="hidden" name="DocumentType" name="DocumentType" value="SupplementaryDocument">
 	<div class="form-header">
@@ -18,7 +18,7 @@
 				File sizes must be less than 6 MB and we are only able to accept PDF or image files
 			</div>
 		</div>
-	
+
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="Conf_Number">Confirmation Number</label>
@@ -26,10 +26,10 @@
 			</div>
 		</div>
 		<div class="row">
-			
+
 		</div>
 
-	
+
 	</div>
 
 	<div class="form-footer">
@@ -41,13 +41,13 @@
 		<div class="row">
 			<div class="col-xs-6">
 				<div class="form-legal-input">
-				
+
 					<div class="checkbox" style="display:none;">
 						<label>
 							<input id="Agree" name="Agree" type="checkbox" value="Yes"> I Agree
 						</label>
 					</div>
-					
+
 					<div class="form-agree choose">
 						<i class=""></i>
 						<span>

@@ -7,7 +7,7 @@
 			yearRange: "-100:-18",
 			defaultDate: '01/01/1970'
 		});
-		
+
 		$("#Date_of_Birth").datepicker({
 			changeMonth: true,
 			changeYear: true,
@@ -16,13 +16,13 @@
 		});
 	})
 </script>
-<form method="post" action="processor/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
+<form method="post" action="<?= BASE_URI; ?>/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
 	<input type="hidden" name="DocumentTypeNum" value="170">
 	<input type="hidden" name="DocumentType" value="aquapay">
-	
+
 	<!--changes start -->
-	
-	<div class="form-header">		
+
+	<div class="form-header">
 		<div class="form-title logo"><img src="assets/images/logo.png"> City of Bloomington Utilities <img src="assets/images/logo.png"></div>
 		<div class="form-title"><h2>Authorization Agreement for Preauthorized Payments (Aqua Pay)</h2></div>
 		<div class="description">
@@ -30,11 +30,11 @@
 		</div>
 		<div class="contact-info" style="font-size:14px; margin:5px; padding:5px; border:1px solid #315DA6; border-radius:25px; padding:10px; margin-bottom:25px;">
 			<span style="font-weight:bold; font-size:16px; padding:5px;"><center>Customer Service Office Contact Information</center></span>
-			<br />			
+			<br />
 			<table class="table">
 				<tr>
 					<td>Operating Hours</td><td>8:00 am to 5:00 pm M-F</td>
-				</tr>				
+				</tr>
 				<tr>
 					<td>Address</td><td>600 E Miller Dr <br />Bloomington IN 47401</td>
 				</tr>
@@ -48,11 +48,11 @@
 		</div>
 		<div><req>*</req> <b>Field is Required</b></div>
 	</div>
-	
+
 	<!-- changes end -->
-	
-	
-	
+
+
+
 
 	<div class="form-body">
 		<div class="row">
@@ -63,14 +63,14 @@
 			<div class="col-xs-3">
 				<label for="Middle_Name">Middle Name</label>
 				<input type="text" class="form-control" id="Middle_Name" name="Middle_Name">
-			</div>			
+			</div>
 			<div class="col-xs-4">
 				<label for="Last_Name">Last Name </label>
 				<input type="text" class="form-control" id="Last_Name" name="OBKey__121_1" required>
 			</div>
 		</div>
 
-		
+
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Email_Address">Email Address <br><span style="color:red;">(Please provide an email address to receive a confirmation email and status updates)</span></label>
@@ -78,15 +78,15 @@
 			</div>
 		</div>
 		<div class="row">
-			
+
 			<div class="col-xs-5">
 				<label for="Phone_Number">Phone Number</label>
 				<input type="text" class="form-control" id="Phone_Number" name="Phone_Number" mask="(999) 999-9999" required>
-			</div>				
+			</div>
 			<div class="col-xs-6">
 				<label for="Customer_Acct_Num">City of Bloomington Utilities Account Number</label>
 				<input type="text" class="form-control" id="Customer_Acct_Num" name="OBKey__125_1" spec>
-			</div>			
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-11">
@@ -94,7 +94,7 @@
 					<b style="">The service address is:</b>
 				</div>
 			</div>
-		</div>			
+		</div>
 		<div class="row">
 			<div class="col-xs-4">
 				<label for="Service_St_Num">Street Number</label>
@@ -108,7 +108,7 @@
 					<option value="E">E</option>
 					<option value="S">S</option>
 					<option value="W">W</option>
-				</select>						
+				</select>
 				<!--<input type="text" class="form-control" id="Service_St_Dir" name="OBKey__226_1" required>-->
 			</div>
 			<div class="col-xs-3">
@@ -123,16 +123,16 @@
 					<b style="">If completing this form as an individual please complete the following.</b>
 				</div>
 			</div>
-		</div>		
+		</div>
 		<div class="row">
 			<div class="col-xs-5">
 				<label for="Date_of_Birth">&nbsp;<br>Date of Birth</label>
-				<input meta="datetime" type="text" class="form-control" id="Date_of_Birth" id="Date_of_Birth" name="Date_of_Birth" mask="99/99/9999">		
+				<input meta="datetime" type="text" class="form-control" id="Date_of_Birth" id="Date_of_Birth" name="Date_of_Birth" mask="99/99/9999">
 			</div>
 			<div class="col-xs-6">
 				<label for="Soc_Sec_Num">&nbsp;<br>Social Security Number </label>
 				<input type="text" class="form-control" id="Soc_Sec_Num" name="Soc_Sec_Num" mask="999-99-9999" numeric ssn>
-			</div>			
+			</div>
 		</div>
 		<hr>
 		<div class="row">
@@ -141,13 +141,13 @@
 					<b style="">If completing this form as a company please complete the following.</b>
 				</div>
 			</div>
-		</div>			
+		</div>
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Company_Name">Company Name </label>
 				<input type="text" class="form-control" id="Company_Name" name="OBKey__257_1">
 			</div>
-		</div>		
+		</div>
 		<div class="row">
 			<div class="col-xs-6">
 				<label for="Customer_Fed_TIN">Business Customer's Federal TIN</label>
@@ -155,15 +155,15 @@
 			</div>
 			<div class="col-xs-5">
 				<label for="Date_of_Inc">Date of Incorporation</label>
-				<input meta="datetime" type="text" class="form-control" id="Date_of_Inc" name="Date_of_Inc" mask="99/99/9999">		
-			</div>		
+				<input meta="datetime" type="text" class="form-control" id="Date_of_Inc" name="Date_of_Inc" mask="99/99/9999">
+			</div>
 		</div>
 		<hr>
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Name_of_Fin_Inst">Name of your Financial Institution </label>
 				<input type="text" class="form-control" id="Name_of_Fin_Inst" name="Name_of_Fin_Inst"  required>
-			</div>	
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-4">
@@ -187,8 +187,8 @@
 			<div class="col-xs-11">
 				<label for="Name_of_Auth">Name of your Authorizing Authority</label>
 				<input type="text" class="form-control" id="Name_of_Auth" name="Name_of_Auth">
-			</div>	
-		</div>		
+			</div>
+		</div>
 	</div>
 
 	<div class="form-footer">
@@ -204,21 +204,21 @@
 				<div class="col-xs-12">
 					<div class="form-legal-text">I affirm that the information contained herein, including attachment(s), is complete and accurate.</div>
 				</div>
-			</div>		
+			</div>
 			<div class="row" style="height:80px;">
 				<div class="col-xs-6">
 					<div class="form-legal-input">
 						<div class="checkbox" style="display:none;">
 							<input id="Agree" name="Agree" type="checkbox" value="Yes"> I Agree
-						</div>		
+						</div>
 						<div class="form-agree choose"><i class=""></i> <span>Click if you Agree</span></div>
 					</div>
 				</div>
 				<div class="col-xs-6">
-					<div class="form-legal-input">	
+					<div class="form-legal-input">
 						<input style="height:80px;" type="text" id="dateTimeStamp" name="dateTimeStamp" disabled readonly>
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
 		<div class="row">

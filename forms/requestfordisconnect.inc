@@ -1,26 +1,29 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		$("#Date_of_Disconnect").datepicker({
+			minDate: 0,
+			maxDate: "+2M"
+		});
 	})
 </script>
-<form method="post" action="processor/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
-	<input type="hidden" name="DocumentTypeNum" value="338">
-	<input type="hidden" name="DocumentType" value="namechange">	
-	<div class="form-header">	
-	
-	<div class="form-header">		
+<form method="post" action="<?= BASE_URI; ?>/forms.processor.php" id="form" name="form" enctype="multipart/form-data">
+	<input type="hidden" name="DocumentTypeNum" value="164">
+	<input type="hidden" name="DocumentType" value="requestfordisconnect">
+
+	<div class="form-header">
 		<div class="form-title logo"><img src="assets/images/logo.png"> City of Bloomington Utilities <img src="assets/images/logo.png"></div>
-		<div class="form-title"><h2>Request for Individual Name Change</h2></div>
+		<div class="form-title"><h2>Request for Disconnect of Service and Final Bill</h2></div>
 		<div class="description">
-			<b>Name change</b> request form. You will need a substantiating document (marriage license, divorce decree, etc.) to attach as a file to this form.
-		</div>		
+			<b>Request disconnection of services </b> (for residential and commercial customers)
+		</div>
 		<div class="contact-info" style="font-size:14px; margin:5px; padding:5px; border:1px solid #315DA6; border-radius:25px; padding:10px; margin-bottom:25px;">
 			<span style="font-weight:bold; font-size:16px; padding:5px;"><center>Customer Service Office Contact Information</center></span>
-			<br />			
+			<br />
 			<table class="table">
 				<tr>
 					<td>Operating Hours</td><td>8:00 am to 5:00 pm M-F</td>
-				</tr>				
+				</tr>
 				<tr>
 					<td>Address</td><td>600 E Miller Dr <br />Bloomington IN 47401</td>
 				</tr>
@@ -37,42 +40,48 @@
 
 	<div class="form-body">
 		<div class="row">
+			<div class="col-xs-6">
+				<label for="Customer_Acct_Num">City of Bloomington Utilities Account Number</label>
+				<input type="text" class="form-control" name="OBKey__125_1" id="Customer_Acct_Num" required spec>
+			</div>
+			<div class="col-xs-5">
+				<label for="Date_of_Disconnect">Requested Date of Disconnection</label>
+				<input meta="datetime" type="text" class="form-control" id="Date_of_Disconnect" required name="OBKey__229_1" mask="99/99/9999">
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-xs-4">
 				<label for="First_Name">First Name</label>
 				<input type="text" class="form-control" name="OBKey__137_1" id="First_Name" required>
 			</div>
 			<div class="col-xs-4">
 				<label for="Middle_Name">Middle Name</label>
-				<input type="text" class="form-control" name="OBKey__156_1" id="Middle_Name">
-			</div>			
+				<input type="text" class="form-control" name="Middle_Name" id="Middle_Name">
+			</div>
 			<div class="col-xs-3">
 				<label for="Last_Name">Last Name</label>
 				<input type="text" class="form-control" name="OBKey__121_1" id="Last_Name" required>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-6">
-				<label for="Former_Last_Name">Former Last Name</label>
-				<input type="text" class="form-control" name="OBKey__387_1" id="Former_Last_Name" required>		
+			<div class="col-xs-11">
+				<label for="Company_Name">Company Name </label>
+				<input type="text" class="form-control" id="Company_Name" name="OBKey__257_1">
 			</div>
-			<div class="col-xs-5">
-				<label for="Telephone_Number">Telephone Number</label>
-				<input type="text" class="form-control" name="Telephone_Number" id="Telephone_Number" mask="(999) 999-9999" phone required>		
-			</div>				
 		</div>
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Email_Address">Email Address <br><span style="color:red;">(Please provide an email address to receive a confirmation email and status updates)</span></label>
 				<input type="text" class="form-control" id="Email_Address" name="OBKey__393_1">
 			</div>
-		</div>		
+		</div>
 		<div class="row">
 			<div class="col-xs-11">
 				<div class="form-legal-text">
 					<b style="">The service address is:</b>
 				</div>
 			</div>
-		</div>				
+		</div>
 		<div class="row">
 			<div class="col-xs-4">
 				<label for="Service_St_Num">Street Number</label>
@@ -86,55 +95,80 @@
 					<option value="E">E</option>
 					<option value="S">S</option>
 					<option value="W">W</option>
-				</select>						
+				</select>
 				<!--<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">-->
 			</div>
 			<div class="col-xs-3">
 				<label for="Service_St_Name">Street Name</label>
 				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
 			</div>
-		</div>		
+		</div>
 		<div class="row">
 			<div class="col-xs-5">
-				<label for="Soc_Sec_Num">Social Security Number</label>
-				<input type="text" class="form-control" name="OBKey__123_1" mask="999-99-9999" ssn numeric id="Soc_Sec_Num">
+				<label for="Service_Apartment">Apt.</label>
+				<input type="text" class="form-control" name="Service_Apartment" id="Service_Apartment">
 			</div>
 			<div class="col-xs-6">
-				<label for="Customer_Acct_Num">City of Bloomington Utilities Account Number</label>
-				<input type="text" class="form-control" name="OBKey__125_1" id="Customer_Acct_Num" spec required>
-			</div>			
+				<label for="Telephone_Number">Telephone Number</label>
+				<input type="text" class="form-control" name="Telephone_Number" id="Telephone_Number" phone mask="(999) 999-9999" required>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-11">
-				<div class="form-legal-text">				
-					Please include either a photcopy of your driver's license, a marriage license, or a divorce decree. If you send a driver's license, please make sure it shows the new name change.
-				</div>
+				<label for="Mailing_Address">Permanent Address for Final Bill</label>
+				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address" required>
 			</div>
-		</div>		
-
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<label for="Mailing_City">City</label>
+				<input type="text" class="form-control" name="Mailing_City" id="Mailing_City" required value="Bloomington">
+			</div>
+			<div class="col-xs-4">
+				<label for="Mailing_State">State</label>
+				<input type="text" class="form-control" name="Mailing_State" id="Mailing_State" required value="IN">
+			</div>
+			<div class="col-xs-3">
+				<label for="Mailing_Zipcode">ZIP Code</label>
+				<input type="text" class="form-control" name="Mailing_Zipcode" id="Mailing_Zipcode" required numeric mask="99999">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="Forwarding_Tel_Num">Forwarding Telephone Number</label>
+				<input type="text" class="form-control" name="Forwarding_Tel_Num" id="Forwarding_Tel_Num" phone mask="(999) 999-9999" required>
+			</div>
+		</div>
 	</div>
 
 	<div class="form-footer">
 		<div class="bottom-verbiage">
 			<div class="row">
 				<div class="col-xs-11">
+					<div class="form-legal-text">
+						If water service is disconnected (without a new signer) a service fee of $18.00 will appear on your final billing statement. If you have any additional questions, please contact customer service at (812) 349-3930.<br /><br /><b>* Aqua Pay customers: Final bills will NOT be automatically withdrawn from your bank account.</b>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-11">
 					<div class="form-legal-text">I affirm that the information contained herein, including attachment(s), is complete and accurate.</div>
 				</div>
-			</div>		
+			</div>
 			<div class="row" style="height:80px;">
 				<div class="col-xs-5">
 					<div class="form-legal-input">
 						<div class="checkbox" style="display:none;">
 							<input id="Agree" name="Agree" type="checkbox" value="Yes"> I Agree
-						</div>		
+						</div>
 						<div class="form-agree choose"><i class=""></i> <span>Click if you Agree</span></div>
 					</div>
 				</div>
 				<div class="col-xs-6">
-					<div class="form-legal-input">	
+					<div class="form-legal-input">
 						<input style="height:80px;" type="text" id="dateTimeStamp" name="dateTimeStamp" disabled readonly>
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
 		<div class="row">

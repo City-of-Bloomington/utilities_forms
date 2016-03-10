@@ -1,8 +1,6 @@
 <?php
 include '../configuration.inc';
 
-error_reporting(E_ALL);
-ini_set("display_errors", "0");
 //ENSURE THE CORRECT DATA IS PRESENT, MAKE UPPERCASE, AND REMOVE ANY TAGS IN THE POSTED DATA BEFORE CREATING THE FORM OBJECT
 if (isset($_POST)) {
 	if (count($_POST) > 1 && isset($_POST['DocumentType'])) {
@@ -31,12 +29,30 @@ if (isset($_POST)) {
 
 
 class Forms {
+    private $vals = [];
+    private $xml;
+    private $Valid_Counter = 0;
+    private $Docs = 0;
+    private $Files;
+
+    private $Message;
+
+    private $Conf_Number;
+    private $supp_dip_path;
+    private $supp_image_file_name;
+    private $supp_image_temp_path;
+    private $form_dip_path;
+    private $form_html_filename;
+    private $form_html_path;
+    private $form_pdf_filename;
+    private $form_pdf_path;
+
 
 	//SETUP VARIABLES AND PATHS AND CALL FUNCTIONS DEPENDING ON THE REQUEST
-	function __construct($vals = false) {
+	public function __construct($vals = false)
+	{
 		$this->vals = $vals;
 		$this->xml = simplexml_load_file(dirname(dirname(__FILE__)). "/forms.xml") or die("Error: Cannot create object");
-		$this->ENCRYPTION_KEY = ENCRYPTION_KEY;
 		$this->Valid_Counter = 0;
 
 		//SPECIAL FIELDS
@@ -80,64 +96,64 @@ class Forms {
 
 	//GENERATE A NEW CONFIRMATION NUMBER
 	//THIS FUNCTION IS NOT USED, IT WAS A TEST TO GENERATE A CONFIRMATION NUMBER OUTSIDE THE NORMAL PROCEDURE
-	function Gen_Conf() {
+	private function Gen_Conf()
+	{
 		$this->Get_Next_Conf_Number();
 		echo $this->Conf_Number;
 	}
 
-	function Setup_Paths() {
-		//GET SCRIPT DIRECTORY
-		$this->pwd  = dirname(dirname(__FILE__));
-		$this->path = "/mnt/onbase/";
-
+	private function Setup_Paths()
+	{
 		//CHANGE DEFAULT PATHS AND FILENAMES BELOW
 		if (isset($this->vals['Conf_Number'])) {
 			//SUPPLEMENTARY IMAGE FILES AND DIP FILES
 			//supp DIP file name example: 20151204122913-000608-0382-supp.txt
 			$supp_dip_filename = date("YmdHis",time()) . "-" . $this->vals['Conf_Number'] . "-supp.txt";
-			$this->supp_dip_path = $this->path . $supp_dip_filename;
+			$this->supp_dip_path = ONBASE_PATH . $supp_dip_filename;
 
 			//supp file name example: 20151204122913-000608-0382-img3.jpg
 			$this->supp_image_file_name = date("YmdHis",time()) . "-" . $this->vals['Conf_Number'] . "-img";
-			$this->supp_image_temp_path = $this->path;
+			$this->supp_image_temp_path = ONBASE_PATH;
 		}
 
 		//FORM DIP FILES
 		//form DIP file example:20151204122846-000608-0382-form.txt
 		$form_dip_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-form.txt";
-		$this->form_dip_path = $this->path . $form_dip_filename;
+		$this->form_dip_path = ONBASE_PATH . $form_dip_filename;
 
 		//FORM HTML FILES
 		//form HTML file example:20151204122846-000608-0382-html.html
 		$this->form_html_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-html.html";
-		$this->form_html_path = $this->path . $this->form_html_filename;
+		$this->form_html_path = ONBASE_PATH . $this->form_html_filename;
 
 		//FORM PDF FILES
 		//form PDF file example:20151204122846-000608-0382-form.pdf
 		$this->form_pdf_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-form.pdf";
-		$this->form_pdf_path = $this->path . $this->form_pdf_filename;
+		$this->form_pdf_path = ONBASE_PATH . $this->form_pdf_filename;
 	}
 
 	//ENCRYPT THE CONFIRMATION NUMBER USING THE PRIVATE KEY
-	function encrypt($pure_string) {
+	private function encrypt($pure_string)
+	{
 		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
 		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-		$encrypted_string = mcrypt_encrypt(MCRYPT_BLOWFISH, $this->ENCRYPTION_KEY, utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
+		$encrypted_string = mcrypt_encrypt(MCRYPT_BLOWFISH, ENCRYPTION_KEY, utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
 		return base64_encode($encrypted_string);
 	}
 
 	//DECRYPT THE ENCRYPTED CONFIRMATION NUMBER USING THE PRIVATE KEY
-	function decrypt($encrypted_string) {
+	private function decrypt($encrypted_string)
+	{
 		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
 		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-		$decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, $this->ENCRYPTION_KEY, base64_decode($encrypted_string), MCRYPT_MODE_ECB, $iv);
+		$decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, ENCRYPTION_KEY, base64_decode($encrypted_string), MCRYPT_MODE_ECB, $iv);
 		$decrypted_string = trim($decrypted_string, "\0");
 		return $decrypted_string;
 	}
 
 	//VALIDATE FILE UPLOADS
-	function Validate_File_Uploads($Files) {
-
+	private function Validate_File_Uploads($Files)
+	{
 		$counter = 0;
 		foreach ($Files as $File) {
 			$counter++;
@@ -169,7 +185,8 @@ class Forms {
 	}
 
 	//WRITE THE SUPPLEMENTARY DIP FILE
-	function Create_Supp_DIP() {
+	private function Create_Supp_DIP()
+	{
 		$line = "";
 		$this->Message = "";
 		foreach ($this->Files as $counter => $val) {
@@ -192,7 +209,8 @@ class Forms {
 	}
 
 	//GET NEXT CONFIRMATION NUMBER AND WRITE NEW CONFIRMATION NUMBER FOR NEXT REQUEST
-	function Get_Next_Conf_Number() {
+	private function Get_Next_Conf_Number()
+	{
 		$file = dirname(__FILE__) . "/confirmationsDO-NOT-DELETE.txt";
 		$contents = trim(file_get_contents($file));
 		if ($contents !== "") {
@@ -212,7 +230,8 @@ class Forms {
 	}
 
 	//GET MAPPED NAME FROM XML FILE
-	function Get_Mapped_Name($ob) {
+	private function Get_Mapped_Name($ob)
+	{
 		foreach ($this->xml->form as $form) {
 			if (strtoupper($form->file) === $this->vals['DocumentType']) {
 				$this->Docs = $form->docs;
@@ -229,7 +248,8 @@ class Forms {
 	}
 
 	//THIS FUNCTION IS NOT USED, IT WAS A TEST TO GENERATE PDF
-	function Create_Form_PDF($tmp) {
+	private function Create_Form_PDF($tmp)
+	{
 		$cmd = "wkhtmltopdf " . $tmp . " " . $this->form_pdf_path;
 		exec($cmd);
 
@@ -238,10 +258,10 @@ class Forms {
 		}
 	}
 
-	function Create_Form_HTML() {
+	private function Create_Form_HTML()
+	{
 		//GET THE FORM HTML AS THE CUSTOMER SEES IT (INCLUDING CSS AND JAVASCRIPT FILES) AND SAVE IT TO A TEMPORARY LOCATION
-		$src = $this->pwd . "/forms/" . strtolower($_POST['DocumentType']) . ".html";
-		$tmp = $this->pwd . "/temp/" . $this->form_html_filename;
+		$tmp = APPLICATION_HOME . "/temp/" . $this->form_html_filename;
 		file_put_contents($tmp,file_get_contents("http://10.20.20.66/forms/index.php?form=" . strtolower($_POST['DocumentType'] . "&html=true")));
 
 		$html = "";
@@ -363,7 +383,8 @@ class Forms {
 	}
 
 	//WRITE THE FORM DIP FILE
-	function Create_Form_DIP() {
+	private function Create_Form_DIP()
+	{
 		$this->vals['Conf_Number'] = $this->Conf_Number;
 		//ADD PER JOSH REQUEST ON 2016-02-17
 		if ($_POST['DocumentType'] !== "SPECIALREADAGREEMENT") {

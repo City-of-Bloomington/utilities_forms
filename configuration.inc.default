@@ -3,4 +3,9 @@
  * @copyright 2016 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  */
+define('APPLICATION_HOME', __DIR__);
+define('BASE_URL', 'http://localhost/utilities_forms');
+define('BASE_URI', '/utilities_forms');
+
 define('ENCRYPTION_KEY', 'super_secret_encryption_key');
+define('ONBASE_PATH', '/mnt/onbase');
