@@ -4,13 +4,13 @@ include '../configuration.inc';
 error_reporting(E_ALL);
 ini_set("display_errors", "0");
 //ENSURE THE CORRECT DATA IS PRESENT, MAKE UPPERCASE, AND REMOVE ANY TAGS IN THE POSTED DATA BEFORE CREATING THE FORM OBJECT
-if(isset($_POST)) {
-	if(count($_POST) > 1 && isset($_POST['DocumentType'])) {
+if (isset($_POST)) {
+	if (count($_POST) > 1 && isset($_POST['DocumentType'])) {
 		$_POST['dateTimeStamp'] = date("Y-m-d H:i:s",time());
-		foreach($_POST as $key => $post) {
+		foreach ($_POST as $key => $post) {
 			//REMOVED PER REQUEST FROM JOSH HOWE ON 2016-02-15
-			//if($key == "OBKey__257_1" && $post != "") {
-				//if($_POST['DocumentType'] != "SPECIALREADAGREEMENT") {
+			//if ($key == "OBKey__257_1" && $post != "") {
+				//if ($_POST['DocumentType'] != "SPECIALREADAGREEMENT") {
 				//	$_POST['OBKey__121_1'] = $_POST['OBKey__257_1'];
 				//	unset($_POST['OBKey__257_1']);
 				//}
@@ -19,11 +19,11 @@ if(isset($_POST)) {
 		}
 
 		//ADDED PER REQUEST FROM JOSH HOWE ON 2016-02-15
-		if($_POST['OBKey__225_1'] == "") $_POST['OBKey__226_1'] = "";
-		if($_POST['OBKey__225_2'] == "") $_POST['OBKey__226_2'] = "";
-		if($_POST['OBKey__225_3'] == "") $_POST['OBKey__226_3'] = "";
-		if($_POST['OBKey__225_4'] == "") $_POST['OBKey__226_4'] = "";
-		if($_POST['OBKey__225_5'] == "") $_POST['OBKey__226_5'] = "";
+		if ($_POST['OBKey__225_1'] === "") { $_POST['OBKey__226_1'] = ""; }
+		if ($_POST['OBKey__225_2'] === "") { $_POST['OBKey__226_2'] = ""; }
+		if ($_POST['OBKey__225_3'] === "") { $_POST['OBKey__226_3'] = ""; }
+		if ($_POST['OBKey__225_4'] === "") { $_POST['OBKey__226_4'] = ""; }
+		if ($_POST['OBKey__225_5'] === "") { $_POST['OBKey__226_5'] = ""; }
 
 		$Forms = new Forms($_POST);
 	}
@@ -40,37 +40,40 @@ class Forms {
 		$this->Valid_Counter = 0;
 
 		//SPECIAL FIELDS
-		if($this->vals['DocumentType'] == "SPECIALREADAGREEMENTCANCELLATION") {
+		if ($this->vals['DocumentType'] === "SPECIALREADAGREEMENTCANCELLATION") {
 			$this->vals['OBKey__188_1'] = date("m/d/Y",time());
 		}
-		if($this->vals['DocumentType'] == "SPECIALREADAGREEMENT") {
+		if ($this->vals['DocumentType'] === "SPECIALREADAGREEMENT") {
 			$this->vals['OBKey__209_1'] = date("m/d/Y",time());
 		}
 
 		//IF THE REQUEST IS A NORMAL FORM SUBMISSION
-		if($this->vals['DocumentType'] != "SUPPLEMENTARYDOCUMENT" && $this->vals['DocumentType'] != "") {
+		if (   $this->vals['DocumentType'] !== "SUPPLEMENTARYDOCUMENT"
+            && $this->vals['DocumentType'] !== "") {
+
 			$this->Get_Next_Conf_Number();
 			$this->vals['Conf_Number'] = $this->Conf_Number;
 			$this->Setup_Paths();
-			if(isset($_FILES['Sup_File_1']['name']) && $_FILES['Sup_File_1']['name'] != "") {
+			if (isset($_FILES['Sup_File_1']['name']) && $_FILES['Sup_File_1']['name'] != "") {
 				$this->Files = "";
 				$this->Create_Supp_DIP($this->Validate_File_Uploads($_FILES));
 			}
 
 			//REMOVED SPECIAL READ AGREEMENT HTML CREATION PER JOSH ON 2016-02-15
-			if($_POST['DocumentType'] != "SPECIALREADAGREEMENT") {
+			if ($_POST['DocumentType'] !== "SPECIALREADAGREEMENT") {
 				$tmp = $this->Create_Form_HTML();
 			}
 			$this->Create_Form_DIP();
 		}
 		//IF THE REQUEST IS A SUPPLEMENTAL DOCUMENT SUBMISSION
-		else if($this->vals['DocumentType'] == "SUPPLEMENTARYDOCUMENT" && isset($_FILES) && isset($this->vals['Conf_Number'])) {
+		elseif ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT"
+                && isset($_FILES) && isset($this->vals['Conf_Number'])) {
 			$this->Files = "";
 			$this->Setup_Paths();
 			$this->Create_Supp_DIP($this->Validate_File_Uploads($_FILES));
 		}
 		//IF THE REQUEST IS NEITHER A SUPPLEMENTAL DOCUMENT OR A NORMAL FORM SUBMISSION RETURN ERROR
-		else if($this->vals['DocumentType'] != "") {
+		elseif ($this->vals['DocumentType'] !== "") {
 			exit("error");
 		}
 	}
@@ -84,11 +87,11 @@ class Forms {
 
 	function Setup_Paths() {
 		//GET SCRIPT DIRECTORY
-		$this->pwd = dirname(dirname(__FILE__));
+		$this->pwd  = dirname(dirname(__FILE__));
 		$this->path = "/mnt/onbase/";
 
 		//CHANGE DEFAULT PATHS AND FILENAMES BELOW
-		if(isset($this->vals['Conf_Number'])) {
+		if (isset($this->vals['Conf_Number'])) {
 			//SUPPLEMENTARY IMAGE FILES AND DIP FILES
 			//supp DIP file name example: 20151204122913-000608-0382-supp.txt
 			$supp_dip_filename = date("YmdHis",time()) . "-" . $this->vals['Conf_Number'] . "-supp.txt";
@@ -136,21 +139,21 @@ class Forms {
 	function Validate_File_Uploads($Files) {
 
 		$counter = 0;
-		foreach($Files as $File) {
+		foreach ($Files as $File) {
 			$counter++;
 			//CHECK IF FILESIZES ARE TOO BIG
-			if($File['size'] > 6291456) {
+			if ($File['size'] > 6291456) {
 				$this->Files[$counter]['Response'] = "Error: Size";
 			}
 			//CHECK IF THE FILES ARE NOT THE CORRECT TYPE
 			//REMOVED WORD DOCUMENTS PER JOSH REQUEST ON 2015-12-11
 			// && substr($File['name'],strpos($File['name'],".")+1,3) != "doc"
-			else if(explode("/",$File['type'])[0] != "image" && $File['type'] != "application/pdf") {
+			else if (explode("/",$File['type'])[0] !== "image" && $File['type'] !== "application/pdf") {
 				$this->Files[$counter]['Response'] = "Error: Invalid";
 			}
 			else {
 				$New_Name = $this->supp_image_file_name . $counter . "." . substr($File['name'],strpos($File['name'],".")+1);
-				if(move_uploaded_file($File["tmp_name"], $this->supp_image_temp_path . $New_Name)) {
+				if (move_uploaded_file($File["tmp_name"], $this->supp_image_temp_path . $New_Name)) {
 					$this->Files[$counter]['Response'] = "Success";
 					$this->Files[$counter]['Filename'] = $New_Name;
 					$this->Valid_Counter++;
@@ -158,20 +161,19 @@ class Forms {
 			}
 			$this->Files[$counter]['Old_Filename'] = $File['name'];
 			//REMOVE UPLOADED FILE FROM THE SERVER AND UNSET VARIABLE
-			if(file_exists($File['tmp_name'])) {
+			if (file_exists($File['tmp_name'])) {
 				unlink($File['tmp_name']);
 			}
 			unset($File);
 		}
-
 	}
 
 	//WRITE THE SUPPLEMENTARY DIP FILE
 	function Create_Supp_DIP() {
 		$line = "";
 		$this->Message = "";
-		foreach($this->Files as $counter => $val) {
-			if($val['Filename'] != "") {
+		foreach ($this->Files as $counter => $val) {
+			if ($val['Filename'] !== "") {
 				$line .= str_pad("DocumentTypeNum:",30," ",STR_PAD_RIGHT) . "340\r\n";
 				$line .= str_pad("Conf_Number:",30," ",STR_PAD_RIGHT) . $this->vals['Conf_Number'] . "\r\n";
 				$line .= str_pad("SupplementaryType:",30," ",STR_PAD_RIGHT) . $this->vals['Sup_Type_'.$counter] . "\r\n";
@@ -182,8 +184,8 @@ class Forms {
 		$handle = fopen($this->supp_dip_path,"w");
 		fwrite($handle,$line);
 		fclose($handle);
-		if(file_exists($this->supp_dip_path)) {
-			if($this->vals['DocumentType'] == "SUPPLEMENTARYDOCUMENT") {
+		if (file_exists($this->supp_dip_path)) {
+			if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
 				header("Location: ../index.php?form=SuppConfirmation&Confirmation_Number=" . $this->vals['Conf_Number'] . "&" . $this->Message);
 			}
 		}
@@ -193,10 +195,10 @@ class Forms {
 	function Get_Next_Conf_Number() {
 		$file = dirname(__FILE__) . "/confirmationsDO-NOT-DELETE.txt";
 		$contents = trim(file_get_contents($file));
-		if($contents != "") {
+		if ($contents !== "") {
 			$this->Conf_Number = $this->decrypt($contents);
 			echo $this->Conf_Number;
-			if(strlen($this->Conf_Number) == 6) {
+			if (strlen($this->Conf_Number) === 6) {
 				fwrite(fopen($file,"w"),$this->encrypt(str_pad(($this->Conf_Number + 1),6,"0",STR_PAD_LEFT)));
 			}
 			$this->Conf_Number = $this->Conf_Number . "-" . str_pad(rand(0,9999),4,"0",STR_PAD_LEFT);
@@ -211,12 +213,12 @@ class Forms {
 
 	//GET MAPPED NAME FROM XML FILE
 	function Get_Mapped_Name($ob) {
-		foreach($this->xml->form as $form) {
-			if(strtoupper($form->file) == $this->vals['DocumentType']) {
+		foreach ($this->xml->form as $form) {
+			if (strtoupper($form->file) === $this->vals['DocumentType']) {
 				$this->Docs = $form->docs;
-				foreach($form->fields as $val) {
-					foreach($val as $field) {
-						if($field->ob == $ob) {
+				foreach ($form->fields as $val) {
+					foreach ($val as $field) {
+						if ($field->ob === $ob) {
 							return $field->dip;
 						}
 					}
@@ -231,7 +233,7 @@ class Forms {
 		$cmd = "wkhtmltopdf " . $tmp . " " . $this->form_pdf_path;
 		exec($cmd);
 
-		if(file_exists($this->form_pdf_path)) {
+		if (file_exists($this->form_pdf_path)) {
 			unlink($tmp);
 		}
 	}
@@ -245,9 +247,9 @@ class Forms {
 		$html = "";
 		$lines = file($tmp);
 		//START READING THE HTML FILE LINE BY LINE
-		foreach($lines as $line_num => $line) {
+		foreach ($lines as $line_num => $line) {
 			//MAKE MANUAL MODIFICATIONS TO THE WEB HTML VERSION TO BE COMPATIBLE WITH ONBASE VERSION
-			if(strpos($line,"src=\"vendor")) {
+			if (strpos($line,"src=\"vendor")) {
 				$line = str_replace("src=\"vendor",'src="\\\eureka\obdata$\Form_Tools\vendor',$line);
 				$line = str_replace("assets/css/", "assets\css\\",$line);
 				$line = str_replace("assets/js/", "assets\js\\",$line);
@@ -259,7 +261,7 @@ class Forms {
 				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
 				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
 			}
-			if(strpos($line,"src=\"assets")) {
+			if (strpos($line,"src=\"assets")) {
 				$line = str_replace("src=\"assets",'src="\\\eureka\obdata$\Form_Tools\assets',$line);
 				$line = str_replace("assets/css/", "assets\css\\",$line);
 				$line = str_replace("assets/js/", "assets\js\\",$line);
@@ -271,7 +273,7 @@ class Forms {
 				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
 				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
 			}
-			if(strpos($line,"href=\"vendor")) {
+			if (strpos($line,"href=\"vendor")) {
 				$line = str_replace("href=\"vendor",'href="\\\eureka\obdata$\Form_Tools\vendor',$line);
 				$line = str_replace("assets/css/", "assets\css\\",$line);
 				$line = str_replace("assets/js/", "assets\js\\",$line);
@@ -283,7 +285,7 @@ class Forms {
 				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
 				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
 			}
-			if(strpos($line,"href=\"assets")) {
+			if (strpos($line,"href=\"assets")) {
 				$line = str_replace("href=\"assets",'href="\\\eureka\obdata$\Form_Tools\assets',$line);
 				$line = str_replace("assets/css/", "assets\css\\",$line);
 				$line = str_replace("assets/js/", "assets\js\\",$line);
@@ -295,46 +297,46 @@ class Forms {
 				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
 				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
 			}
-			if(strpos($line,"global.js")) {
+			if (strpos($line,"global.js")) {
 				$line = str_replace("global.js","onbase.js",$line);
 			}
-			if(strpos($line,"Global = new Global;")) {
+			if (strpos($line,"Global = new Global;")) {
 				$line = str_replace("Global = new Global;","",$line);
 			}
-			if(strpos($line,"Global.init();")) {
+			if (strpos($line,"Global.init();")) {
 				$line = str_replace("Global.init();","init();",$line);
 			}
-			if(strpos($line,"dateTimeStamp") !== false) {
+			if (strpos($line,"dateTimeStamp") !== false) {
 				$line = str_replace("name=\"dateTimeStamp\"","name=\"dateTimeStamp\" class=\"dateTimeStamp\" ",$line);
 			}
-			if(strpos($line,"service_row_hidden") !== false) {
+			if (strpos($line,"service_row_hidden") !== false) {
 				$line = str_replace("service_row_hidden","",$line);
 			}
-			if(strpos($line,"Add_More_Addresses") !== false) {
+			if (strpos($line,"Add_More_Addresses") !== false) {
 				$line = str_replace("Add_More_Addresses","Add_More_Addresses_hide",$line);
 			}
-			if(strpos($line,"global.css") !== false) {
+			if (strpos($line,"global.css") !== false) {
 				$line = str_replace("global.css","onbase.css",$line);
 			}
-			if(strpos($line,"enctype=\"multipart/form-data\"") !== false) {
+			if (strpos($line,"enctype=\"multipart/form-data\"") !== false) {
 				$line = str_replace("enctype=\"multipart/form-data\"","",$line);
 			}
 
 
 			$m = false;
-			foreach($_POST as $name => $value) {
+			foreach ($_POST as $name => $value) {
 				//DETECT IF THE LINE INCLUDES THE FIELD ELEMENT ASSOCIATED WITH THE POSTED DATA, ADD THE VALUE TO THE FIELD, AND APPEND THE LINE
-				if(strpos($line,"name=\"" . $name . "\"") !== false) {
+				if (strpos($line,"name=\"" . $name . "\"") !== false) {
 					$attr = "";
-					if(substr($name,0,5) != "OBKey") {
+					if (substr($name,0,5) !== "OBKey") {
 						$attr = "disabled";
 					}
-					if(strpos($line,"select") !== false) {
+					if (strpos($line,"select") !== false) {
 						$html .= substr_replace($line," " . $attr . " ", strpos($line,">"), 0);
 						//$html .= $line;
 						$html .= "<option selected value=\"" . $value . "\">" . $value . "</option>";
 					}
-					else if(strpos($line,"type=\"checkbox\"") !== false) {
+					else if (strpos($line,"type=\"checkbox\"") !== false) {
 						$html .= substr_replace($line, " " . $attr . " checked ", strpos($line,">"), 0);
 					}
 					else {
@@ -344,16 +346,16 @@ class Forms {
 					$m = true;
 				}
 			}
-			if($m == false) {
+			if ($m == false) {
 				//APPEND THE LINE IF IT DOES NOT INCLUDE A FIELD ELEMENT
-				if(strpos($line,"name=\"Agree\"") === false && strpos($line,"form-agree choose") === false) {
+				if (strpos($line,"name=\"Agree\"") === false && strpos($line,"form-agree choose") === false) {
 					$html .= $line;
 				}
 			}
 		}
 		//WRITE THE NEW HTML TO A FILE
 		file_put_contents($this->form_html_path,$html);
-		if(file_exists($this->form_html_path)) {
+		if (file_exists($this->form_html_path)) {
 			//IF THE NEW FILE EXISTS, DELETE THE TEMP FILE
 			unlink($tmp);
 		}
@@ -364,20 +366,19 @@ class Forms {
 	function Create_Form_DIP() {
 		$this->vals['Conf_Number'] = $this->Conf_Number;
 		//ADD PER JOSH REQUEST ON 2016-02-17
-		if($_POST['DocumentType'] != "SPECIALREADAGREEMENT") {
+		if ($_POST['DocumentType'] !== "SPECIALREADAGREEMENT") {
 			$this->vals['Filename'] = $this->form_html_filename;
 		}
 		$line = "";
-		foreach($this->vals as $key => $val) {
+		foreach ($this->vals as $key => $val) {
 			$line .= str_pad($this->Get_Mapped_Name($key).":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
 		}
 		$handle = fopen($this->form_dip_path,"w");
 		fwrite($handle,$line);
 		fclose($handle);
-		if(file_exists($this->form_dip_path)) {
+		if (file_exists($this->form_dip_path)) {
 			$this->Docs = $this->Docs - $this->Valid_Counter;
 			header("Location: ../index.php?form=Confirmation&Confirmation_Number=" . $this->Conf_Number . "&docs=" . $this->Docs . "&" . $Message);
 		}
 	}
-
 }
