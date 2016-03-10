@@ -5,7 +5,7 @@
  */
 ?>
 <div class="form-title logo">
-    <img src="<?= BASE_URL; ?>/assets/images/logo.png" />
+    <img src="<?= BASE_URL; ?>/images/logo.png" />
     City of Bloomington Utilities
-    <img src="<?= BASE_URL; ?>/assets/images/logo.png" />
+    <img src="<?= BASE_URL; ?>/images/logo.png" />
 </div>

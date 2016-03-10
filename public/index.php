@@ -8,15 +8,15 @@ include '../configuration.inc';
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>City of Bloomington Utilities</title>
-		<link rel="stylesheet" href="assets/css/global.css">
-		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="vendor/jquery/ui/jquery-ui.min.css">
-		<script src="vendor/jquery/jquery-1.11.3.min.js"></script>
-		<script src="vendor/jquery/ui/jquery-ui.min.js"></script>
-		<script src="vendor/jquery-mask/jquery-mask.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/js/global.js"></script>
+		<link rel="stylesheet" href="<?= BASE_URL; ?>/css/global.css">
+		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/jquery/ui/jquery-ui.min.css">
+		<script src="<?= BASE_URL; ?>/vendor/jquery/jquery-1.11.3.min.js"></script>
+		<script src="<?= BASE_URL; ?>/vendor/jquery/ui/jquery-ui.min.js"></script>
+		<script src="<?= BASE_URL; ?>/vendor/jquery-mask/jquery-mask.js"></script>
+		<script src="<?= BASE_URL; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<?= BASE_URL; ?>/js/global.js"></script>
 		<script type="text/javascript">
 			Global = new Global;
 			Global.init();

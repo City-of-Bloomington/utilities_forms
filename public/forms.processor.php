@@ -262,61 +262,12 @@ class Forms {
 	{
 		//GET THE FORM HTML AS THE CUSTOMER SEES IT (INCLUDING CSS AND JAVASCRIPT FILES) AND SAVE IT TO A TEMPORARY LOCATION
 		$tmp = APPLICATION_HOME . "/temp/" . $this->form_html_filename;
-		file_put_contents($tmp,file_get_contents("http://10.20.20.66/forms/index.php?form=" . strtolower($_POST['DocumentType'] . "&html=true")));
+		file_put_contents($tmp, file_get_contents(BASE_URL."/index.php?form=" . strtolower($_POST['DocumentType'] . "&html=true")));
 
 		$html = "";
 		$lines = file($tmp);
 		//START READING THE HTML FILE LINE BY LINE
 		foreach ($lines as $line_num => $line) {
-			//MAKE MANUAL MODIFICATIONS TO THE WEB HTML VERSION TO BE COMPATIBLE WITH ONBASE VERSION
-			if (strpos($line,"src=\"vendor")) {
-				$line = str_replace("src=\"vendor",'src="\\\eureka\obdata$\Form_Tools\vendor',$line);
-				$line = str_replace("assets/css/", "assets\css\\",$line);
-				$line = str_replace("assets/js/", "assets\js\\",$line);
-				$line = str_replace("assets/images/", "assets\images\\",$line);
-				$line = str_replace("vendor/bootstrap/css/", "vendor\bootstrap\css\\",$line);
-				$line = str_replace("vendor/bootstrap/js/", "vendor\bootstrap\js\\",$line);
-				$line = str_replace("vendor/font-awesome/css/", "vendor\\font-awesome\css\\",$line);
-				$line = str_replace("vendor/jquery/ui/", "vendor\jquery\ui\\",$line);
-				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
-				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
-			}
-			if (strpos($line,"src=\"assets")) {
-				$line = str_replace("src=\"assets",'src="\\\eureka\obdata$\Form_Tools\assets',$line);
-				$line = str_replace("assets/css/", "assets\css\\",$line);
-				$line = str_replace("assets/js/", "assets\js\\",$line);
-				$line = str_replace("assets/images/", "assets\images\\",$line);
-				$line = str_replace("vendor/bootstrap/css/", "vendor\bootstrap\css\\",$line);
-				$line = str_replace("vendor/bootstrap/js/", "vendor\bootstrap\js\\",$line);
-				$line = str_replace("vendor/font-awesome/css/", "vendor\\font-awesome\css\\",$line);
-				$line = str_replace("vendor/jquery/ui/", "vendor\jquery\ui\\",$line);
-				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
-				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
-			}
-			if (strpos($line,"href=\"vendor")) {
-				$line = str_replace("href=\"vendor",'href="\\\eureka\obdata$\Form_Tools\vendor',$line);
-				$line = str_replace("assets/css/", "assets\css\\",$line);
-				$line = str_replace("assets/js/", "assets\js\\",$line);
-				$line = str_replace("assets/images/", "assets\images\\",$line);
-				$line = str_replace("vendor/bootstrap/css/", "vendor\bootstrap\css\\",$line);
-				$line = str_replace("vendor/bootstrap/js/", "vendor\bootstrap\js\\",$line);
-				$line = str_replace("vendor/font-awesome/css/", "vendor\\font-awesome\css\\",$line);
-				$line = str_replace("vendor/jquery/ui/", "vendor\jquery\ui\\",$line);
-				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
-				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
-			}
-			if (strpos($line,"href=\"assets")) {
-				$line = str_replace("href=\"assets",'href="\\\eureka\obdata$\Form_Tools\assets',$line);
-				$line = str_replace("assets/css/", "assets\css\\",$line);
-				$line = str_replace("assets/js/", "assets\js\\",$line);
-				$line = str_replace("assets/images/", "assets\images\\",$line);
-				$line = str_replace("vendor/bootstrap/css/", "vendor\bootstrap\css\\",$line);
-				$line = str_replace("vendor/bootstrap/js/", "vendor\bootstrap\js\\",$line);
-				$line = str_replace("vendor/font-awesome/css/", "vendor\\font-awesome\css\\",$line);
-				$line = str_replace("vendor/jquery/ui/", "vendor\jquery\ui\\",$line);
-				$line = str_replace("vendor/jquery/", "vendor\jquery\\",$line);
-				$line = str_replace("vendor/jquery-mask/", "vendor\jquery-mask\\",$line);
-			}
 			if (strpos($line,"global.js")) {
 				$line = str_replace("global.js","onbase.js",$line);
 			}
