@@ -4,7 +4,7 @@ var Global = function() {
 	var url = "processor/forms.processor.php";
 	var SD = 1;
 	var SA = 1;
-	
+
 	//ADD OR REMOVE SUPPLEMENTARY DOCUMENT TYPES HERE
 	var Sup_Doc_Types = new Array(
 		"Drivers License",
@@ -19,12 +19,12 @@ var Global = function() {
 		"Death Certificate",
 		"Other"
 	)
-	
+
 	this.init = function() {
 		SELF.bindEvents();
 		SELF.startup();
 	}
-	
+
 	this.bindEvents = function() {
 		$(document).off("change","#Person").on("change","#Person",function() {
 			if($(this).val() == "Other") {
@@ -51,11 +51,11 @@ var Global = function() {
 				if($("#Contact_First_Name").val() != "" && $("#Contact_Last_Name").val() != "") {
 					$("#Property_Owner").val($("#Contact_First_Name").val() + " " + $("#Contact_Last_Name").val());
 				}
-				if($("#Contact_Phone_Num").val() != "") {			
+				if($("#Contact_Phone_Num").val() != "") {
 					$("#Owner_Phone_Number").val($("#Contact_Phone_Num").val());
 				}
 			}
-		})		
+		})
 		$(document).off("change","#IndividualPerson").on("change","#IndividualPerson",function() {
 			if($(this).val() == "Other") {
 				$("#Other_Explain").parent().removeClass("hidden");
@@ -67,11 +67,11 @@ var Global = function() {
 				if($("#First_Name").val() != "" && $("#Last_Name").val() != "") {
 					$("#Property_Owner").val($("#First_Name").val() + " " + $("#Middle_Name").val() + " " + $("#Last_Name").val());
 				}
-				if($("#Telephone_Number").val() != "") {			
+				if($("#Telephone_Number").val() != "") {
 					$("#Owner_Phone_Number").val($("#Telephone_Number").val());
 				}
 			}
-		})			
+		})
 		$(document).off("change","#New_Customer").on("change","#New_Customer",function() {
 			SELF.Check_All_Valid();
 			if($(this).val() == "No") {
@@ -84,16 +84,16 @@ var Global = function() {
 				//$("#Customer_Acct_Num").removeAttr("required");
 				//$("#Customer_Acct_Num").prev().children().remove("req");
 			}
-		})		
+		})
 		$(document).off("click","#Agree").on("click","#Agree",function(e) {
 			SELF.Check_All_Valid(e);
 			//SELF.Agree_Check();
 		})
-		
+
 		$(document).off("click","#form-submit").on("click","#form-submit",function() {
 			SELF.Submit_Form();
 		})
-		
+
 		$(document).off("mouseenter",".form-agree").on("mouseenter",".form-agree",function() {
 			$(document).off("click",".form-agree").on("click",".form-agree",function() {
 				SELF.Agree_Toggle();
@@ -102,17 +102,17 @@ var Global = function() {
 				$(document).off("click",".form-agree");
 			})
 		})
-		
+
 		$(document).off("keydown","input").on("keydown","input",function(e) {
 			var keys = new Array(65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90);
 			var nums = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105);
 			var ctrl = new Array(8,9,13,17,18,32,37,38,39,40,45,46);
 			var spec = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,8,9,13,17,18,32,37,38,39,40,45,46,109,173,189);
-			
-								
+
+
 			if($.inArray(e.which,ctrl) !== -1 || (e.which == 9 && e.shiftKey) || ($.inArray(e.which,nums) && e.shiftKey && $(e.target).attr("numeric") === undefined)) {
 				return true;
-			}			
+			}
 			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("alpha") !== undefined) {
 				e.preventDefault();
 				SELF.toUpper(e);
@@ -126,32 +126,32 @@ var Global = function() {
 			if($(e.target).attr("spec") !== undefined && $.inArray(e.which,spec) === -1) {
 				e.preventDefault();
 				return false;
-			}				
+			}
 			if($(e.target).attr("phone") !== undefined && $.inArray(e.which,nums) === -1) {
 				e.preventDefault();
 				return false;
-			}						
+			}
 			if(($(e.target).attr("numeric") !== undefined && $.inArray(e.which,nums) === -1) || e.shiftKey) {
 				e.preventDefault();
 				return false;
 			}
 		})
-		
+
 		$(document).off("click","#dev").on("click","#dev",function() {
 			SELF.Populate_for_Dev();
 		})
-		
+
 		$(document).off("click","#Add_More").on("click","#Add_More",function(e) {
 			e.preventDefault();
 			SELF.Add_Supporting_Document_Upload();
 			return false;
 		})
-		
+
 		$(document).off("blur","input, select").on("blur","input, select",function(e) {
 			//SELF.Check_Single_Valid(e);
 			SELF.Check_All_Valid(e);
 		})
-		
+
 		$(document).off("keyup","input, select").on("keyup","input, select",function(e) {
 			//SELF.Check_Single_Valid(e);
 			SELF.Check_All_Valid(e);
@@ -160,22 +160,22 @@ var Global = function() {
 		$(document).off("change","input, select").on("change","input, select",function(e) {
 			//SELF.Check_Single_Valid(e);
 			SELF.Check_All_Valid(e);
-		})	
+		})
 
 		$(document).off("focusout","input, select").on("focusout","input, select",function(e) {
 			//SELF.Check_Single_Valid(e);
 			SELF.Check_All_Valid(e);
-		})		
-		
+		})
+
 		$(document).off("click","#Auto_Fill_Mailing_Address").on("click","#Auto_Fill_Mailing_Address",function(e) {
-			$("#Mailing_Address").val($("#Service_St_Num").val() + " " + $("#Service_St_Dir").val() + " " + $("#Service_St_Name").val());
+            e.preventDefault();
+            $("#Mailing_Address").val($("#Service_St_Num").val() + " " + $("#Service_St_Dir").val() + " " + $("#Service_St_Name").val());
 			$("#Mailing_City").val($("#City").val());
 			$("#Mailing_State").val($("#State").val());
 			$("#Mailing_Zipcode").val($("#ZIP").val());
 			return false;
-			e.preventDefault();
 		})
-		
+
 		$(document).off("click","#Add_More_Addresses").on("click","#Add_More_Addresses",function(e) {
 			e.preventDefault;
 			SELF.Add_New_Service_Row();
@@ -183,19 +183,19 @@ var Global = function() {
 		})
 
 	}
-	
+
 	this.Make_Invalid = function(item) {
 		item.css("border-color","red");
 		item.css("border-width","2px");
-		item.css("background-color","#FCD1D1");	
+		item.css("background-color","#FCD1D1");
 	}
-	
+
 	this.Make_Valid = function(item) {
 		item.css("border-color","");
 		item.css("border-width","");
-		item.css("background-color","");	
+		item.css("background-color","");
 	}
-	
+
 	this.Check_All_Valid = function(e) {
 		if(e !== undefined) {
 			$(e.target).attr("validate",true);
@@ -231,13 +231,13 @@ var Global = function() {
 			$("#form-submit").attr("disabled",true).prop("disabled",true);
 		}
 	}
-	
+
 	this.Check_Special_Characters = function(item) {
 		if(item.attr("phone") !== undefined || item.attr("ssn") !== undefined) {
 			return false;
 		}
 	}
-	
+
 	this.Check_Type_Valid = function(item) {
 		var valid = false
 		if(item.attr("numeric") !== undefined) {
@@ -245,7 +245,7 @@ var Global = function() {
 		}
 		return valid;
 	}
-	
+
 	this.Check_Single_Valid = function(e) {
 		var item = $(e.target);
 		//CHECK REQUIRED FIELDS ARE NOT BLANK
@@ -266,7 +266,7 @@ var Global = function() {
 			item.css("background-color","");
 		}
 	}
-	
+
 	this.Populate_for_Dev = function() {
 		$("input[id='First_Name']").val("Albert");
 		$("input[id='Middle_Name']").val("Randy");
@@ -281,9 +281,9 @@ var Global = function() {
 		$("input[id='Drivers_Lic_Num']").val("1231-12-1234");
 		$("input[id='Telephone_Number']").val("(812) 123-1234");
 		$("input[id='Email_Address']").val("abc@abc.def");
-		$("select[id='Person']").val("Tenant");		
-		
-		$("select[id='CommercialPerson']").val("Tenant");	
+		$("select[id='Person']").val("Tenant");
+
+		$("select[id='CommercialPerson']").val("Tenant");
 		$("input[id='Property_Owner']").val("Bob Fred");
 		$("input[id='Owner_Phone_Number']").val("(555) 555-5555");
 		$("input[id='Employers_Name']").val("Bob George");
@@ -300,7 +300,7 @@ var Global = function() {
 		$("input[id='Routing_Number']").val("12345678");
 		$("input[id='Account_Number']").val("123456789");
 		$("select[id='Type_of_Account']").val("Checking");
-		$("input[id='Name_of_Auth']").val("Bob Fred");		
+		$("input[id='Name_of_Auth']").val("Bob Fred");
 		$("input[id='Owner_First_Name']").val("Bob");
 		$("input[id='Bus_St_Num']").val("6");
 		$("input[id='Bus_St_Dir']").val("N");
@@ -330,27 +330,27 @@ var Global = function() {
 		$("input[id='Mailing_City']").val("Bloomington");
 		$("input[id='Mailing_State']").val("IN");
 		$("input[id='ZIP_Code']").val("12345");
-		$("input[id='Mailing_Zipcode']").val("12345");		
+		$("input[id='Mailing_Zipcode']").val("12345");
 		$("input[id='Service_Zipcode']").val("12345");
-		$("input[id='Forwarding_Tel_Num']").val("(555) 555-5555");		
-		$("input[id='Reason_for_Canc']").val("Moving");	
+		$("input[id='Forwarding_Tel_Num']").val("(555) 555-5555");
+		$("input[id='Reason_for_Canc']").val("Moving");
 		$("input[id='Auth_First_Name']").val("Bob");
 		$("input[id='Auth_Last_Name']").val("Fred");
-		$("input[id='Authorizer_Title']").val("Owner");	
+		$("input[id='Authorizer_Title']").val("Owner");
 		$("input[id='SRA_First_Name']").val("Bob");
-		$("input[id='SRA_Last_Name']").val("Fred");		
+		$("input[id='SRA_Last_Name']").val("Fred");
 		$("input[id='Effective_Date']").val("01/01/2015");
-		$("input[id='Management_Company']").val("Bob Jones, Inc");		
+		$("input[id='Management_Company']").val("Bob Jones, Inc");
 		$("input[id='Former_Last_Name']").val("Sampson");
 	}
-	
+
 	this.toUpper = function(e) {
 		if(e !== undefined) {
 			var val = String.fromCharCode(e.keyCode).toUpperCase();
 			$(e.target).val($(e.target).val() + val)
 		}
 	}
-	
+
 	this.Agree_Check = function() {
 		var item = $("#Agree")
 		if(item.is(":checked") == true && SELF.Check_All_Valid()) {
@@ -358,9 +358,9 @@ var Global = function() {
 		}
 		else {
 			$("#form-submit").attr("disabled",true).prop("disabled",true);
-		}	
+		}
 	}
-	
+
 	this.Submit_Form = function() {
 		var vals = {};
 		$("input[type='text'], select").each(function() {
@@ -368,14 +368,14 @@ var Global = function() {
 		})
 		$("input[type='checkbox']").each(function() {
 			vals[$(this).attr("id")] = $(this).is(":checked");
-		})		
+		})
 		$.post(url,{
 			c:"",
 			vals:vals
 		},function(result) {
 		})
 	}
-	
+
 	this.Setup_Masks = function() {
 		$("input, select").each(function() {
 			if($(this).attr("mask") !== undefined) {
@@ -383,7 +383,7 @@ var Global = function() {
 			}
 		})
 	}
-	
+
 	this.startup = function() {
 		$('input,textarea').attr('autocomplete', 'off');
 		$(document).ready(function() {
@@ -399,7 +399,7 @@ var Global = function() {
 			})
 		})
 	}
-	
+
 	this.Set_Agree_Box = function(checked) {
 		if(checked == true) {
 			$('#Agree').attr("checked", true).prop("checked",true);
@@ -414,7 +414,7 @@ var Global = function() {
 			$(".form-agree").children("span").html("Click if you Agree");
 		}
 	}
-	
+
 	this.Agree_Toggle = function() {
 		$("#form-submit").attr("disabled",true);
 		if($("#Agree").is(":checked")) {
@@ -423,12 +423,12 @@ var Global = function() {
 		else {
 			SELF.Set_Agree_Box(true);
 			SELF.Check_All_Valid();
-		}		
+		}
 	}
-	
+
 	this.Add_New_Service_Row = function() {
 		$("#Add_More_Addresses").remove();
-		if(SA < 6) { 
+		if(SA < 6) {
 			SA = SA + 1;
 			var newRow = $(".service_row:visible:last").next();
 			newRow.removeClass("service_row_hidden");
@@ -436,12 +436,12 @@ var Global = function() {
 			newRow.children().find("#Service_St_Name").attr("required", true).prev("label").append("<req>*</req>");
 			//SET NEXT SERVICE ST DIR TO N/A
 			//newRow.children().find("#Service_St_Dir")[0];
-			
+
 		}
 	}
-	
+
 	this.Add_Supporting_Document_Upload = function() {
-		
+
 		$("#Add_More").remove();
 		if(SD < 4) {
 			var html = "<div class=\"row\" style=\"border-bottom:1px solid lightgray; padding-top:15px; padding-bottom:15px;\">";
@@ -450,7 +450,7 @@ var Global = function() {
 							html += "<option value=\"\">Please Select...</option>";
 							$.each(Sup_Doc_Types,function(key,val) {
 								html += "<option value=\"" + val + "\">" + val + "</option>";
-							})							
+							})
 						html += "</select>";
 					html += "</div>";
 					html += "<div class=\"col-xs-5\">";
@@ -461,7 +461,7 @@ var Global = function() {
 							html += "<button style=\"margin-left:15px;\" id=\"Add_More\" type=\"button\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Add</i></button>";
 						html += "</div>";
 					}
-					
+
 				html += "</div>";
 			$(".form-body").append(html);
 			SD = SD + 1;
