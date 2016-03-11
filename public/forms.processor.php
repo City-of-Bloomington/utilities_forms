@@ -92,14 +92,6 @@ class Forms {
 		}
 	}
 
-	//GENERATE A NEW CONFIRMATION NUMBER
-	//THIS FUNCTION IS NOT USED, IT WAS A TEST TO GENERATE A CONFIRMATION NUMBER OUTSIDE THE NORMAL PROCEDURE
-	private function Gen_Conf()
-	{
-		$this->Get_Next_Conf_Number();
-		echo $this->Conf_Number;
-	}
-
 	private function Setup_Paths()
 	{
         $date = date('YmdHis');
@@ -128,25 +120,6 @@ class Forms {
 		//form PDF file example:20151204122846-000608-0382-form.pdf
 		$this->form_pdf_filename = "$date-{$this->Conf_Number}-form.pdf";
 		$this->form_pdf_path = ONBASE_PATH . "/{$this->form_pdf_filename}";
-	}
-
-	//ENCRYPT THE CONFIRMATION NUMBER USING THE PRIVATE KEY
-	private function encrypt($pure_string)
-	{
-		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-		$encrypted_string = mcrypt_encrypt(MCRYPT_BLOWFISH, ENCRYPTION_KEY, utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
-		return base64_encode($encrypted_string);
-	}
-
-	//DECRYPT THE ENCRYPTED CONFIRMATION NUMBER USING THE PRIVATE KEY
-	private function decrypt($encrypted_string)
-	{
-		$iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-		$decrypted_string = mcrypt_decrypt(MCRYPT_BLOWFISH, ENCRYPTION_KEY, base64_decode($encrypted_string), MCRYPT_MODE_ECB, $iv);
-		$decrypted_string = trim($decrypted_string, "\0");
-		return $decrypted_string;
 	}
 
 	//VALIDATE FILE UPLOADS
@@ -211,20 +184,19 @@ class Forms {
 	//GET NEXT CONFIRMATION NUMBER AND WRITE NEW CONFIRMATION NUMBER FOR NEXT REQUEST
 	private function Get_Next_Conf_Number()
 	{
-		$file = dirname(__FILE__) . "/confirmationsDO-NOT-DELETE.txt";
-		$contents = trim(file_get_contents($file));
-		if ($contents !== "") {
-			$this->Conf_Number = $this->decrypt($contents);
-			echo $this->Conf_Number;
-			if (strlen($this->Conf_Number) === 6) {
-				fwrite(fopen($file,"w"),$this->encrypt(str_pad(($this->Conf_Number + 1),6,"0",STR_PAD_LEFT)));
-			}
-			$this->Conf_Number = $this->Conf_Number . "-" . str_pad(rand(0,9999),4,"0",STR_PAD_LEFT);
+		$file = APPLICATION_HOME.'/data/nextConfirmationNumber';
+		$counter = trim(file_get_contents($file));
+		if ($counter !== "") {
+			$counter = (int)$counter;
+
+			$this->Conf_Number = $counter . "-" . str_pad(rand(0, 9999), 4, "0", STR_PAD_LEFT);
+
+			$counter++;
+			file_put_contents($file, $counter);
 		}
 		else {
 			//WRITE CONFIRMATION BACK TO FILE
 			//$start = 2000;
-			//fwrite(fopen($file,"w"),$this->encrypt(str_pad($start,6,"0",STR_PAD_LEFT)));
 			exit("We're sorry, the request could not be completed. Please contact someone at the City of Bloomington Utilities at (812) 349-3930.<br /> <b>Error: </b>Could not get next confirmation number");
 		}
 	}
@@ -261,7 +233,7 @@ class Forms {
 	private function Create_Form_HTML()
 	{
 		//GET THE FORM HTML AS THE CUSTOMER SEES IT (INCLUDING CSS AND JAVASCRIPT FILES) AND SAVE IT TO A TEMPORARY LOCATION
-		$tmp = APPLICATION_HOME . "/temp/" . $this->form_html_filename;
+		$tmp = APPLICATION_HOME . "/data/temp/" . $this->form_html_filename;
 		file_put_contents($tmp, file_get_contents(BASE_URL."/index.php?form=" . strtolower($_POST['DocumentType'] . "&html=true")));
 
 		$html = "";

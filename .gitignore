@@ -1,6 +1,6 @@
 configuration.inc
-temp/*
-files/*
+data/temp/*
+data/files/*
 vendor
 build
 
