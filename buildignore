@@ -1,0 +1,9 @@
+/buildignore
+/build.sh
+/build
+/dist
+.git/
+.git*
+configuration.inc
+files
+temp

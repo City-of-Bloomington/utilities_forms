@@ -2,3 +2,5 @@ configuration.inc
 temp/*
 files/*
 vendor
+build
+
