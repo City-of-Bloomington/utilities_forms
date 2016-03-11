@@ -35,8 +35,6 @@ class Forms {
     private $Docs = 0;
     private $Files;
 
-    private $Message;
-
     private $Conf_Number;
     private $supp_dip_path;
     private $supp_image_file_name;
@@ -104,32 +102,32 @@ class Forms {
 
 	private function Setup_Paths()
 	{
+        $date = date('YmdHis');
+
 		//CHANGE DEFAULT PATHS AND FILENAMES BELOW
 		if (isset($this->vals['Conf_Number'])) {
 			//SUPPLEMENTARY IMAGE FILES AND DIP FILES
 			//supp DIP file name example: 20151204122913-000608-0382-supp.txt
-			$supp_dip_filename = date("YmdHis",time()) . "-" . $this->vals['Conf_Number'] . "-supp.txt";
-			$this->supp_dip_path = ONBASE_PATH . $supp_dip_filename;
+			$this->supp_dip_path = ONBASE_PATH . "/$date-{$this->vals['Conf_Number']}-supp.txt";
 
 			//supp file name example: 20151204122913-000608-0382-img3.jpg
-			$this->supp_image_file_name = date("YmdHis",time()) . "-" . $this->vals['Conf_Number'] . "-img";
+			$this->supp_image_file_name = "/$date-{$this->vals['Conf_Number']}-img";
 			$this->supp_image_temp_path = ONBASE_PATH;
 		}
 
 		//FORM DIP FILES
 		//form DIP file example:20151204122846-000608-0382-form.txt
-		$form_dip_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-form.txt";
-		$this->form_dip_path = ONBASE_PATH . $form_dip_filename;
+		$this->form_dip_path = ONBASE_PATH . "/$date-{$this->Conf_Number}-form.txt";
 
 		//FORM HTML FILES
 		//form HTML file example:20151204122846-000608-0382-html.html
-		$this->form_html_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-html.html";
-		$this->form_html_path = ONBASE_PATH . $this->form_html_filename;
+		$this->form_html_filename = "$date-{$this->Conf_Number}-html.html";
+		$this->form_html_path = ONBASE_PATH . "/{$this->form_html_filename}";
 
 		//FORM PDF FILES
 		//form PDF file example:20151204122846-000608-0382-form.pdf
-		$this->form_pdf_filename = date("YmdHis",time()) . "-" . $this->Conf_Number . "-form.pdf";
-		$this->form_pdf_path = ONBASE_PATH . $this->form_pdf_filename;
+		$this->form_pdf_filename = "$date-{$this->Conf_Number}-form.pdf";
+		$this->form_pdf_path = ONBASE_PATH . "/{$this->form_pdf_filename}";
 	}
 
 	//ENCRYPT THE CONFIRMATION NUMBER USING THE PRIVATE KEY
@@ -188,7 +186,7 @@ class Forms {
 	private function Create_Supp_DIP()
 	{
 		$line = "";
-		$this->Message = "";
+		$message = "";
 		foreach ($this->Files as $counter => $val) {
 			if ($val['Filename'] !== "") {
 				$line .= str_pad("DocumentTypeNum:",30," ",STR_PAD_RIGHT) . "340\r\n";
@@ -196,14 +194,16 @@ class Forms {
 				$line .= str_pad("SupplementaryType:",30," ",STR_PAD_RIGHT) . $this->vals['Sup_Type_'.$counter] . "\r\n";
 				$line .= str_pad("Filename:",30," ",STR_PAD_RIGHT) . $val['Filename'] . "\r\n";
 			}
-			$this->Message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
+			$message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
 		}
 		$handle = fopen($this->supp_dip_path,"w");
 		fwrite($handle,$line);
 		fclose($handle);
 		if (file_exists($this->supp_dip_path)) {
 			if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
-				header("Location: ../index.php?form=SuppConfirmation&Confirmation_Number=" . $this->vals['Conf_Number'] . "&" . $this->Message);
+                $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&$message";
+				header("Location: $url");
+				exit();
 			}
 		}
 	}
@@ -350,7 +350,9 @@ class Forms {
 		fclose($handle);
 		if (file_exists($this->form_dip_path)) {
 			$this->Docs = $this->Docs - $this->Valid_Counter;
-			header("Location: ../index.php?form=Confirmation&Confirmation_Number=" . $this->Conf_Number . "&docs=" . $this->Docs . "&" . $Message);
+            $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}";
+            header("Location: $url");
+            exit();
 		}
 	}
 }
