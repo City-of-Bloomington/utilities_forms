@@ -5,5 +5,5 @@
 .git/
 .git*
 configuration.inc
-files
-temp
+/data/files/*
+/data/temp/*
