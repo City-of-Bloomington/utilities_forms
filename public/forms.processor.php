@@ -45,6 +45,8 @@ class Forms {
     private $form_pdf_filename;
     private $form_pdf_path;
 
+    public static validExtensions = ['jpg', 'png', 'gif', 'tiff', 'pdf'];
+
 
 	//SETUP VARIABLES AND PATHS AND CALL FUNCTIONS DEPENDING ON THE REQUEST
 	public function __construct($vals = false)
@@ -52,6 +54,7 @@ class Forms {
 		$this->vals = $vals;
 		$this->xml = simplexml_load_file(dirname(dirname(__FILE__)). "/forms.xml") or die("Error: Cannot create object");
 		$this->Valid_Counter = 0;
+		$this->Files = [];
 
 		//SPECIAL FIELDS
 		if ($this->vals['DocumentType'] === "SPECIALREADAGREEMENTCANCELLATION") {
@@ -69,7 +72,6 @@ class Forms {
 			$this->vals['Conf_Number'] = $this->Conf_Number;
 			$this->Setup_Paths();
 			if (isset($_FILES['Sup_File_1']['name']) && $_FILES['Sup_File_1']['name'] != "") {
-				$this->Files = "";
 				$this->Create_Supp_DIP($this->Validate_File_Uploads($_FILES));
 			}
 
@@ -82,7 +84,6 @@ class Forms {
 		//IF THE REQUEST IS A SUPPLEMENTAL DOCUMENT SUBMISSION
 		elseif ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT"
                 && isset($_FILES) && isset($this->vals['Conf_Number'])) {
-			$this->Files = "";
 			$this->Setup_Paths();
 			$this->Create_Supp_DIP($this->Validate_File_Uploads($_FILES));
 		}
@@ -138,14 +139,21 @@ class Forms {
 			else if (explode("/",$File['type'])[0] !== "image" && $File['type'] !== "application/pdf") {
 				$this->Files[$counter]['Response'] = "Error: Invalid";
 			}
-			else {
-				$New_Name = $this->supp_image_file_name . $counter . "." . substr($File['name'],strpos($File['name'],".")+1);
+
+			try { $extension = self::getExtension($File['name']); }
+            catch (\Exception $e) {
+                $this->Files[$counter]['Response'] = "Error: {$e->getMessage()}";
+            }
+
+            if (empty($this->Files[$counter]['Response'])) {
+				$New_Name = $this->supp_image_file_name . $counter . "." . $extension;
 				if (move_uploaded_file($File["tmp_name"], $this->supp_image_temp_path . $New_Name)) {
 					$this->Files[$counter]['Response'] = "Success";
 					$this->Files[$counter]['Filename'] = $New_Name;
 					$this->Valid_Counter++;
 				}
-			}
+            }
+
 			$this->Files[$counter]['Old_Filename'] = $File['name'];
 			//REMOVE UPLOADED FILE FROM THE SERVER AND UNSET VARIABLE
 			if (file_exists($File['tmp_name'])) {
@@ -325,6 +333,26 @@ class Forms {
             $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}";
             header("Location: $url");
             exit();
+		}
+	}
+
+	/**
+	 * @param string $filename
+	 * @return string
+	 */
+	public static function getExtension($filename)
+	{
+		if (preg_match("/[^.]+$/", $filename, $matches)) {
+			$extension  = strtolower($matches[0]);
+			if (in_array($extension, self::$validExtensions)) {
+                return $extension;
+			}
+			else {
+                throw new \Exception('Invalid Extension');
+			}
+		}
+		else {
+			throw new \Exception('Missing Extension');
 		}
 	}
 }
