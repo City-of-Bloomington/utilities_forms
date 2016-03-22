@@ -146,6 +146,7 @@
 			<field><dip>Sup_Type_1</dip><ob>Sup_Type_1</ob></field>
 			<field><dip>Sup_Type_2</dip><ob>Sup_Type_2</ob></field>
 			<field><dip>Sup_Type_3</dip><ob>Sup_Type_3</ob></field>
+			<field><dip>Billing_Type</dip><ob>Billing_Type</ob></field>
 		</fields>
 	</form>
 	<form>
