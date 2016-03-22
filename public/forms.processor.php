@@ -180,17 +180,14 @@ class Forms {
 			}
 			$message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
 		}
-		file_put_contents($this->supp_dip_path, $data);
-		if (file_exists(  $this->supp_dip_path)) {
-            self::transferFileToOnBase($this->supp_dip_path);
-            unlink($this->supp_dip_path);
 
-			if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
-                $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&$message";
-				header("Location: $url");
-				exit();
-			}
-		}
+		self::saveToOnBase($this->supp_dip_path, $data);
+
+        if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
+            $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&$message";
+            header("Location: $url");
+            exit();
+        }
 	}
 
 	//GET NEXT CONFIRMATION NUMBER AND WRITE NEW CONFIRMATION NUMBER FOR NEXT REQUEST
@@ -294,11 +291,7 @@ class Forms {
 			}
 		}
 
-		file_put_contents($this->form_html_path,$html);
-		if (file_exists(  $this->form_html_path)) {
-			self::transferFileToOnBase($this->form_html_path);
-			unlink($this->form_html_path);
-		}
+		self::saveToOnBase($this->form_html_path, $html);
 	}
 
 	//WRITE THE FORM DIP FILE
@@ -314,16 +307,12 @@ class Forms {
 			$data .= str_pad($this->Get_Mapped_Name($key).":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
 		}
 
-		file_put_contents($this->form_dip_path, $data);
-		if (file_exists($this->form_dip_path)) {
-            self::transferFileToOnBase($this->form_dip_path);
-            unlink($this->form_dip_path);
+		self::saveToOnBase($this->form_dip_path, $data);
 
-			$this->Docs = $this->Docs - $this->Valid_Counter;
-            $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}";
-            header("Location: $url");
-            exit();
-		}
+        $this->Docs = $this->Docs - $this->Valid_Counter;
+        $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}";
+        header("Location: $url");
+        exit();
 	}
 
 	/**
@@ -344,6 +333,28 @@ class Forms {
 		else {
 			throw new \Exception('Missing Extension');
 		}
+	}
+
+	/**
+	 * Writes data to a file on OnBase
+	 *
+	 * This function uses a temp file on the web server.
+	 * The temp file and the file on OnBase will have the same filename
+	 *
+	 * @param string $file Full path to temp file
+	 * @param string $data Data to write to file
+	 * @throws \Exception
+	 */
+	private static function saveToOnBase($file, $data)
+	{
+        file_put_contents($file, $data);
+        if (file_exists($file)) {
+            self::transferFileToOnBase($file);
+            unlink($file);
+        }
+        else {
+            throw new \Exception('error saving file');
+        }
 	}
 
 	/**
