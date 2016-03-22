@@ -1,6 +1,12 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var req = $("<req style=\"float:left;\">*</req>")
+		setTimeout(function() {
+			$("input[name='Sup_File_1']")
+				.attr("required",true)
+				.parents(".row")
+				.prepend(req);
+		},500)
 	})
 </script>
 <form method="post" action="<?= BASE_URI; ?>/forms.processor.php" id="form" name="form" enctype="multipart/form-data">

@@ -197,6 +197,17 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-11">
+				<label for="Billing_Type">How would you like to receive your monthly bill from us? <br />(please provide e-mail address above if choosing e-mail bill option)</label>
+				<select name="Billing_Type" class="col-md-5 form-control" id="Billing_Type" style="" required>
+					<option value="">Please Select...</option>
+					<option value="Mail">Mail</option>
+					<option value="E-Mail">E-Mail</option>
+					<option value="Both">Mail & E-Mail</option>
+				</select>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-xs-11">
 				<fieldset>
 					<legend><label>Emergency Contact Information</label></legend>
 					<div style="margin-bottom:8px; margin-top:8px;">
