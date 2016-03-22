@@ -105,10 +105,6 @@
 				<label for="Date_of_Birth">Date of Birth</label>
 				<input meta="datetime" type="text" class="form-control" id="Date_of_Birth" name="Date_of_Birth" mask="99/99/9999" required>
 			</div>
-			<div class="col-xs-3">
-				<label for="Soc_Sec_Num">Social Security Number</label>
-				<input type="text" class="form-control" name="Soc_Sec_Num" mask="999-99-9999" id="Soc_Sec_Num" ssn numeric>
-			</div>
 			<div class="col-xs-4">
 				<label for="Telephone_Number">Telephone Number</label>
 				<input type="text" class="form-control" name="OBKey__383_1" id="Telephone_Number" mask="(999) 999-9999" phone required>

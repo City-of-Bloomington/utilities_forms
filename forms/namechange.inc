@@ -86,10 +86,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-5">
-				<label for="Soc_Sec_Num">Social Security Number</label>
-				<input type="text" class="form-control" name="OBKey__123_1" mask="999-99-9999" ssn numeric id="Soc_Sec_Num">
-			</div>
 			<div class="col-xs-6">
 				<label for="Customer_Acct_Num">City of Bloomington Utilities Account Number</label>
 				<input type="text" class="form-control" name="OBKey__125_1" id="Customer_Acct_Num" spec required>

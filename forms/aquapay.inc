@@ -107,10 +107,6 @@
 				<label for="Date_of_Birth">&nbsp;<br>Date of Birth</label>
 				<input meta="datetime" type="text" class="form-control" id="Date_of_Birth" id="Date_of_Birth" name="Date_of_Birth" mask="99/99/9999">
 			</div>
-			<div class="col-xs-6">
-				<label for="Soc_Sec_Num">&nbsp;<br>Social Security Number </label>
-				<input type="text" class="form-control" id="Soc_Sec_Num" name="Soc_Sec_Num" mask="999-99-9999" numeric ssn>
-			</div>
 		</div>
 		<hr>
 		<div class="row">
