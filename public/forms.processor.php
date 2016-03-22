@@ -232,6 +232,7 @@ class Forms {
 	{
 		//GET THE FORM HTML AS THE CUSTOMER SEES IT (INCLUDING CSS AND JAVASCRIPT FILES)
 		$url = BASE_URL.'/index.php?form=' . strtolower($_POST['DocumentType']) . '&html=true';
+		$html = '';
 		$lines = file($url);
 		foreach ($lines as $line_num => $line) {
 			if (strpos($line,"global.js")) {
@@ -371,11 +372,13 @@ class Forms {
         if (is_file($file)) {
             $filename = basename($file);
             $stream   = fopen($file, 'r');
-            $url      = sprintf('ftps://%s/%s', ONBASE_HOST, ONBASE_PATH);
+            $url      = sprintf('ftp://%s/%s', ONBASE_HOST, ONBASE_PATH);
             $options = [
                 CURLOPT_UPLOAD     => true,
                 CURLOPT_FTP_SSL    => CURLFTPSSL_ALL,
                 CURLOPT_FTPSSLAUTH => CURLFTPAUTH_TLS,
+                CURLOPT_CONNECTTIMEOUT => 10,
+                CURLOPT_TIMEOUT        => 10,
                 CURLOPT_INFILESIZE => filesize($file),
                 CURLOPT_URL        => "$url/$filename",
                 CURLOPT_INFILE     => $stream,
