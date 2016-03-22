@@ -1,6 +1,7 @@
 configuration.inc
 data/temp/*
 data/files/*
+data/*.crt
 vendor
 build
 

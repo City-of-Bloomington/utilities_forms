@@ -7,4 +7,10 @@ define('APPLICATION_HOME', __DIR__);
 define('BASE_URL', 'http://localhost/utilities_forms');
 define('BASE_URI', '/utilities_forms');
 
-define('ONBASE_PATH', '/mnt/onbase');
+define('TEMP_PATH', APPLICATION_HOME.'/data/files');
+
+define('ONBASE_HOST', 'onbase.server.gov');
+define('ONBASE_PATH', '/');
+define('ONBASE_USER', 'username');
+define('ONBASE_PASS', 'password');
+define('ONBASE_CERT', APPLICATION_HOME.'/data/onbase.crt');
