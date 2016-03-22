@@ -201,7 +201,9 @@ class Forms {
 			$this->Conf_Number = $counter . "-" . str_pad(rand(0, 9999), 4, "0", STR_PAD_LEFT);
 
 			$counter++;
-			file_put_contents($file, $counter);
+			if (false === file_put_contents($file, $counter)) {
+                throw new \Exception('unable to save conf number');
+			}
 		}
 		else {
 			//WRITE CONFIRMATION BACK TO FILE
