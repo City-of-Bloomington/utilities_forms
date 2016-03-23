@@ -14,3 +14,19 @@ define('ONBASE_PATH', '/');
 define('ONBASE_USER', 'username');
 define('ONBASE_PASS', 'password');
 define('ONBASE_CERT', APPLICATION_HOME.'/data/onbase.crt');
+
+/**
+ * Skidder is a web service for error notifications.  Error reporting supports
+ * posting errors to a Skidder server.  You must register for an application_id
+ * on the skidder server you want to post errors to.
+ */
+/*
+define('APPLICATION_NAME', 'utilities_forms');
+define('SKIDDER_URL','https://localhost/skidder/index/index');
+define('SKIDDER_APPLICATION_ID', XX);
+$ERROR_REPORTING = ['SKIDDER'];
+require_once APPLICATION_HOME.'/Error.php';
+set_error_handler         ('Blossom\Classes\Error::customErrorHandler');
+set_exception_handler     ('Blossom\Classes\Error::customExceptionHandler');
+register_shutdown_function('Blossom\Classes\Error::shutdownHandler');
+*/
