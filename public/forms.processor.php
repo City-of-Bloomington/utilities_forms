@@ -1,5 +1,5 @@
 <?php
-include '../configuration.inc';
+require_once '../configuration.inc';
 
 //ENSURE THE CORRECT DATA IS PRESENT, MAKE UPPERCASE, AND REMOVE ANY TAGS IN THE POSTED DATA BEFORE CREATING THE FORM OBJECT
 if (isset($_POST)) {
@@ -30,7 +30,6 @@ if (isset($_POST)) {
 
 class Forms {
     private $vals = [];
-    private $xml;
     private $Valid_Counter = 0;
     private $Docs = 0;
     private $Files;
@@ -52,7 +51,6 @@ class Forms {
 	public function __construct($vals = false)
 	{
 		$this->vals = $vals;
-		$this->xml = simplexml_load_file(dirname(dirname(__FILE__)). "/forms.xml") or die("Error: Cannot create object");
 		$this->Valid_Counter = 0;
 		$this->Files = [];
 
@@ -212,16 +210,28 @@ class Forms {
 		}
 	}
 
-	//GET MAPPED NAME FROM XML FILE
-	private function Get_Mapped_Name($ob)
+	/**
+	 * @param array $params ['DocumentType'=>'', 'ob'=>'']
+	 * @return array ['docs'=> '', 'dip'=> '']
+	 */
+	public static function Get_Mapped_Name(array $params)
 	{
-		foreach ($this->xml->form as $form) {
-			if (strtoupper($form->file) == $this->vals['DocumentType']) {
-				$this->Docs = $form->docs;
+		static $xml;
+		if (!$xml) {
+            $xml = simplexml_load_file(APPLICATION_HOME.'/forms.xml') or die("Error: Cannot create object");
+        }
+
+		foreach ($xml->form as $form) {
+			if (strtoupper($form->file->__toString()) === $params['DocumentType']) {
+				#$this->Docs = $form->docs;
+
 				foreach ($form->fields as $val) {
 					foreach ($val as $field) {
-						if ($field->ob === $ob) {
-							return $field->dip;
+						if ($field->ob->__toString() === $params['ob']) {
+                            return [
+                                'docs' => $form->docs->__toString(),
+                                'dip'  => $field->dip->__toString()
+                            ];
 						}
 					}
 				}
@@ -307,7 +317,9 @@ class Forms {
 		}
 		$data = "";
 		foreach ($this->vals as $key => $val) {
-			$data .= str_pad($this->Get_Mapped_Name($key).":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
+            $map = self::Get_Mapped_Name(['DocumentType'=>$this->vals['DocumentType'], 'ob'=>$key]);
+            $this->Docs = $map['docs'];
+			$data .= str_pad($map['dip'].":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
 		}
 
 		self::saveToOnBase($this->form_dip_path, $data);
