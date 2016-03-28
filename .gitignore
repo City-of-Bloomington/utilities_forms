@@ -2,6 +2,7 @@ configuration.inc
 data/temp/*
 data/files/*
 data/*.crt
+nextConfirmationNumber
 vendor
 build
 
