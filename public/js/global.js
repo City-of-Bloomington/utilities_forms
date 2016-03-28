@@ -169,9 +169,9 @@ var Global = function() {
 
 		$(document).off("click","#Auto_Fill_Mailing_Address").on("click","#Auto_Fill_Mailing_Address",function(e) {
             e.preventDefault();
-			var City = ($("#City").val().length ? $("#City").val() : "Bloomington");
-			var State = ($("#State").val().length ? $("#State").val() : "IN");
-			var ZIP = ($("#ZIP").val().length ? $("#ZIP").val() : "47401");
+			var City = ($("#City").length ? $("#City").val() : "Bloomington");
+			var State = ($("#State").length ? $("#State").val() : "IN");
+			var ZIP = ($("#ZIP").length ? $("#ZIP").val() : "47401");
             $("#Mailing_Address").val($("#Service_St_Num").val() + " " + $("#Service_St_Dir").val() + " " + $("#Service_St_Name").val());
 			$("#Mailing_City").val(City);
 			$("#Mailing_State").val(State);
