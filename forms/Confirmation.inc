@@ -19,20 +19,20 @@ if ($docs) {
 	<hr>
 	<h3>This form requires $docs supplemental $documents.<br />
 	<a style=\"line-height:35px;\" href=\"index.php?form=supplementary_docs&conf_num=$Confirmation_Number\">Upload Now</a>
-	";
+	</h3>";
 }
 else {
 	echo "
 	<hr>
 	<h3>Your application is being processed. If notified by a Customer Service Representative, please upload further documentation by accessing this link:<br /><br />
 	<a href=\"index.php?form=supplementary_docs&conf_num=$Confirmation_Number\">Upload Now</a>
-	";
+	</h3>";
 }
 ?>
 <br />
 <p>You also have the option to upload your information by submitting a "Supplemental Document Upload Form" by accessing one directly from the main <a href="#">forms page</a></p>
 <hr>
-<h3>You will be required to have the following confirmation number if you need to upload additional documents or if you need to contact a customer service representative at the City of Bloomington Utilities Department.
+<h3>You will be required to have the following confirmation number if you need to upload additional documents or if you need to contact a customer service representative at the City of Bloomington Utilities Department.</h3>
 <h2>Your Confirmation Number is: <br /><b><?= $Confirmation_Number; ?></b></h2>
 <a target="_blank" href="https://docs.google.com/a/bloomington.in.gov/forms/d/1sfKE7WKSkFAnGsB7UyVUGEkzAHWOFFeOTRmHH5MaY4k/viewform">Provide feedback</a>
 </center>
