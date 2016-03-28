@@ -1,7 +1,7 @@
 <?php
 include '../configuration.inc';
 ?>
-<!-- saved from url=(0016)http://localhost -->
+<!-- saved from url=(0014)about:internet -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>

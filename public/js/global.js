@@ -170,9 +170,9 @@ var Global = function() {
 		$(document).off("click","#Auto_Fill_Mailing_Address").on("click","#Auto_Fill_Mailing_Address",function(e) {
             e.preventDefault();
             $("#Mailing_Address").val($("#Service_St_Num").val() + " " + $("#Service_St_Dir").val() + " " + $("#Service_St_Name").val());
-			$("#Mailing_City").val($("#City").val());
-			$("#Mailing_State").val($("#State").val());
-			$("#Mailing_Zipcode").val($("#ZIP").val());
+			$("#Mailing_City").val(($("#City").val().length ? $("#City").val() : "Bloomington");
+			$("#Mailing_State").val(($("#State").val().length ? $("#State").val() : "IN");
+			$("#Mailing_Zipcode").val(($("#ZIP").val().length ? $("#ZIP").val() : "47401");
 			return false;
 		})
 

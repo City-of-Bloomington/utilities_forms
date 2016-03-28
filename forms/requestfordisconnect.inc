@@ -84,15 +84,12 @@
 				<!--<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">-->
 			</div>
 			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-5">
-				<label for="Service_Apartment">Apt.</label>
-				<input type="text" class="form-control" name="Service_Apartment" id="Service_Apartment">
-			</div>
+
 			<div class="col-xs-6">
 				<label for="Telephone_Number">Telephone Number</label>
 				<input type="text" class="form-control" name="Telephone_Number" id="Telephone_Number" phone mask="(999) 999-9999" required>

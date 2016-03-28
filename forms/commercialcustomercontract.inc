@@ -71,7 +71,7 @@
 				<!--<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">-->
 			</div>
 			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
 			</div>
 		</div>
@@ -98,7 +98,7 @@
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Mailing_Address">Mailing Address</label><button class="btn btn-link" id="Auto_Fill_Mailing_Address">Same as above</button>
-				<input type="text" class="form-control" name="OBKey__398_1" id="Mailing_Address">
+				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address">
 			</div>
 		</div>
 
@@ -113,7 +113,7 @@
 			</div>
 			<div class="col-xs-3">
 				<label for="Mailing_Zipcode">ZIP Code</label>
-				<input type="text" class="form-control" name="OBKey__405_1" id="Mailing_Zipcode" mask="99999" numeric required>
+				<input type="text" class="form-control" name="Mailing_Zipcode" id="Mailing_Zipcode" mask="99999" numeric required>
 			</div>
 		</div>
 		<div class="row">
@@ -139,7 +139,7 @@
 			</div>
 			<div class="col-xs-6">
 				<label for="Telephone_Number">Business Phone Number</label>
-				<input type="text" class="form-control" name="OBKey__383_1" id="Telephone_Number" mask="(999) 999-9999" phone required>
+				<input type="text" class="form-control" name="Telephone_Number" id="Telephone_Number" mask="(999) 999-9999" phone required>
 			</div>
 		</div>
 
