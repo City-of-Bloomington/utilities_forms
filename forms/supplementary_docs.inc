@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="Conf_Number">Confirmation Number</label>
-				<input name="Conf_Number" type="text" class="form-control" value="<?php echo ($_GET['conf_num'] != "" ? $_GET['conf_num'] : "") ?>">
+				<input name="Conf_Number" required type="text" class="form-control" value="<?php echo ($_GET['conf_num'] != "" ? $_GET['conf_num'] : "") ?>">
 			</div>
 		</div>
 		<div class="row">
