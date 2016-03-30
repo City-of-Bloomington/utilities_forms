@@ -5,6 +5,10 @@
 		startup();
 	}
 	
+	var Add_Supporting_Document_Upload = function() {
+		return true;
+	}	
+	
 	var bindEvents = function() {
 		$(document).off("change","#Person").on("change","#Person",function() {
 			if($(this).val() == "Other") {

@@ -34,7 +34,7 @@ include '../configuration.inc';
                     if (file_exists(APPLICATION_HOME."/forms/$name.inc")) {
                         include     APPLICATION_HOME."/forms/$name.inc";
 
-                        if (!empty($_GET['html']) && requires_supps($name, $forms) > 0) {
+                        if (empty($_GET['html']) && requires_supps($name, $forms) > 0) {
                             echo "
 							<script type=\"text/javascript\">
 								$(document).ready(function() {
