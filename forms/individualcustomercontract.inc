@@ -205,6 +205,13 @@
 				</fieldset>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xs-11">
+				<div class="form-legal-text">
+					<b style="">Please include supporting identification with this application:</b>
+				</div>			
+			</div>
+		</div>
 	</div>
 
 
