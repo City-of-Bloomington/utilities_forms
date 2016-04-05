@@ -54,12 +54,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" numeric required>
 			</div>
-			<div class="col-xs-4">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -67,9 +67,8 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir">-->
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-6">
 				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
 			</div>
@@ -112,22 +111,8 @@
 
 		</div>
 		<div class="row">
-			<!--
 			<div class="col-xs-6">
-				<label for="ID_Type">Identification Type</label>
-				<select class="form-control" name="ID_Type" validate="true" id="ID_Type">
-					<option value="">Please Select...</option>
-					<option value="Drivers License">Drivers License</option>
-					<option value="State ID">State Issued ID</option>
-					<option value="School ID">School ID</option>
-					<option value="Military ID">Military ID</option>
-					<option value="Passport">Passport</option>
-					<option value="Visa">Visa</option>
-					<option value="Other">Other</option></select>
-			</div>
-			-->
-			<div class="col-xs-6">
-				<label for="ID_Number_Num">Identification Number</label>
+				<label for="ID_Number_Num">Identification Number <br/>(Drivers License #, Passport #, etc.)</label>
 				<input type="text" class="form-control" name="ID_Number_Num" id="ID_Number_Num">
 			</div>
 		</div>

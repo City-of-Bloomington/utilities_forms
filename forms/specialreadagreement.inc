@@ -12,9 +12,6 @@
         <?php include __DIR__.'/partials/form-title-logo.inc'; ?>
 		<div class="form-title"><h2>Special Read Agreement</h2></div>
 		<div class="description">
-		<!-- REMOVED PER JOSH REQUEST ON 2016-02-15
-			Are you a property owner who would like utilities to revert to your name when tenants move out? Sign up for a special read agreement, and we'll keep it on file so you will never have to worry about service disconnection in between tenants.
-		-->
 		</div>
 		<?php
             include __DIR__.'/partials/contact-info.inc';
@@ -42,8 +39,8 @@
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" numeric required>
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -51,16 +48,14 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-
-				<!--<input type="text" class="form-control" name="OBKey__226_1" id="Service_St_Dir" value="N/A">-->
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-5">
 				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-1">
 			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
 			</div>
 		</div>
 		<div class="row service_row service_row_hidden">
@@ -68,8 +63,8 @@
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_2" id="Service_St_Num" numeric>
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -77,15 +72,14 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" name="OBKey__226_2" id="Service_St_Dir">-->
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+			<div class="col-xs-5">
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_2" id="Service_St_Name">
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-1">
 			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
 			</div>
 		</div>
 		<div class="row service_row service_row_hidden">
@@ -93,8 +87,8 @@
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_3" id="Service_St_Num" numeric>
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -102,15 +96,14 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" name="OBKey__226_3" id="Service_St_Dir">-->
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+			<div class="col-xs-5">
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_3" id="Service_St_Name">
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-1">
 			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
 			</div>
 		</div>
 		<div class="row service_row service_row_hidden">
@@ -118,8 +111,8 @@
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_4" id="Service_St_Num" numeric>
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -127,15 +120,14 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" name="OBKey__226_4" id="Service_St_Dir">-->
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+			<div class="col-xs-5">
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_4" id="Service_St_Name">
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-1">
 			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
 			</div>
 		</div>
 		<div class="row service_row service_row_hidden">
@@ -143,8 +135,8 @@
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" name="OBKey__225_5" id="Service_St_Num" numeric>
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -152,13 +144,12 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" name="OBKey__226_5" id="Service_St_Dir">-->
 			</div>
-			<div class="col-xs-3">
-				<label for="Service_St_Name">Street Name</label>
+			<div class="col-xs-5">
+				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" name="OBKey__104_5" id="Service_St_Name">
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-1">
 			<span>&nbsp;<br /></span>
 
 			</div>

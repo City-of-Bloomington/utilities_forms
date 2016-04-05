@@ -74,12 +74,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
 				<input type="text" class="form-control" id="Service_St_Num" name="OBKey__225_1" required numeric>
 			</div>
-			<div class="col-xs-4">
-				<label for="Service_St_Dir">Street Direction</label>
+			<div class="col-xs-2">
+				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
 					<option value="N/A" selected>N/A</option>
 					<option value="N">N</option>
@@ -87,9 +87,8 @@
 					<option value="S">S</option>
 					<option value="W">W</option>
 				</select>
-				<!--<input type="text" class="form-control" id="Service_St_Dir" name="OBKey__226_1" required>-->
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-6">
 				<label for="Service_St_Name">Street Name/Unit</label>
 				<input type="text" class="form-control" id="Service_St_Name" name="OBKey__104_1" required>
 			</div>
