@@ -172,7 +172,7 @@ var Global = function() {
 			var City = ($("#City").length ? $("#City").val() : "Bloomington");
 			var State = ($("#State").length ? $("#State").val() : "IN");
 			var ZIP = ($("#ZIP").length ? $("#ZIP").val() : "47401");
-            $("#Mailing_Address").val($("#Service_St_Num").val() + " " + $("#Service_St_Dir").val() + " " + $("#Service_St_Name").val());
+            $("#Mailing_Address").val($("#Service_St_Num").val() + " " + ($("#Service_St_Dir").val() != "N/A" ? $("#Service_St_Dir").val() + " " : "") + $("#Service_St_Name").val());
 			$("#Mailing_City").val(City);
 			$("#Mailing_State").val(State);
 			$("#Mailing_Zipcode").val(ZIP);
