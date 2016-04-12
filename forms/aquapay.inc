@@ -76,7 +76,7 @@
 		<div class="row">
 			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" id="Service_St_Num" name="OBKey__225_1" required numeric>
+				<input type="text" class="form-control" id="Service_St_Num" name="OBKey__225_1" required address>
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>

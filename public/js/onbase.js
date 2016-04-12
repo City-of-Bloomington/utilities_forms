@@ -23,6 +23,7 @@
 			var keys = new Array(65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90);
 			var nums = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105);
 			var ctrl = new Array(8,9,13,16,17,18,32,37,38,39,40,45,46);
+			var addr = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,191);
 			
 			if($.inArray(e.which,ctrl) !== -1) {
 				return true;
@@ -32,7 +33,7 @@
 				toUpper(e);
 				return false;
 			}
-			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined) {
+			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined && $(e.target).attr("address") === undefined) {
 				e.preventDefault();
 				toUpper(e);
 				return false;
@@ -46,6 +47,10 @@
 				e.preventDefault();
 				return false;
 			}
+			if(($(e.target).attr("address") !== undefined && $.inArray(e.which,addr) === -1) || e.shiftKey) {
+				e.preventDefault();
+				return false;
+			}				
 		})
 		
 		$(document).off("blur","input, select").on("blur","input, select",function(e) {
