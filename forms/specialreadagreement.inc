@@ -61,7 +61,7 @@
 		<div class="row service_row service_row_hidden">
 			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_2" id="Service_St_Num" numeric>
+				<input type="text" class="form-control" name="OBKey__225_2" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>
@@ -85,7 +85,7 @@
 		<div class="row service_row service_row_hidden">
 			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_3" id="Service_St_Num" numeric>
+				<input type="text" class="form-control" name="OBKey__225_3" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>
@@ -109,7 +109,7 @@
 		<div class="row service_row service_row_hidden">
 			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_4" id="Service_St_Num" numeric>
+				<input type="text" class="form-control" name="OBKey__225_4" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>
@@ -133,7 +133,7 @@
 		<div class="row service_row service_row_hidden">
 			<div class="col-xs-3">
 				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_5" id="Service_St_Num" numeric>
+				<input type="text" class="form-control" name="OBKey__225_5" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>
