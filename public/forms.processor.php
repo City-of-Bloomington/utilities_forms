@@ -126,7 +126,7 @@ class Forms {
 	{
 		$counter = 0;
 		foreach ($Files as $File) {		
-			if(@$File['size'] > 0) {
+			if(isset($File['size']) && !empty($File) && $File['size'] > 0) {
 				$counter++;
 				//CHECK IF FILESIZES ARE TOO BIG
 				if ($File['size'] > 6291456) {
