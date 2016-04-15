@@ -125,42 +125,44 @@ class Forms {
 	private function Validate_File_Uploads($Files)
 	{
 		$counter = 0;
-		foreach ($Files as $File) {
-			$counter++;
-			//CHECK IF FILESIZES ARE TOO BIG
-			if ($File['size'] > 6291456) {
-				$this->Files[$counter]['Response'] = "Error: Size";
-			}
-			//CHECK IF THE FILES ARE NOT THE CORRECT TYPE
-			//REMOVED WORD DOCUMENTS PER JOSH REQUEST ON 2015-12-11
-			// && substr($File['name'],strpos($File['name'],".")+1,3) != "doc"
-			else if (explode("/",$File['type'])[0] !== "image" && $File['type'] !== "application/pdf") {
-				$this->Files[$counter]['Response'] = "Error: Invalid";
-			}
-
-			try { $extension = self::getExtension($File['name']); }
-            catch (\Exception $e) {
-                $this->Files[$counter]['Response'] = "Error: {$e->getMessage()}";
-            }
-
-            if (empty($this->Files[$counter]['Response'])) {
-                $imageFile = "{$this->supp_image_temp_path}/{$this->supp_image_file_name}$counter.$extension";
-				if (move_uploaded_file($File["tmp_name"], $imageFile)) {
-                    self::transferFileToOnBase($imageFile);
-                    unlink($imageFile);
-
-					$this->Files[$counter]['Response'] = "Success";
-					$this->Files[$counter]['Filename'] = basename($imageFile);
-					$this->Valid_Counter++;
+		foreach ($Files as $File) {		
+			if(@$File['size'] > 0) {
+				$counter++;
+				//CHECK IF FILESIZES ARE TOO BIG
+				if ($File['size'] > 6291456) {
+					$this->Files[$counter]['Response'] = "Error: Size";
 				}
-            }
+				//CHECK IF THE FILES ARE NOT THE CORRECT TYPE
+				//REMOVED WORD DOCUMENTS PER JOSH REQUEST ON 2015-12-11
+				// && substr($File['name'],strpos($File['name'],".")+1,3) != "doc"
+				else if (explode("/",$File['type'])[0] !== "image" && $File['type'] !== "application/pdf") {
+					$this->Files[$counter]['Response'] = "Error: Invalid";
+				}
 
-			$this->Files[$counter]['Old_Filename'] = $File['name'];
-			//REMOVE UPLOADED FILE FROM THE SERVER AND UNSET VARIABLE
-			if (file_exists($File['tmp_name'])) {
-				unlink($File['tmp_name']);
+				try { $extension = self::getExtension($File['name']); }
+				catch (\Exception $e) {
+					$this->Files[$counter]['Response'] = "Error: {$e->getMessage()}";
+				}
+
+				if (empty($this->Files[$counter]['Response'])) {
+					$imageFile = "{$this->supp_image_temp_path}/{$this->supp_image_file_name}$counter.$extension";
+					if (move_uploaded_file($File["tmp_name"], $imageFile)) {
+						self::transferFileToOnBase($imageFile);
+						unlink($imageFile);
+
+						$this->Files[$counter]['Response'] = "Success";
+						$this->Files[$counter]['Filename'] = basename($imageFile);
+						$this->Valid_Counter++;
+					}
+				}
+
+				$this->Files[$counter]['Old_Filename'] = $File['name'];
+				//REMOVE UPLOADED FILE FROM THE SERVER AND UNSET VARIABLE
+				if (file_exists($File['tmp_name'])) {
+					unlink($File['tmp_name']);
+				}
+				unset($File);
 			}
-			unset($File);
 		}
 	}
 
