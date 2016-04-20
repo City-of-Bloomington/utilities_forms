@@ -104,11 +104,11 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<label for="Mailing_City">City</label>
-				<input type="text" class="form-control" name="OBKey__394_1" id="Mailing_City" required value="Bloomington">
+				<input type="text" class="form-control" name="OBKey__394_1" id="Mailing_City" required>
 			</div>
 			<div class="col-xs-4">
 				<label for="Mailing_State">State</label>
-				<input type="text" class="form-control" name="OBKey__401_1" id="Mailing_State" required value="IN">
+				<input type="text" class="form-control" name="OBKey__401_1" id="Mailing_State" required>
 			</div>
 			<div class="col-xs-3">
 				<label for="Mailing_Zipcode">ZIP Code</label>
