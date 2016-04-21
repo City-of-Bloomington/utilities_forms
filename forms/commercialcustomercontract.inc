@@ -97,7 +97,7 @@
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Mailing_Address">Mailing Address</label><button class="btn btn-link" id="Auto_Fill_Mailing_Address">Same as above</button>
-				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address">
+				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address" required>
 			</div>
 		</div>
 

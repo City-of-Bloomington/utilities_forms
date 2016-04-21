@@ -82,21 +82,21 @@
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Mailing_Address">Mailing Address</label><button class="btn btn-link" id="Auto_Fill_Mailing_Address">Same as above</button>
-				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address">
+				<input type="text" class="form-control" name="Mailing_Address" id="Mailing_Address" required>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-4">
 				<label for="Mailing_City">City</label>
-				<input type="text" class="form-control" name="OBKey__394_1" id="Mailing_City">
+				<input type="text" class="form-control" name="OBKey__394_1" id="Mailing_City" required>
 			</div>
 			<div class="col-xs-4">
 				<label for="Mailing_State">State</label>
-				<input type="text" class="form-control" name="OBKey__401_1" id="Mailing_State">
+				<input type="text" class="form-control" name="OBKey__401_1" id="Mailing_State" required>
 			</div>
 			<div class="col-xs-3">
 				<label for="Mailing_Zipcode">ZIP Code</label>
-				<input type="text" class="form-control" name="Mailing_Zipcode" id="Mailing_Zipcode" numeric mask="99999">
+				<input type="text" class="form-control" name="Mailing_Zipcode" id="Mailing_Zipcode" numeric mask="99999" required>
 			</div>
 		</div>
 		<div class="row">
