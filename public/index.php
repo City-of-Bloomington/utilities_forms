@@ -17,6 +17,7 @@ include '../configuration.inc';
 		<script src="<?= BASE_URL; ?>/vendor/jquery-mask/jquery-mask.js"></script>
 		<script src="<?= BASE_URL; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?= BASE_URL; ?>/js/global.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 		<script type="text/javascript">
 			Global = new Global;
 			Global.init();

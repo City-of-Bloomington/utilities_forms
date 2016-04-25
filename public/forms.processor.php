@@ -1,6 +1,42 @@
 <?php
 require_once '../configuration.inc';
 
+//CHECK CAPTCHA FIRST THING AND EXIT IF NOT VALID
+if(!isset($_POST['g-recaptcha-response']) || checkCaptcha($_POST) === false) {
+	exit;
+}
+
+function checkCaptcha($vals) {
+	$options = array(
+		CURLOPT_POST			=> true,
+		CURLOPT_HEADER			=> true,
+		CURLOPT_RETURNTRANSFER	=> true,
+		CURLOPT_SSL_VERIFYPEER	=> false,
+		CURLOPT_POSTFIELDS		=> 
+			array(
+				'secret' 		=> "[secret-key-goes-here]",
+				'response'		=> $vals['g-recaptcha-response'],
+				'remoteip'		=> $_SERVER['REMOTE_ADDR']
+			)
+	);
+	$verifierURL = "https://www.google.com/recaptcha/api/siteverify";
+	$verifier = curl_init($verifierURL);
+	curl_setopt_array($verifier, $options);
+	$response = curl_exec($verifier);
+	$header_size = curl_getinfo($verifier, CURLINFO_HEADER_SIZE);
+	$header = substr($response, 0, $header_size);
+	$body = substr($response, $header_size);
+	$json = json_decode($body,true);
+	$result = $json['success'];
+	if($result == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+
 //ENSURE THE CORRECT DATA IS PRESENT, MAKE UPPERCASE, AND REMOVE ANY TAGS IN THE POSTED DATA BEFORE CREATING THE FORM OBJECT
 if (isset($_POST)) {
 	if (count($_POST) > 1 && isset($_POST['DocumentType'])) {
@@ -8,6 +44,10 @@ if (isset($_POST)) {
 
 		foreach ($_POST as $key => $post) {
 			$_POST[$key] = strtoupper(strip_tags($post));
+		}
+		
+		if(isset($_POST['g-recaptcha-response'])) {
+			unset($_POST['g-recaptcha-response']);
 		}
 
 		$addressFields = [
@@ -272,6 +312,9 @@ class Forms {
 			}
 			if (strpos($line,"enctype=\"multipart/form-data\"") !== false) {
 				$line = str_replace("enctype=\"multipart/form-data\"","",$line);
+			}
+			if (strpos($line,"g-recaptcha") !== false) {
+				$line = "";
 			}
 
 

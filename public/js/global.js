@@ -4,6 +4,7 @@ var Global = function() {
 	var url = "processor/forms.processor.php";
 	var SD = 1;
 	var SA = 1;
+	var captchaValidated = false;
 
 	//ADD OR REMOVE SUPPLEMENTARY DOCUMENT TYPES HERE
 	var Sup_Doc_Types = new Array(
@@ -202,6 +203,10 @@ var Global = function() {
 		item.css("border-width","");
 		item.css("background-color","");
 	}
+	
+	this.validateCaptcha = function() {
+		captchaValidated = true;
+	}
 
 	this.Check_All_Valid = function(e) {
 		if(e !== undefined) {
@@ -231,7 +236,7 @@ var Global = function() {
 			}
 		})
 
-		if(valid == true) {
+		if(valid == true && captchaValidated == true) {
 			$("#form-submit").removeAttr("disabled").removeProp("disabled");
 		}
 		else {

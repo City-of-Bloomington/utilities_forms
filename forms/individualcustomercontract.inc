@@ -239,6 +239,13 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-xs-6">
+				<center>
+					<div class="g-recaptcha" data-sitekey="6LcOSR4TAAAAAMOX8k1WQbL312khUCXMvYgKE_R2" data-callback="Global.validateCaptcha"></div>
+				</center>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-7">
 				<center>
