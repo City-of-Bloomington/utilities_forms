@@ -206,6 +206,7 @@ var Global = function() {
 	
 	this.validateCaptcha = function() {
 		captchaValidated = true;
+		SELF.Check_All_Valid();
 	}
 
 	this.Check_All_Valid = function(e) {
@@ -277,83 +278,6 @@ var Global = function() {
 			item.css("border-width","");
 			item.css("background-color","");
 		}
-	}
-
-	this.Populate_for_Dev = function() {
-		$("input[id='First_Name']").val("Albert");
-		$("input[id='Middle_Name']").val("Randy");
-		$("input[id='Last_Name']").val("Welch");
-		$("input[id='Service_Address']").val("6 Talisman Hill");
-		$("input[id='Service_St_Num']").val("6");
-		$("input[id='Service_St_Dir']").val("N");
-		$("input[id='Service_St_Name']").val("Talisman Hill");
-		$("input[id='Mailing_Address']").val("6 Talisman Hill");
-		$("input[id='Date_of_Birth']").val("12/01/1970");
-		$("input[id='Soc_Sec_Num']").val("123-12-1234");
-		$("input[id='Drivers_Lic_Num']").val("1231-12-1234");
-		$("input[id='Telephone_Number']").val("(812) 123-1234");
-		$("input[id='Email_Address']").val("abc@abc.def");
-		$("select[id='Person']").val("Tenant");
-
-		$("select[id='CommercialPerson']").val("Tenant");
-		$("input[id='Property_Owner']").val("Bob Fred");
-		$("input[id='Owner_Phone_Number']").val("(555) 555-5555");
-		$("input[id='Employers_Name']").val("Bob George");
-		$("input[id='Employers_Ph_Num']").val("(555) 555-5555");
-		$("input[id='Date_of_Change']").val("01/01/2015");
-		$("input[id='Customer_Acct_Num']").val("132454554");
-		$("select[id='New_Customer']").val("Yes");
-		$("input[id='Emergency_Name']").val("Bob Fred");
-		$("input[id='Emergency_Phone']").val("(555) 555-5555");
-		$("input[id='Soc_Sec_Num']").val("333-33-3333");
-		$("input[id='Customer_Fed_TIN']").val("123456789");
-		$("input[id='Date_of_Inc']").val("01/01/1970");
-		$("input[id='Name_of_Fin_Inst']").val("Bank of Trust");
-		$("input[id='Routing_Number']").val("12345678");
-		$("input[id='Account_Number']").val("123456789");
-		$("select[id='Type_of_Account']").val("Checking");
-		$("input[id='Name_of_Auth']").val("Bob Fred");
-		$("input[id='Owner_First_Name']").val("Bob");
-		$("input[id='Bus_St_Num']").val("6");
-		$("input[id='Bus_St_Dir']").val("N");
-		$("input[id='Bus_St_Name']").val("Talisman Hill");
-		$("input[id='Owner_First_Name']").val("Bob");
-		$("input[id='Owner_Last_Name']").val("Fred");
-		$("input[id='Owner_Title']").val("Bob Fred");
-		$("input[id='Corporate_Name']").val("Business 123");
-		$("input[id='Company_Name']").val("Business 123");
-		$("input[id='Company_CKA']").val("Business Numbers");
-		$("input[id='Mailing_First_Name']").val("Bob");
-		$("input[id='Mailing_Last_Name']").val("Fred");
-		$("input[id='Mailing_Street_Number']").val("6");
-		$("input[id='Mailing_Street_Direction']").val("N");
-		$("input[id='Mailing_Street_Name']").val("Talisman Hill");
-		$("input[id='State_of_Inc']").val("IN");
-		$("input[id='Federal_ID']").val("123456789");
-		$("input[id='Bus_Phone_Number']").val("(555) 555-5555");
-		$("input[id='Contact_First_Name']").val("Bob");
-		$("input[id='Contact_Last_Name']").val("Fred");
-		$("input[id='Contact_Phone_Num']").val("(555) 555-5555");
-		$("input[id='Other_Explain']").val("Other Explanation");
-		$("input[id='Title']").val("Owner");
-		$("input[id='Date_of_Disconnect']").val("01/01/1970");
-		$("input[id='Mailing_Address']").val("6 N Talisman Hill");
-		$("input[id='Service_Apartment']").val("45");
-		$("input[id='Mailing_City']").val("Bloomington");
-		$("input[id='Mailing_State']").val("IN");
-		$("input[id='ZIP_Code']").val("12345");
-		$("input[id='Mailing_Zipcode']").val("12345");
-		$("input[id='Service_Zipcode']").val("12345");
-		$("input[id='Forwarding_Tel_Num']").val("(555) 555-5555");
-		$("input[id='Reason_for_Canc']").val("Moving");
-		$("input[id='Auth_First_Name']").val("Bob");
-		$("input[id='Auth_Last_Name']").val("Fred");
-		$("input[id='Authorizer_Title']").val("Owner");
-		$("input[id='SRA_First_Name']").val("Bob");
-		$("input[id='SRA_Last_Name']").val("Fred");
-		$("input[id='Effective_Date']").val("01/01/2015");
-		$("input[id='Management_Company']").val("Bob Jones, Inc");
-		$("input[id='Former_Last_Name']").val("Sampson");
 	}
 
 	this.toUpper = function(e) {
