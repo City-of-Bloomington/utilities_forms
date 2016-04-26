@@ -186,7 +186,7 @@
 					<option value="Both">Mail & E-Mail</option>
 				</select>
 			</div>
-		</div>	
+		</div>
 		<div class="row">
 			<div class="col-xs-11">
 				<fieldset>
@@ -209,7 +209,7 @@
 			<div class="col-xs-11">
 				<div class="form-legal-text">
 					<b style="">Please include supporting identification with this application:</b>
-				</div>			
+				</div>
 			</div>
 		</div>
 	</div>
@@ -238,21 +238,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-6">
-				<center>
-					<div class="g-recaptcha" data-sitekey="6LcOSR4TAAAAAMOX8k1WQbL312khUCXMvYgKE_R2" data-callback="Global.validateCaptcha"></div>
-				</center>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-7">
-				<center>
-					<button type="submit" name="OBBtn_Save" value="Submit" class="btn btn-primary" id="form-submit" disabled><i class="fa fa-check"></i> Submit</button>
-				</center>
-			</div>
-			<div class="col-xs-2"></div>
-		</div>
+		<?php include APPLICATION_HOME.'/forms/partials/submit-fields.inc'; ?>
 	</div>
 </form>

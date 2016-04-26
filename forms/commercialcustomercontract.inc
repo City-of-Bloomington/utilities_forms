@@ -260,14 +260,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-7">
-				<center>
-					<button type="submit" name="OBBtn_Save" value="Submit" class="btn btn-primary" id="form-submit" disabled><i class="fa fa-check"></i> Submit</button>
-				</center>
-			</div>
-			<div class="col-xs-2"></div>
-		</div>
+		<?php include APPLICATION_HOME.'/forms/partials/submit-fields.inc'; ?>
 	</div>
 </form>

@@ -15,6 +15,10 @@ define('ONBASE_USER', 'username');
 define('ONBASE_PASS', 'password');
 define('ONBASE_CERT', APPLICATION_HOME.'/data/onbase.crt');
 
+define('RECAPTCHA_SITE_KEY', '');
+define('RECAPTCHA_SERVER_KEY', '');
+require_once APPLICATION_HOME.'/Captcha.php';
+
 /**
  * Skidder is a web service for error notifications.  Error reporting supports
  * posting errors to a Skidder server.  You must register for an application_id
