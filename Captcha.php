@@ -10,7 +10,7 @@ class Captcha
         echo "
         <script type=\"text/javascript\" src=\"https://www.google.com/recaptcha/api.js\"></script>
         <div class=\"g-recaptcha\" data-sitekey=\"".RECAPTCHA_SITE_KEY."\"
-            data-callback=\"Global.validateCaptcha\">
+            data-callback=\"validateCaptcha\">
         </div>
         ";
     }

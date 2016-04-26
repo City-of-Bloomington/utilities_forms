@@ -20,6 +20,10 @@ include '../configuration.inc';
 		<script type="text/javascript">
 			Global = new Global;
 			Global.init();
+			
+			function validateCaptcha() {
+				Global.validateCaptcha();
+			}
 		</script>
 	</head>
 	<body>
