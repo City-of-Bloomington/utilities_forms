@@ -26,7 +26,7 @@ class Captcha
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_POSTFIELDS     => [
                 'secret'   => RECAPTCHA_SERVER_KEY,
-                'response' => $vals['g-recaptcha-response'],
+                'response' => $_POST['g-recaptcha-response'],
                 'remoteip' => $_SERVER['REMOTE_ADDR']
             ]
         ];
