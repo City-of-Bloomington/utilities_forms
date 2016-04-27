@@ -178,7 +178,7 @@ class Forms {
 		$data    = "";
 		$message = "";
 		foreach ($this->Files as $counter => $val) {
-			if ($val['Filename'] !== "") {
+			if (isset($val['Filename'])) {
 				$data .= str_pad("DocumentTypeNum:",  30," ",STR_PAD_RIGHT) . "340\r\n";
 				$data .= str_pad("Conf_Number:",      30," ",STR_PAD_RIGHT) . $this->vals['Conf_Number'] . "\r\n";
 				$data .= str_pad("SupplementaryType:",30," ",STR_PAD_RIGHT) . $this->vals['Sup_Type_'.$counter] . "\r\n";
@@ -187,7 +187,9 @@ class Forms {
 			$message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
 		}
 
-		self::saveToOnBase($this->supp_dip_path, $data);
+		if($data !== "") {
+			self::saveToOnBase($this->supp_dip_path, $data);
+		}
 
         if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
             $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&$message";
