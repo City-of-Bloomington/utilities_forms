@@ -151,6 +151,7 @@ class Forms {
 				}
 
 				if (empty($this->Files[$counter]['Response'])) {
+					$this->Valid_Counter++;
 					$imageFile = "{$this->supp_image_temp_path}/{$this->supp_image_file_name}$counter.$extension";
 					if (move_uploaded_file($File["tmp_name"], $imageFile)) {
 						self::transferFileToOnBase($imageFile);
@@ -158,7 +159,7 @@ class Forms {
 
 						$this->Files[$counter]['Response'] = "Success";
 						$this->Files[$counter]['Filename'] = basename($imageFile);
-						$this->Valid_Counter++;
+						
 					}
 				}
 

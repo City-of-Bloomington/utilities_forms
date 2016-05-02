@@ -75,7 +75,7 @@
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">Street Dir.</label>
 				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
-					<option value="N/A" selected>N/A</option>
+					<option value="" selected></option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>

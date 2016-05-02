@@ -116,10 +116,10 @@
 			<field><dip>Service_St_Num</dip><ob>OBKey__225_1</ob></field>
 			<field><dip>Service_St_Dir</dip><ob>OBKey__226_1</ob></field>
 			<field><dip>Service_St_Name</dip><ob>OBKey__104_1</ob></field>			
-			<field><dip>Mailing_Address</dip><ob>OBKey__398_1</ob></field>
-			<field><dip>Mailing_City</dip><ob>OBKey__394_1</ob></field>
-			<field><dip>Mailing_State</dip><ob>OBKey__401_1</ob></field>
-			<field><dip>Mailing_Zipcode</dip><ob>OBKey__405_1</ob></field>				
+			<field><dip>Mailing_Address</dip><ob>Mailing_Address</ob></field>
+			<field><dip>Mailing_City</dip><ob>Mailing_City</ob></field>
+			<field><dip>Mailing_State</dip><ob>Mailing_State</ob></field>
+			<field><dip>Mailing_Zipcode</dip><ob>Mailing_Zipcode</ob></field>				
 			<field><dip>Date_of_Birth</dip><ob>Date_of_Birth</ob></field>	
 			<field><dip>Drivers_Lic_Num</dip><ob>Drivers_Lic_Num</ob></field>	
 			<field><dip>Telephone_Number</dip><ob>OBKey__383_1</ob></field>	
@@ -156,10 +156,10 @@
 			<field><dip>Company_Name</dip><ob>OBKey__257_1</ob></field>
 			<field><dip>Company_CKA</dip><ob>Company_CKA</ob></field>	
 			<field><dip>Mailing_Name</dip><ob>Mailing_Name</ob></field>	
-			<field><dip>Mailing_Address</dip><ob>OBKey__398_1</ob></field>
-			<field><dip>Mailing_City</dip><ob>OBKey__394_1</ob></field>
-			<field><dip>Mailing_State</dip><ob>OBKey__401_1</ob></field>
-			<field><dip>Mailing_Zipcode</dip><ob>OBKey__405_1</ob></field>
+			<field><dip>Mailing_Address</dip><ob>Mailing_Address</ob></field>
+			<field><dip>Mailing_City</dip><ob>Mailing_City</ob></field>
+			<field><dip>Mailing_State</dip><ob>Mailing_State</ob></field>
+			<field><dip>Mailing_Zipcode</dip><ob>Mailing_Zipcode</ob></field>
 			<field><dip>Date_of_Inc</dip><ob>Date_of_Inc</ob></field>	
 			<field><dip>State_of_Inc</dip><ob>State_of_Inc</ob></field>	
 			<field><dip>Federal_ID</dip><ob>Federal_ID</ob></field>	
