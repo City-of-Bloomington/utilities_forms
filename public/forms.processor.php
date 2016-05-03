@@ -49,6 +49,7 @@ class Forms {
     private $form_html_path;
     private $form_pdf_filename;
     private $form_pdf_path;
+	private $message;
 
     public static $validExtensions = ['jpg', 'png', 'gif', 'tiff', 'pdf'];
 
@@ -177,7 +178,7 @@ class Forms {
 	private function Create_Supp_DIP()
 	{
 		$data    = "";
-		$message = "";
+		$this->message = "";
 		foreach ($this->Files as $counter => $val) {
 			if (isset($val['Filename'])) {
 				$data .= str_pad("DocumentTypeNum:",  30," ",STR_PAD_RIGHT) . "340\r\n";
@@ -185,7 +186,7 @@ class Forms {
 				$data .= str_pad("SupplementaryType:",30," ",STR_PAD_RIGHT) . $this->vals['Sup_Type_'.$counter] . "\r\n";
 				$data .= str_pad("Filename:",         30," ",STR_PAD_RIGHT) . $val['Filename'] . "\r\n";
 			}
-			$message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
+			$this->message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
 		}
 
 		if($data !== "") {
@@ -193,7 +194,7 @@ class Forms {
 		}
 
         if ($this->vals['DocumentType'] === "SUPPLEMENTARYDOCUMENT") {
-            $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&$message";
+            $url = BASE_URL."/index.php?form=SuppConfirmation&Confirmation_Number={$this->vals['Conf_Number']}&{$this->message}";
             header("Location: $url");
             exit();
         }
@@ -339,7 +340,7 @@ class Forms {
 		self::saveToOnBase($this->form_dip_path, $data);
 
         $this->Docs = $this->Docs - $this->Valid_Counter;
-        $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}";
+        $url = BASE_URL."/index.php?form=Confirmation&Confirmation_Number={$this->Conf_Number}&docs={$this->Docs}&{$this->message}";
         header("Location: $url");
         exit();
 	}

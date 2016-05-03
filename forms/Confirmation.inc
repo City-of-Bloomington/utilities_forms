@@ -10,9 +10,31 @@
 $Confirmation_Number = $_GET['Confirmation_Number'];
 $docs = !empty($_GET['docs']) ? (int)$_GET['docs'] : 0;
 
+$Nums = ["1"=>"ONE","2"=>"TWO","3"=>"THREE"];
+$Error = 0;
+$Success = 0;
+$err_docs = "";
+$suc_docs = "";
+if (isset($_GET['Message'])) {
+	foreach ($_GET['Message'] as $key => $Message) {
+		if (substr($Message,0,5) == "Error") {
+			$Error++;
+			$err_docs = $err_docs . $key . ", ";
+		}
+		else {
+			$Success++;
+			$suc_docs = $suc_docs . $key . ", ";
+		}
+	}
+	$err_docs = substr($err_docs,0,-2);
+	$suc_docs = substr($suc_docs,0,-2);
+
+	$Total = $Error + $Success;
+}
+
 echo "<center>";
 
-if ($docs) {
+if ($docs > 0 && $Error == 0) {
     $documents = $docs === 1 ? 'document' : 'documents';
 	echo "
 	<i class=\"fa fa-exclamation-triangle\" style=\"color:orange; font-size:120px;\"></i><br />
@@ -20,6 +42,17 @@ if ($docs) {
 	<h3>This form requires $docs supplemental $documents.<br />
 	<a style=\"line-height:35px;\" href=\"index.php?form=supplementary_docs&conf_num=$Confirmation_Number\">Upload Now</a>
 	</h3>";
+}
+else if ($docs > 0 && $Error > 0) {
+	echo "
+	<center>
+	<i class=\"fa fa-exclamation-triangle\" style=\"color:orange; font-size:120px;\"></i><br />
+	<hr>
+	<h3>Unfortunately, " . ($Total > 1 ? $Nums[$Error] . " of your documents (" . $err_docs . ") could not be uploaded" : "your document (" . $err_docs . ") could not be uploaded") . "</h3>
+	<h4>(File sizes must be less than 6 MB and we are only able to accept PDF or image files)</h4>
+	<h4><a href=\"index.php?form=supplementary_docs&conf_num=" . $_GET['Confirmation_Number'] . "\">Click here to try again</a></h4>
+	<hr>
+	</center>";
 }
 else {
 	echo "
