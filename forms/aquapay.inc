@@ -79,9 +79,10 @@
 				<input type="text" class="form-control" id="Service_St_Num" name="OBKey__225_1" required address>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>

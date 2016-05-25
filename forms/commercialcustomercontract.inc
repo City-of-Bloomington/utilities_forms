@@ -60,9 +60,10 @@
 				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" address required>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>
@@ -186,7 +187,7 @@
 		<div class="row">
 			<div class="col-xs-5">
 				<label for="Date_of_Change">&nbsp;<br />Requested Date of Change</label>
-				<input type="text" class="form-control" id="Date_of_Change" name="OBKey__173_1" mask="99/99/9999" required>
+				<input control type="text" class="form-control" id="Date_of_Change" name="OBKey__173_1" mask="99/99/9999" required>
 			</div>
 			<div class="col-xs-6">
 				<label for="Title">Title of individual signing for business or organization</label>

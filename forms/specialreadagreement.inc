@@ -40,9 +40,10 @@
 				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" address required>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>
@@ -64,9 +65,10 @@
 				<input type="text" class="form-control" name="OBKey__225_2" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>
@@ -88,9 +90,10 @@
 				<input type="text" class="form-control" name="OBKey__225_3" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>
@@ -112,9 +115,10 @@
 				<input type="text" class="form-control" name="OBKey__225_4" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>
@@ -136,9 +140,10 @@
 				<input type="text" class="form-control" name="OBKey__225_5" id="Service_St_Num" address>
 			</div>
 			<div class="col-xs-2">
-				<label for="Service_St_Dir">Street Dir.</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5">
+				<label for="Service_St_Dir">St Dir</label>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5" required>
 					<option value="" selected></option>
+					<option value="N/A">N/A</option>
 					<option value="N">N</option>
 					<option value="E">E</option>
 					<option value="S">S</option>

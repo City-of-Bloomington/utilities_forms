@@ -111,6 +111,14 @@ var Global = function() {
 			var spec = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,8,9,13,17,18,32,37,38,39,40,45,46,109,173,189);
 			var addr = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,191);
 
+			if($(this).attr("id") == "Service_St_Name") {
+				if(e.which == 190 || e.which == 110) {
+					e.preventDefault();
+					SELF.Make_Invalid($(this));
+					return false;
+				}					
+			}
+			
 			if($.inArray(e.which,ctrl) !== -1 || (e.which == 9 && e.shiftKey) || ($.inArray(e.which,nums) && e.shiftKey && $(e.target).attr("numeric") === undefined)) {
 				return true;
 			}
@@ -119,7 +127,7 @@ var Global = function() {
 				SELF.toUpper(e);
 				return false;
 			}
-			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("spec") === undefined && $(e.target).attr("ssn") === undefined && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined && $(e.target).attr("address") === undefined) {
+			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("spec") === undefined && $(e.target).attr("ssn") === undefined && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined && $(e.target).attr("address") === undefined && $(e.target).attr("control") === undefined) {
 				e.preventDefault();
 				SELF.toUpper(e);
 				return false;
@@ -137,6 +145,10 @@ var Global = function() {
 				return false;
 			}
 			if(($(e.target).attr("address") !== undefined && $.inArray(e.which,addr) === -1) || e.shiftKey) {
+				e.preventDefault();
+				return false;
+			}
+			if(($(e.target).attr("control") !== undefined && $.inArray(e.which,ctrl) === -1) || e.shiftKey) {
 				e.preventDefault();
 				return false;
 			}			
