@@ -2,8 +2,9 @@
 	$(document).ready(function() {
 
 		$("#Date_of_Disconnect").datepicker({
-			minDate: 0,
-			maxDate: "+2M"
+			minDate: 1,
+			maxDate: "+2M",
+			beforeShowDay: $.datepicker.noWeekends
 		});
 	})
 </script>
