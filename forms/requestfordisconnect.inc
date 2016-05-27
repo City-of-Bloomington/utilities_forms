@@ -31,7 +31,7 @@
 			</div>
 			<div class="col-xs-5">
 				<label for="Date_of_Disconnect">Requested Date of Disconnection</label>
-				<input meta="datetime" type="text" class="form-control" id="Date_of_Disconnect" required name="OBKey__229_1" mask="99/99/9999">
+				<input control meta="datetime" type="text" class="form-control" id="Date_of_Disconnect" required name="OBKey__229_1" mask="99/99/9999">
 			</div>
 		</div>
 		<div class="row">

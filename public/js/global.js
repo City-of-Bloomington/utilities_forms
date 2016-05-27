@@ -105,55 +105,13 @@ var Global = function() {
 		})
 
 		$(document).off("keydown","input").on("keydown","input",function(e) {
-			var keys = new Array(65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90);
-			var nums = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105);
-			var ctrl = new Array(8,9,13,17,18,32,37,38,39,40,45,46);
-			var spec = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,8,9,13,17,18,32,37,38,39,40,45,46,109,173,189);
-			var addr = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,191);
-
-			if($(this).attr("id") == "Service_St_Name") {
-				if(e.which == 190 || e.which == 110) {
-					e.preventDefault();
-					SELF.Make_Invalid($(this));
-					return false;
-				}					
-			}
-			
-			if($.inArray(e.which,ctrl) !== -1 || (e.which == 9 && e.shiftKey) || ($.inArray(e.which,nums) && e.shiftKey && $(e.target).attr("numeric") === undefined)) {
-				return true;
-			}
-			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("alpha") !== undefined) {
-				e.preventDefault();
-				SELF.toUpper(e);
-				return false;
-			}
-			if($.inArray(e.which,keys) !== -1 && $(e.target).attr("spec") === undefined && $(e.target).attr("ssn") === undefined && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined && $(e.target).attr("address") === undefined && $(e.target).attr("control") === undefined) {
-				e.preventDefault();
-				SELF.toUpper(e);
-				return false;
-			}
-			if($(e.target).attr("spec") !== undefined && $.inArray(e.which,spec) === -1) {
-				e.preventDefault();
-				return false;
-			}
-			if($(e.target).attr("phone") !== undefined && $.inArray(e.which,nums) === -1) {
-				e.preventDefault();
-				return false;
-			}
-			if(($(e.target).attr("numeric") !== undefined && $.inArray(e.which,nums) === -1) || e.shiftKey) {
-				e.preventDefault();
-				return false;
-			}
-			if(($(e.target).attr("address") !== undefined && $.inArray(e.which,addr) === -1) || e.shiftKey) {
-				e.preventDefault();
-				return false;
-			}
-			if(($(e.target).attr("control") !== undefined && $.inArray(e.which,ctrl) === -1) || e.shiftKey) {
-				e.preventDefault();
-				return false;
-			}			
+			SELF.validation(e,$(this));
 		})
 
+		$(document).off("paste","input").on("paste","input",function(e) {
+			SELF.validation(e,$(this));
+		})
+		
 		$(document).off("click","#dev").on("click","#dev",function() {
 			SELF.Populate_for_Dev();
 		})
@@ -202,6 +160,56 @@ var Global = function() {
 			return false;
 		})
 
+	}
+	
+	this.validation = function(e,item) {
+		var keys = new Array(65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90);
+		var nums = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105);
+		var ctrl = new Array(8,9,13,17,18,32,37,38,39,40,45,46);
+		var spec = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,8,9,13,17,18,32,37,38,39,40,45,46,109,173,189);
+		var addr = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,191);
+
+		if(item.attr("id") == "Service_St_Name") {
+			if(e.which == 190 || e.which == 110) {
+				e.preventDefault();
+				SELF.Make_Invalid(item);
+				return false;
+			}					
+		}
+		
+		if($.inArray(e.which,ctrl) !== -1 || (e.which == 9 && e.shiftKey) || ($.inArray(e.which,nums) && e.shiftKey && $(e.target).attr("numeric") === undefined)) {
+			return true;
+		}
+		if($.inArray(e.which,keys) !== -1 && $(e.target).attr("alpha") !== undefined) {
+			e.preventDefault();
+			SELF.toUpper(e);
+			return false;
+		}
+		if($.inArray(e.which,keys) !== -1 && $(e.target).attr("spec") === undefined && $(e.target).attr("ssn") === undefined && $(e.target).attr("numeric") === undefined && $(e.target).attr("phone") === undefined && $(e.target).attr("address") === undefined && $(e.target).attr("control") === undefined) {
+			e.preventDefault();
+			SELF.toUpper(e);
+			return false;
+		}
+		if($(e.target).attr("spec") !== undefined && $.inArray(e.which,spec) === -1) {
+			e.preventDefault();
+			return false;
+		}
+		if($(e.target).attr("phone") !== undefined && $.inArray(e.which,nums) === -1) {
+			e.preventDefault();
+			return false;
+		}
+		if(($(e.target).attr("numeric") !== undefined && $.inArray(e.which,nums) === -1) || e.shiftKey) {
+			e.preventDefault();
+			return false;
+		}
+		if(($(e.target).attr("address") !== undefined && $.inArray(e.which,addr) === -1) || e.shiftKey) {
+			e.preventDefault();
+			return false;
+		}
+		if(($(e.target).attr("control") !== undefined && $.inArray(e.which,ctrl) === -1) || e.shiftKey) {
+			e.preventDefault();
+			return false;
+		}			
 	}
 
 	this.Make_Invalid = function(item) {

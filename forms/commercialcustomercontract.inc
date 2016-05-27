@@ -2,7 +2,8 @@
 	$(document).ready(function() {
 
 		$("#Date_of_Change").datepicker({
-			minDate: 0,
+			minDate: 1,
+			beforeShowDay: $.datepicker.noWeekends,
 			maxDate: "+2M"
 		});
 
