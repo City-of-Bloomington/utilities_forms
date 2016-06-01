@@ -35,7 +35,7 @@ class AddressService
 
 	/**
 	 * @param string $address
-	 * @return SimpleXMLElement
+	 * @return StdClass
 	 */
 	public static function parseAddress($address)
 	{
@@ -48,8 +48,8 @@ class AddressService
 	}
 
 	/**
-	 * @param SimpleXMLElement $address The address node
-	 * @param array $parsedAddress
+	 * @param StdClass $address       The address node
+	 * @param array    $parsedAddress The parse of what the user typed
 	 * @return array
 	 */
 	private static function extractAddressData($address, $parsedAddress)
@@ -82,10 +82,13 @@ class AddressService
         $index    = (int)$index;
         $required = $required ? 'required="true"' : '';
 
-        echo "
-        <input id=\"Service_St_Num\"  name=\"OBKey__225_$index\" $required address />
-        <input id=\"Service_St_Dir\"  name=\"OBKey__226_$index\" $required />
-        <input id=\"Service_St_Name\" name=\"OBKey__104_$index\" $required>
+        return "
+        <button type=\"button\" onclick=\"ADDRESS_CHOOSER.launchPopup($index)\">
+            Choose Address
+        </button>
+        <input id=\"OBKey__225_$index\" name=\"OBKey__225_$index\" $required address />
+        <input id=\"OBKey__226_$index\" name=\"OBKey__226_$index\" $required />
+        <input id=\"OBKey__104_$index\" name=\"OBKey__104_$index\" $required>
         ";
 	}
 }

@@ -33,7 +33,8 @@ $query = !empty($_GET['query'])
             if (count($results)) {
                 echo '<ul>';
                 foreach ($results as $address => $data) {
-                    $url = "javascript:alert('$address')";
+                    $json = htmlspecialchars(json_encode($data), ENT_QUOTES);
+                    $url = "javascript:self.opener.ADDRESS_CHOOSER.setAddress('$json')";
 
                     $city = isset($data['city']) ? ", $data[city]" : '';
                     echo "<li><a href=\"$url\">$address$city</a></li>";
