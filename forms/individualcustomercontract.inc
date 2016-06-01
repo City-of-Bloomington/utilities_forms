@@ -23,7 +23,7 @@
         <?php include __DIR__.'/partials/form-title-logo.inc'; ?>
 		<div class="form-title"><h2>Individual Customer Contract</h2></div>
 		<div class="description">
-			<b>Sign up for water and sewer service</b> (for residential customers). You will need an acceptable form of identification to attach as a file to this service application, and a copy of your lease, if applicable.
+			<b>Sign up for water and sewer service</b> (for residential customers). You will need an acceptable form of identification to attach as a file to this service application, such as a valid Driver’s License, State ID, Military ID, or Passport. Our office will contact you if further information is required in order to process your application.
 		</div>
 		<?php
             include __DIR__.'/partials/contact-info.inc';
