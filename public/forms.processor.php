@@ -2,7 +2,7 @@
 require_once '../configuration.inc';
 
 //CHECK CAPTCHA FIRST THING AND EXIT IF NOT VALID
-if (!Captcha::verify()) {
+if (!Application\Models\Captcha::verify()) {
     echo "You are clearly not human\n";
     exit();
 }
@@ -160,7 +160,7 @@ class Forms {
 
 						$this->Files[$counter]['Response'] = "Success";
 						$this->Files[$counter]['Filename'] = basename($imageFile);
-						
+
 					}
 				}
 

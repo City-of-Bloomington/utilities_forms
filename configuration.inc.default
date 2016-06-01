@@ -17,7 +17,10 @@ define('ONBASE_CERT', APPLICATION_HOME.'/data/onbase.crt');
 
 define('RECAPTCHA_SITE_KEY', '');
 define('RECAPTCHA_SERVER_KEY', '');
-require_once APPLICATION_HOME.'/Captcha.php';
+require_once APPLICATION_HOME.'/Models/Captcha.php';
+
+define('ADDRESS_SERVICE', 'http://localhost/master_address');
+require_once APPLICATION_HOME.'/Models/AddressService.php';
 
 /**
  * Skidder is a web service for error notifications.  Error reporting supports
@@ -29,7 +32,7 @@ define('APPLICATION_NAME', 'utilities_forms');
 define('SKIDDER_URL','https://localhost/skidder/index/index');
 define('SKIDDER_APPLICATION_ID', XX);
 $ERROR_REPORTING = ['SKIDDER'];
-require_once APPLICATION_HOME.'/Error.php';
+require_once APPLICATION_HOME.'/Models/Error.php';
 set_error_handler         ('Blossom\Classes\Error::customErrorHandler');
 set_exception_handler     ('Blossom\Classes\Error::customExceptionHandler');
 register_shutdown_function('Blossom\Classes\Error::shutdownHandler');
