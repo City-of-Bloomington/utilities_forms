@@ -13,11 +13,6 @@ var Global = function() {
 		"School ID",
 		"Military ID",
 		"Passport",
-		"Lease",
-		"Power of Attorney",
-		"Marriage License",
-		"Divorce Decree",
-		"Death Certificate",
 		"Other"
 	)
 
