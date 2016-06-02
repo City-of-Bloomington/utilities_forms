@@ -33,11 +33,32 @@ $query = !empty($_GET['query'])
             if (count($results)) {
                 echo '<ul>';
                 foreach ($results as $address => $data) {
-                    $json = htmlspecialchars(json_encode($data), ENT_QUOTES);
-                    $url = "javascript:self.opener.ADDRESS_CHOOSER.setAddress('$json')";
+                    $number = '';
+                    $number.= $data['street_number_prefix'] ? $data['street_number_prefix'].' ' : '';
+                    $number.= $data['street_number'];
+                    $number.= $data['street_number_suffix'] ? ' '.$data['street_number_suffix'] : '';
+
+                    $number = htmlspecialchars($number, ENT_QUOTES);
+
+                    $direction = $data['street_direction'] ? $data['street_direction'] : '';
+
+                    $name = "$data[street_name] $data[street_type]";
+                    $name.= $data['street_postDirection'] ? ' '.$data['street_postDirection'] : '';
+                    $name = htmlspecialchars($name, ENT_QUOTES);
+
+                    $url = "javascript:self.opener.ADDRESS_CHOOSER.setAddress('$number', '$direction', '$name')";
 
                     $city = isset($data['city']) ? ", $data[city]" : '';
                     echo "<li><a href=\"$url\">$address$city</a></li>";
+                    if ($data['subunits']) {
+                        echo '<ul>';
+                        foreach ($data['subunits'] as $s) {
+                            $subname = "{$s->type} {$s->identifier}";
+                            $url = "javascript:self.opener.ADDRESS_CHOOSER.setAddress('$number', '$direction', '$name $subname')";
+                            echo "<li><a href=\"$url\">$address $subname$city</a></li>";
+                        }
+                        echo '</ul>';
+                    }
                 }
                 echo '</ul>';
             }

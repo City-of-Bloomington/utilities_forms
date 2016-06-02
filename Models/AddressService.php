@@ -61,16 +61,29 @@ class AddressService
             'state'    => $address->state,
             'zip'      => $address->zip,
             'latitude' => $address->latitude,
-            'longitude'=> $address->longitude
+            'longitude'=> $address->longitude,
+            'street_number_prefix' => $address->street_number_prefix,
+            'street_number'        => $address->street_number,
+            'street_number_suffix' => $address->street_number_suffix,
+            'street_direction'     => $address->streetName->directionCode,
+            'street_name'          => $address->streetName->name,
+            'street_type'          => $address->streetName->typeCode,
+            'street_postDirection' => $address->streetName->postDirectionCode
         ];
 
-		// See if this is a subunit
-		if ($parsedAddress->subunitIdentifier && $address->subunits) {
+		// See if the user searched for a particular subunit
+		if (isset($parsedAddress->subunitIdentifier) && isset($address->subunits)) {
             foreach ($address->subunits as $subunit) {
                 if ($subunit->identifier == $parsedAddress->subunitIdentifier) {
                     $data['subunit_id'] = $subunit->identifier;
                     $data['location'  ] = "$data[location] {$subunit->type} {$subunit->identifier}";
                 }
+            }
+		}
+		// Include data for all subunits at this address
+		else {
+            if (isset($address->subunits)) {
+                $data['subunits'] = $address->subunits;
             }
 		}
 		return $data;

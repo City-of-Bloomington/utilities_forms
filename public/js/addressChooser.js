@@ -8,13 +8,11 @@
 var ADDRESS_CHOOSER = {
     currentIndex: 0,
     popup: {},
-    setAddress: function (address) {
-        var data = JSON.parse(address);
-        alert(data.location);
+    setAddress: function (number, direction, streetName) {
         // Update the form with the address information we got back
-        document.getElementById('OBKey__225_' + ADDRESS_CHOOSER.currentIndex).value = data.location;
-        document.getElementById('OBKey__225_' + ADDRESS_CHOOSER.currentIndex).value = data.location;
-        document.getElementById('OBKey__225_' + ADDRESS_CHOOSER.currentIndex).value = data.location;
+        document.getElementById('OBKey__225_' + ADDRESS_CHOOSER.currentIndex).value = number;
+        document.getElementById('OBKey__226_' + ADDRESS_CHOOSER.currentIndex).value = direction;
+        document.getElementById('OBKey__104_' + ADDRESS_CHOOSER.currentIndex).value = streetName;
 
         ADDRESS_CHOOSER.popup.close();
     },
