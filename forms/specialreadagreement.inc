@@ -66,7 +66,7 @@
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2" required>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2">
 					<option value="" selected></option>
 					<option value="N/A">N/A</option>
 					<option value="N">N</option>
@@ -91,7 +91,7 @@
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3" required>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3">
 					<option value="" selected></option>
 					<option value="N/A">N/A</option>
 					<option value="N">N</option>
@@ -116,7 +116,7 @@
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4" required>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4">
 					<option value="" selected></option>
 					<option value="N/A">N/A</option>
 					<option value="N">N</option>
@@ -141,7 +141,7 @@
 			</div>
 			<div class="col-xs-2">
 				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5" required>
+				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5">
 					<option value="" selected></option>
 					<option value="N/A">N/A</option>
 					<option value="N">N</option>
