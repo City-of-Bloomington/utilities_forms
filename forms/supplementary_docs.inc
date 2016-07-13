@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-xs-6">
                 <center>
-                <?php Captcha::render(); ?>
+                <?php Application\Models\Captcha::render(); ?>
                 </center>
             </div>
         </div>

@@ -30,11 +30,11 @@ class Url
 	 */
 	public static function get($url)
 	{
-		$request = curl_init($url);
+		$request = curl_init(($url));
 		curl_setopt($request, CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($request, CURLOPT_FOLLOWLOCATION, true);
 
-		if (substr($url, 0, 5) == 'https://') {
+		if (substr($url, 0, 5) == 'https') {
 			curl_setopt($request, CURLOPT_SSL_VERIFYPEER, false);
 		}
 		return curl_exec($request);

@@ -6,6 +6,8 @@ var Global = function() {
 	var SA = 1;
 	var captchaValidated = false;
 
+	$.support.cors = true;
+	
 	//ADD OR REMOVE SUPPLEMENTARY DOCUMENT TYPES HERE
 	var Sup_Doc_Types = new Array(
 		"Drivers License",
@@ -22,6 +24,18 @@ var Global = function() {
 	}
 
 	this.bindEvents = function() {
+		$(document).off("click",".lookupAddress").on("click",".lookupAddress",function(e) {
+			e.preventDefault();
+			ADDRESS_CHOOSER.showModal($(this).attr("index"));
+			return false;
+		})
+		
+		$(document).off("click","#searchAddress").on("click","#searchAddress",function(e) {
+			e.preventDefault();
+			SELF.searchAddress();
+			return false;
+		})
+		
 		$(document).off("change","#Person").on("change","#Person",function() {
 			if($(this).val() == "Other") {
 				$("#Other_Explain").parent().removeClass("hidden");
@@ -149,12 +163,55 @@ var Global = function() {
 			return false;
 		})
 
-		$(document).off("click","#Add_More_Addresses").on("click","#Add_More_Addresses",function(e) {
+		$(document).off("click",".Add_More_Addresses").on("click",".Add_More_Addresses",function(e) {
 			e.preventDefault;
-			SELF.Add_New_Service_Row();
+			SELF.Add_New_Service_Row($(this));
 			return false;
 		})
+		
+		
+		$(document).off("click",".Remove_Addresses").on("click",".Remove_Addresses",function(e) {
+			e.preventDefault;
+			SELF.Remove_Service_Row($(this));
+			return false;
+		})		
 
+	}
+	
+	this.toggleAddAddresses = function() {
+		if(!$(".service_row_hidden").length) {
+			$(".Add_More_Addresses").attr("disabled",true);
+		}
+		else {
+			$(".Add_More_Addresses").removeAttr("disabled");
+		}	
+	}
+
+	this.Add_New_Service_Row = function(item) {
+		var row = $(".service_row_hidden:first");
+		row.removeClass("service_row_hidden");
+		row.children().find("#Service_St_Num").attr("required", true).prev().append("<req>*</req>");
+		row.children().find("#Service_St_Name").attr("required", true).prev().append("<req>*</req>");
+		SELF.toggleAddAddresses();
+	}
+	
+	this.Remove_Service_Row = function(item) {
+		var index = parseInt(item.attr("index"));
+		$(".service_row").eq(index-1).addClass("service_row_hidden");
+		$(".service_row").eq(index-1).children().find("#Service_St_Num").removeAttr("required").val("").prev().children("req").remove();
+		$(".service_row").eq(index-1).children().find("#Service_St_Name").removeAttr("required").val("").prev().children("req").remove();
+		$(".service_row").eq(index-1).children().find("#Service_St_Dir").val("");
+		SELF.toggleAddAddresses();
+	}
+	
+	this.searchAddress = function() {
+		var query = $("input[name='query']").val();
+		$.get('address.php',{
+			query:query
+		},function(content) {
+			$(".modal").children().find('.modal-body').children("div").html(content);
+			$("#addressValidation").modal('show');
+		})		
 	}
 	
 	this.validation = function(e,item) {
@@ -164,6 +221,11 @@ var Global = function() {
 		var spec = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,8,9,13,17,18,32,37,38,39,40,45,46,109,173,189);
 		var addr = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105,191);
 
+		if(typeof item.attr("readonly") !== 'undefined' && $.inArray(e.which,ctrl) === -1) {
+			e.preventDefault();
+			return false;
+		}
+		
 		if(item.attr("id") == "Service_St_Name") {
 			if(e.which == 190 || e.which == 110) {
 				e.preventDefault();
@@ -297,8 +359,14 @@ var Global = function() {
 
 	this.toUpper = function(e) {
 		if(e !== undefined) {
-			var val = String.fromCharCode(e.keyCode).toUpperCase();
-			$(e.target).val($(e.target).val() + val)
+			var item = $(e.target);
+			var c = String.fromCharCode(e.keyCode).toUpperCase();
+			var val = item.val();
+			var selStart = item[0].selectionStart;
+			var selEnd = item[0].selectionEnd;
+			var newVal = val.substr(0,selStart) + c + val.substr(selStart);
+			$(e.target).val(newVal);	
+			item[0].setSelectionRange(selStart+1,selEnd+1);
 		}
 	}
 
@@ -374,20 +442,6 @@ var Global = function() {
 		else {
 			SELF.Set_Agree_Box(true);
 			SELF.Check_All_Valid();
-		}
-	}
-
-	this.Add_New_Service_Row = function() {
-		$("#Add_More_Addresses").remove();
-		if(SA < 6) {
-			SA = SA + 1;
-			var newRow = $(".service_row:visible:last").next();
-			newRow.removeClass("service_row_hidden");
-			newRow.children().find("#Service_St_Num").attr("required", true).prev("label").append("<req>*</req>");
-			newRow.children().find("#Service_St_Name").attr("required", true).prev("label").append("<req>*</req>");
-			//SET NEXT SERVICE ST DIR TO N/A
-			//newRow.children().find("#Service_St_Dir")[0];
-
 		}
 	}
 

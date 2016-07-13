@@ -73,9 +73,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-            <?= Application\Models\AddressService::renderFormFields(1); ?>
-		</div>
+		
+            <?= Application\Models\AddressService::renderFormFields(1,true); ?>
+		
 		<hr>
 		<div class="row">
 			<div class="col-xs-11">

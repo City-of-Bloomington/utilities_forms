@@ -64,27 +64,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" address required>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-6">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
-			</div>
-		</div>
+			<?= Application\Models\AddressService::renderFormFields(1,true); ?>
 		<div class="row">
 			<div class="col-xs-6">
 				<label for="Customer_Acct_Num">City of Bloomington Utilities Account Number</label>
