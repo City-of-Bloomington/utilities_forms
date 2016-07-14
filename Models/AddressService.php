@@ -24,8 +24,8 @@ class AddressService
 			$url->query = $query;
 
 			$json = json_decode(Url::get($url));
-			
-			if(!empty($json)) {
+
+			if (!empty($json)) {
 				foreach ($json as $address) {
 					$data = self::extractAddressData($address, self::parseAddress($query));
 					$results[$data['location']] = $data;
@@ -95,51 +95,54 @@ class AddressService
 	public static function renderFormFields($index=1, $required=null, $multiple=false)
 	{
         $index    = (int)$index;
-        $required = $required ? 'required="true"' : '';
-		$return = "";
-		
-		if($multiple == false) {
+        $required = ($required && $index == 1) ? 'required="true"' : '';
+		$return   = "";
+
+		if (!$multiple) {
 			$return .= "
 			<div class=\"row\">
-				<button class=\"btn btn-link lookupAddress\" index=\"" . $index . "\">
+				<button class=\"btn btn-link lookupAddress\" index=\"$index\">
 					Lookup Address
-				</button>		
+				</button>
 			</div>";
 		}
-		
-		$return .= $multiple == true ? "" : "<div class=\"row\">";
-		$return .= "<div class=\"col-xs-" . ($multiple == true ? "2" : "3") . "\">
+
+		$return .= $multiple ? "" : "<div class=\"row\">";
+
+		$return .= "
+            <div class=\"col-xs-" . ($multiple ? "2" : "3") . "\">
 				<label for=\"Service_St_Num\">St Num</label>
-				<input class=\"form-control\" id=\"Service_St_Num\" name=\"OBKey__225_$index\" " . ($index == 1 ? $required : "") . " address readonly />
+				<input class=\"form-control\" id=\"Service_St_Num\" name=\"OBKey__225_$index\" $required \"address\" \"readonly\" />
 			</div>
 			<div class=\"col-xs-2\">
-				<label for=\"Service_St_Dir\">St Dir.</label>			
-				<input class=\"form-control\" id=\"Service_St_Dir\" name=\"OBKey__226_$index\" readonly />
+				<label for=\"Service_St_Dir\">St Dir.</label>
+				<input class=\"form-control\" id=\"Service_St_Dir\" name=\"OBKey__226_$index\" \"readonly\" />
 			</div>
-			<div class=\"col-xs-" . ($multiple == true ? "5" : "6") . "\">
+			<div class=\"col-xs-" . ($multiple ? "5" : "6") . "\">
 				<label for=\"Service_St_Name\">Street Name/Unit</label>
-				<input class=\"form-control\" id=\"Service_St_Name\" name=\"OBKey__104_$index\" " . ($index == 1 ? $required : "") . " readonly />
-			</div>";
-		
-			if($multiple == true) {
-				$return .= "
-					<div class=\"col-xs-2\">
-						<span>&nbsp;<br /></span>
-						<div class=\"btn-group\">
-							<button title=\"Lookup Address\" class=\"btn btn-primary lookupAddress\" index=\"" . $index . "\"><i class=\"fa fa-search\"></i></button>
-						";
-						if($index == 1) {
-							$return .= "<button index=\"" . $index . "\" title=\"Add Another Address\" class=\"btn btn-success Add_More_Addresses\"><i class=\"fa fa-plus\"></i></button>";
-						}
-						if($index < 6 && $index > 1) {
-							$return .= "<button index=\"" . $index . "\" title=\"Remove Address\" id=\"\" class=\"btn btn-danger Remove_Addresses\"><i class=\"fa fa-remove\"></i></button>";
-						}
-				$return .= "
-						</div>
-					</div>";
-			}
-		
-		$return .= $multiple == true ? "" : "</div>";	
+				<input class=\"form-control\" id=\"Service_St_Name\" name=\"OBKey__104_$index\" $required \"readonly\" />
+			</div>
+        ";
+
+        if ($multiple) {
+            $return .= "
+                <div class=\"col-xs-2\">
+                    <span>&nbsp;<br /></span>
+                    <div class=\"btn-group\">
+                        <button title=\"Lookup Address\" class=\"btn btn-primary lookupAddress\" index=\"$index\"><i class=\"fa fa-search\"></i></button>
+                    ";
+                    if ($index == 1) {
+                        $return .= "<button index=\"$index\" title=\"Add Another Address\" class=\"btn btn-success Add_More_Addresses\"><i class=\"fa fa-plus\"></i></button>";
+                    }
+                    if ($index < 6 && $index > 1) {
+                        $return .= "<button index=\"$index\" title=\"Remove Address\" id=\"\" class=\"btn btn-danger Remove_Addresses\"><i class=\"fa fa-remove\"></i></button>";
+                    }
+            $return .= "
+                    </div>
+                </div>";
+        }
+
+		$return .= $multiple ? "" : "</div>";
 		return $return;
 	}
 }
