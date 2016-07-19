@@ -19,7 +19,7 @@ $query = !empty($_GET['query'])
 					<input style="width:425px;" class="form-control" name="query" value="<?= $query ?>" />
 					<button id="searchAddress" class="btn btn-primary">
 						<i class="fa fa-search"></i>
-						Search
+						Search 
 					</button>
 				</div>
 			</div>

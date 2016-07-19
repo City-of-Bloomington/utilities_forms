@@ -124,7 +124,7 @@ class AddressService
 			</div>
         "; 
 
-        if ($multiple) {
+        if ($multiple) { 
             $return .= "
                 <div class=\"col-xs-2\">
                     <span>&nbsp;<br /></span>

@@ -19,7 +19,7 @@ var Global = function() {
 	)
 
 	this.init = function() {
-		SELF.bindEvents();
+		SELF.bindEvents(); 
 		SELF.startup();
 	}
 

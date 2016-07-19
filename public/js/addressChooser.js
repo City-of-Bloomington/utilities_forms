@@ -51,7 +51,7 @@ var ADDRESS_CHOOSER = {
 			$('body').append(modal);
 		}
 		
-		var url = 'address.php';
+		var url = 'address.php'; 
 		if(existing != "") {
 			url += '?query='+existing
 		}
