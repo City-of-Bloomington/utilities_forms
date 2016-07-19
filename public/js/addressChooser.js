@@ -5,6 +5,7 @@
  * When the user finally selects an address, the popup window is supposed
  * to call the callback function, ADDRESS_CHOOSER.setAddress().
  */
+var xhr;
 var ADDRESS_CHOOSER = {
     currentIndex: 0,
     popup: {},
@@ -14,6 +15,7 @@ var ADDRESS_CHOOSER = {
 		$("input[name='OBKey__226_" + ADDRESS_CHOOSER.currentIndex + "']").val(direction);
 		$("input[name='OBKey__104_" + ADDRESS_CHOOSER.currentIndex + "']").val(streetName);
 		$('.modal').modal('toggle');
+		Global.Check_All_Valid();
     },
     launchPopup: function (index) {
         ADDRESS_CHOOSER.currentIndex = index;
@@ -25,7 +27,7 @@ var ADDRESS_CHOOSER = {
         ADDRESS_CHOOSER.popup.focus();
         return false;
     },
-	showModal: function (index) {
+	showModal: function (index,existing) {
 		ADDRESS_CHOOSER.currentIndex = index;
 		if($(".modal").length) {
 			var modal = $(".modal");
@@ -49,12 +51,20 @@ var ADDRESS_CHOOSER = {
 			$('body').append(modal);
 		}
 		
-		$.get('address.php',function(content) {
-			modal.children().find('.modal-body').children("div").html(content);
-			$("#addressValidation").modal('show');
+		var url = 'address.php';
+		if(existing != "") {
+			url += '?query='+existing
+		}
+		if(xhr) xhr.abort();
+		xhr = $.ajax({
+			type: "GET",
+			url: url,
+			success: function(content) {
+				modal.children().find('.modal-body').children("div").html(content);
+				$("#addressValidation").modal('show');
+				return false;
+			}
 		})
-
-		return false;
 	}
 	
 };

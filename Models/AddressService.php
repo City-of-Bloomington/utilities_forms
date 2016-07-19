@@ -112,15 +112,15 @@ class AddressService
 		$return .= "
             <div class=\"col-xs-" . ($multiple ? "2" : "3") . "\">
 				<label for=\"Service_St_Num\">St Num</label>
-				<input class=\"form-control\" id=\"Service_St_Num\" name=\"OBKey__225_$index\" $required address readonly />
+				<input index=\"$index\" class=\"form-control\" id=\"Service_St_Num\" name=\"OBKey__225_$index\" $required address readonly />
 			</div>
 			<div class=\"col-xs-2\">
 				<label for=\"Service_St_Dir\">St Dir.</label>
-				<input class=\"form-control\" id=\"Service_St_Dir\" name=\"OBKey__226_$index\" readonly />
+				<input index=\"$index\" class=\"form-control\" id=\"Service_St_Dir\" name=\"OBKey__226_$index\" readonly />
 			</div>
 			<div class=\"col-xs-" . ($multiple ? "5" : "6") . "\">
 				<label for=\"Service_St_Name\">Street Name/Unit</label>
-				<input class=\"form-control\" id=\"Service_St_Name\" name=\"OBKey__104_$index\" $required readonly />
+				<input index=\"$index\" class=\"form-control\" id=\"Service_St_Name\" name=\"OBKey__104_$index\" $required readonly />
 			</div>
         ";
 

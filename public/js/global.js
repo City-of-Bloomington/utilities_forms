@@ -26,7 +26,7 @@ var Global = function() {
 	this.bindEvents = function() {
 		$(document).off("click",".lookupAddress").on("click",".lookupAddress",function(e) {
 			e.preventDefault();
-			ADDRESS_CHOOSER.showModal($(this).attr("index"));
+			ADDRESS_CHOOSER.showModal($(this).attr("index"),"");
 			return false;
 		})
 		
@@ -174,8 +174,24 @@ var Global = function() {
 			e.preventDefault;
 			SELF.Remove_Service_Row($(this));
 			return false;
-		})		
+		})
+		
+		$(document).off("click","input[name^='OBKey__104'], input[name^='OBKey__226'], input[name^='OBKey__225']").on("click","input[name^='OBKey__104'], input[name^='OBKey__226'], input[name^='OBKey__225']",function(e) {
+			e.preventDefault();
+			SELF.openModalwithInputs($(this).attr("index"),$(this));			
+			return false;			
+		})
 
+	}
+	
+	this.openModalwithInputs = function(index,item) {
+		var existing = "";
+		if(item.val() != "") {
+			existing = $("input[name='OBKey__225_"+index+"']").val() + " ";
+			existing += $("input[name='OBKey__226_"+index+"']").val() + " ";
+			existing += $("input[name='OBKey__104_"+index+"']").val() + " ";
+		}
+		ADDRESS_CHOOSER.showModal(index,existing);
 	}
 	
 	this.toggleAddAddresses = function() {
