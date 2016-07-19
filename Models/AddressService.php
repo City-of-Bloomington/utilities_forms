@@ -122,7 +122,7 @@ class AddressService
 				<label for=\"Service_St_Name\">Street Name/Unit</label>
 				<input index=\"$index\" class=\"form-control\" id=\"Service_St_Name\" name=\"OBKey__104_$index\" $required readonly />
 			</div>
-        ";
+        "; 
 
         if ($multiple) {
             $return .= "
