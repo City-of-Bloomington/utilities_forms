@@ -5,22 +5,17 @@ include '../configuration.inc';
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>City of Bloomington Utilities</title>
-		<link rel="stylesheet" href="<?= BASE_URL; ?>/css/global.css">
-		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/jquery/ui/jquery-ui.min.css">
-		<script src="<?= BASE_URL; ?>/vendor/jquery/jquery-1.11.3.min.js"></script>
-		<script src="<?= BASE_URL; ?>/vendor/jquery/ui/jquery-ui.min.js"></script>
-		<script src="<?= BASE_URL; ?>/vendor/jquery-mask/jquery-mask.js"></script>
-		<script src="<?= BASE_URL; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="<?= BASE_URL; ?>/js/global.js"></script>
+        <?php include '../template/head.inc'; ?>
+
+		<script type="text/javascript" src="<?= BASE_URI; ?>/js/addressChooser.js"></script>
+		<script type="text/javascript" src="<?= BASE_URL; ?>/js/global.js"></script>
 		<script type="text/javascript">
+            var BASE_URL = '<?= BASE_URL; ?>',
+                BASE_URI = '<?= BASE_URI; ?>';
+
 			Global = new Global;
 			Global.init();
-			
+
 			function validateCaptcha() {
 				Global.validateCaptcha();
 			}

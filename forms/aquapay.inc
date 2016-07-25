@@ -73,27 +73,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" id="Service_St_Num" name="OBKey__225_1" required address>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-6">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" id="Service_St_Name" name="OBKey__104_1" required>
-			</div>
-		</div>
+		
+            <?= Application\Models\AddressService::renderFormFields(1,true); ?>
+		
 		<hr>
 		<div class="row">
 			<div class="col-xs-11">

@@ -35,129 +35,19 @@
 			</div>
 		</div>
 		<div class="row service_row service_row_first">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_1" id="Service_St_Num" address required>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_1" required>
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-5">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_1" id="Service_St_Name" required>
-			</div>
-			<div class="col-xs-1">
-			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
-			</div>
+            <?= Application\Models\AddressService::renderFormFields(1,true,true); ?>
 		</div>
 		<div class="row service_row service_row_hidden">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_2" id="Service_St_Num" address>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_2">
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-5">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_2" id="Service_St_Name">
-			</div>
-			<div class="col-xs-1">
-			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
-			</div>
+			<?= Application\Models\AddressService::renderFormFields(2,true,true); ?>
 		</div>
 		<div class="row service_row service_row_hidden">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_3" id="Service_St_Num" address>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_3">
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-5">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_3" id="Service_St_Name">
-			</div>
-			<div class="col-xs-1">
-			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
-			</div>
+			<?= Application\Models\AddressService::renderFormFields(3,true,true); ?>
 		</div>
 		<div class="row service_row service_row_hidden">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_4" id="Service_St_Num" address>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_4">
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-5">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_4" id="Service_St_Name">
-			</div>
-			<div class="col-xs-1">
-			<span>&nbsp;<br /></span>
-				<button id="Add_More_Addresses" class="btn btn-success"><i class="fa fa-plus"></i></button>
-			</div>
+			<?= Application\Models\AddressService::renderFormFields(4,true,true); ?>
 		</div>
 		<div class="row service_row service_row_hidden">
-			<div class="col-xs-3">
-				<label for="Service_St_Num">Street Number</label>
-				<input type="text" class="form-control" name="OBKey__225_5" id="Service_St_Num" address>
-			</div>
-			<div class="col-xs-2">
-				<label for="Service_St_Dir">St Dir</label>
-				<select id="Service_St_Dir" class="form-control" name="OBKey__226_5">
-					<option value="" selected></option>
-					<option value="N/A">N/A</option>
-					<option value="N">N</option>
-					<option value="E">E</option>
-					<option value="S">S</option>
-					<option value="W">W</option>
-				</select>
-			</div>
-			<div class="col-xs-5">
-				<label for="Service_St_Name">Street Name/Unit</label>
-				<input type="text" class="form-control" name="OBKey__104_5" id="Service_St_Name">
-			</div>
-			<div class="col-xs-1">
-			<span>&nbsp;<br /></span>
-
-			</div>
+			<?= Application\Models\AddressService::renderFormFields(5,true,true); ?>
 		</div>
 		<div class="row">
 			<div class="col-xs-11">
