@@ -8,6 +8,11 @@
 
 */
 
+@media print {
+.page-break {
+  page-break-after: always;
+}
+
 * {
 	font-family:'PT Sans', Verdana, sans-serif;
 	margin:0;
@@ -200,12 +205,6 @@ input[required=true]:before {
 	border-radius:25px;
 	padding:15px;
 	margin-right:8.66%;
-}
-
-.li {
--webkit-column-break-inside: avoid;
-          page-break-inside: avoid;
-               break-inside: avoid;
 }
 
 .logo {
