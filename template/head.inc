@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>City of Bloomington Utilities</title>
 <link rel="stylesheet" href="<?= BASE_URL; ?>/css/global.css">
+<link rel="stylesheet" href="<?= BASE_URL; ?>/css/print.css">
 <link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?= BASE_URL; ?>/vendor/jquery/ui/jquery-ui.min.css">
