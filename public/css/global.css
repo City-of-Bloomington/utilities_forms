@@ -7,12 +7,6 @@
 }
 
 */
-
-@media print {
-.page-break {
-  page-break-after: always;
-}
-
 * {
 	font-family:'PT Sans', Verdana, sans-serif;
 	margin:0;
