@@ -34,21 +34,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row service_row service_row_first">
-            <?= Application\Models\AddressService::renderFormFields(1,true,true); ?>
-		</div>
-		<div class="row service_row service_row_hidden">
-			<?= Application\Models\AddressService::renderFormFields(2,true,true); ?>
-		</div>
-		<div class="row service_row service_row_hidden">
-			<?= Application\Models\AddressService::renderFormFields(3,true,true); ?>
-		</div>
-		<div class="row service_row service_row_hidden">
-			<?= Application\Models\AddressService::renderFormFields(4,true,true); ?>
-		</div>
-		<div class="row service_row service_row_hidden">
-			<?= Application\Models\AddressService::renderFormFields(5,true,true); ?>
-		</div>
+		<?= Application\Models\AddressService::renderFormFields(1,true); ?>
 		<div class="row">
 			<div class="col-xs-11">
 				<div class="form-legal-text">
