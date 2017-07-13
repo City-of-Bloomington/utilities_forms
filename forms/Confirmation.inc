@@ -67,5 +67,7 @@ else {
 <hr>
 <h3>You will be required to have the following confirmation number if you need to upload additional documents or if you need to contact a customer service representative at the City of Bloomington Utilities Department.</h3>
 <h2>Your Confirmation Number is: <br /><b><?= $Confirmation_Number; ?></b></h2>
-<a target="_blank" href="https://docs.google.com/a/bloomington.in.gov/forms/d/1sfKE7WKSkFAnGsB7UyVUGEkzAHWOFFeOTRmHH5MaY4k/viewform">Provide feedback</a>
+<?php
+   include __DIR__.'/partials/contact-info.inc';
+?>
 </center>
