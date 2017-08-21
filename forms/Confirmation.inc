@@ -57,7 +57,7 @@ else if ($docs > 0 && $Error > 0) {
 else {
 	echo "
 	<hr>
-	<h3>Your application is being processed. If notified by a Customer Service Representative, please upload further documentation by accessing this link:<br /><br />
+	<h3>Your application is being processed. You will be notified by a Customer Service Representative only if additional information is needed. If you are notified that additional information is needed, please upload documentation by accessing this link:<br /><br />
 	<a href=\"index.php?form=supplementary_docs&conf_num=$Confirmation_Number\">Upload Now</a>
 	</h3>";
 }
