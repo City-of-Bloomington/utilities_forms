@@ -109,7 +109,17 @@
 			<div class="row">
 				<div class="col-xs-11">
 					<div class="form-legal-text">
-						If water service is disconnected (without a new signer) a service fee of $18.00 will appear on your final billing statement. If you have any additional questions, please contact customer service at (812) 349-3930.<br /><br /><b>* Aqua Pay customers: Final bills will NOT be automatically withdrawn from your bank account.</b>
+                        <p>
+                            If water service is disconnected (without a new signer)
+                            a service fee of $45.00 will appear on your final billing
+                            statement. If you have any additional questions, please
+                            contact customer service at (812) 349-3930.
+                        </p>
+
+						<p>
+                            <b>* Aqua Pay customers: Final bills will NOT be automatically
+                            withdrawn from your bank account.</b>
+						</p>
 					</div>
 				</div>
 			</div>

@@ -23,7 +23,8 @@
         <?php include __DIR__.'/partials/form-title-logo.inc'; ?>
 		<div class="form-title"><h2>Individual Customer Contract</h2></div>
 		<div class="description">
-			<b>Sign up for water and sewer service</b> (for residential customers). You will need an acceptable form of identification to attach as a file to this service application, such as a valid Driver’s License, State ID, Military ID, or Passport. Our office will contact you if further information is required in order to process your application.
+			<b>Sign up for water, wastewater, and sanitation service</b>
+			(for residential customers). You will need an acceptable form of identification to attach as a file to this service application, such as a valid Driver’s License, State ID, Military ID, or Passport. Our office will contact you if further information is required in order to process your application.
 		</div>
 		<?php
             include __DIR__.'/partials/contact-info.inc';
@@ -173,7 +174,7 @@
 				<fieldset>
 					<legend><label>Emergency Contact Information</label></legend>
 					<div style="margin-bottom:8px; margin-top:8px;">
-						In the Event of an emergency concerning your water and/or wastewater service, please provide us with the following emergency contact information.
+                        In the event of an emergency concerning your water, wastewater, and/or sanitation service, please provide us with the following emergency contact information
 					</div>
 					<div class="col-xs-7">
 						<label for="Emergency_Name">Name</label>
