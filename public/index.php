@@ -8,10 +8,11 @@ include '../configuration.inc';
         <?php include '../template/head.inc'; ?>
 
 		<script type="text/javascript" src="<?= BASE_URI; ?>/js/addressChooser.js"></script>
-		<script type="text/javascript" src="<?= BASE_URL; ?>/js/global.js"></script>
+		<script type="text/javascript" src="<?= BASE_URI; ?>/js/global.js"></script>
 		<script type="text/javascript">
-            var BASE_URL = '<?= BASE_URL; ?>',
-                BASE_URI = '<?= BASE_URI; ?>';
+            const BASE_URL        = '<?= BASE_URL; ?>',
+                  BASE_URI        = '<?= BASE_URI; ?>',
+                  ADDRESS_SERVICE = '<?= ADDRESS_SERVICE; ?>';
 
 			Global = new Global;
 			Global.init();

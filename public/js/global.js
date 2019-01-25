@@ -7,7 +7,7 @@ var Global = function() {
 	var captchaValidated = false;
 
 	$.support.cors = true;
-	
+
 	//ADD OR REMOVE SUPPLEMENTARY DOCUMENT TYPES HERE
 	var Sup_Doc_Types = new Array(
 		"Drivers License",
@@ -19,23 +19,17 @@ var Global = function() {
 	)
 
 	this.init = function() {
-		SELF.bindEvents(); 
+		SELF.bindEvents();
 		SELF.startup();
 	}
 
 	this.bindEvents = function() {
 		$(document).off("click",".lookupAddress").on("click",".lookupAddress",function(e) {
 			e.preventDefault();
-			ADDRESS_CHOOSER.showModal($(this).attr("index"),"");
+			ADDRESS_CHOOSER.start($(this).attr("index"),"");
 			return false;
 		})
-		
-		$(document).off("click","#searchAddress").on("click","#searchAddress",function(e) {
-			e.preventDefault();
-			SELF.searchAddress();
-			return false;
-		})
-		
+
 		$(document).off("change","#Person").on("change","#Person",function() {
 			if($(this).val() == "Other") {
 				$("#Other_Explain").parent().removeClass("hidden");
@@ -120,7 +114,7 @@ var Global = function() {
 		$(document).off("paste","input").on("paste","input",function(e) {
 			SELF.validation(e,$(this));
 		})
-		
+
 		$(document).off("click","#dev").on("click","#dev",function() {
 			SELF.Populate_for_Dev();
 		})
@@ -168,39 +162,38 @@ var Global = function() {
 			SELF.Add_New_Service_Row($(this));
 			return false;
 		})
-		
-		
+
+
 		$(document).off("click",".Remove_Addresses").on("click",".Remove_Addresses",function(e) {
 			e.preventDefault;
 			SELF.Remove_Service_Row($(this));
 			return false;
 		})
-		
+
 		$(document).off("click","input[name^='OBKey__104'], input[name^='OBKey__226'], input[name^='OBKey__225']").on("click","input[name^='OBKey__104'], input[name^='OBKey__226'], input[name^='OBKey__225']",function(e) {
 			e.preventDefault();
-			SELF.openModalwithInputs($(this).attr("index"),$(this));			
-			return false;			
+			SELF.openModalwithInputs($(this).attr("index"),$(this));
+			return false;
 		})
-
 	}
-	
-	this.openModalwithInputs = function(index,item) {
+
+	this.openModalwithInputs = function(index, item) {
 		var existing = "";
-		if(item.val() != "") {
-			existing = $("input[name='OBKey__225_"+index+"']").val() + " ";
+		if (item.val() != "") {
+			existing  = $("input[name='OBKey__225_"+index+"']").val() + " ";
 			existing += $("input[name='OBKey__226_"+index+"']").val() + " ";
 			existing += $("input[name='OBKey__104_"+index+"']").val() + " ";
 		}
-		ADDRESS_CHOOSER.showModal(index,existing);
+		ADDRESS_CHOOSER.start(index, existing);
 	}
-	
+
 	this.toggleAddAddresses = function() {
 		if(!$(".service_row_hidden").length) {
 			$(".Add_More_Addresses").attr("disabled",true);
 		}
 		else {
 			$(".Add_More_Addresses").removeAttr("disabled");
-		}	
+		}
 	}
 
 	this.Add_New_Service_Row = function(item) {
@@ -210,7 +203,7 @@ var Global = function() {
 		row.children().find("#Service_St_Name").attr("required", true).prev().append("<req>*</req>");
 		SELF.toggleAddAddresses();
 	}
-	
+
 	this.Remove_Service_Row = function(item) {
 		var index = parseInt(item.attr("index"));
 		$(".service_row").eq(index-1).addClass("service_row_hidden");
@@ -219,17 +212,7 @@ var Global = function() {
 		$(".service_row").eq(index-1).children().find("#Service_St_Dir").val("");
 		SELF.toggleAddAddresses();
 	}
-	
-	this.searchAddress = function() {
-		var query = $("input[name='query']").val();
-		$.get('address.php',{
-			query:query
-		},function(content) {
-			$(".modal").children().find('.modal-body').children("div").html(content);
-			$("#addressValidation").modal('show');
-		})		
-	}
-	
+
 	this.validation = function(e,item) {
 		var keys = new Array(65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90);
 		var nums = new Array(48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105);
@@ -241,15 +224,15 @@ var Global = function() {
 			e.preventDefault();
 			return false;
 		}
-		
+
 		if(item.attr("id") == "Service_St_Name") {
 			if(e.which == 190 || e.which == 110) {
 				e.preventDefault();
 				SELF.Make_Invalid(item);
 				return false;
-			}					
+			}
 		}
-		
+
 		if($.inArray(e.which,ctrl) !== -1 || (e.which == 9 && e.shiftKey) || ($.inArray(e.which,nums) && e.shiftKey && $(e.target).attr("numeric") === undefined)) {
 			return true;
 		}
@@ -282,7 +265,7 @@ var Global = function() {
 		if(($(e.target).attr("control") !== undefined && $.inArray(e.which,ctrl) === -1) || e.shiftKey) {
 			e.preventDefault();
 			return false;
-		}			
+		}
 	}
 
 	this.Make_Invalid = function(item) {
@@ -296,7 +279,7 @@ var Global = function() {
 		item.css("border-width","");
 		item.css("background-color","");
 	}
-	
+
 	this.validateCaptcha = function() {
 		captchaValidated = true;
 		SELF.Check_All_Valid();
@@ -381,7 +364,7 @@ var Global = function() {
 			var selStart = item[0].selectionStart;
 			var selEnd = item[0].selectionEnd;
 			var newVal = val.substr(0,selStart) + c + val.substr(selStart);
-			$(e.target).val(newVal);	
+			$(e.target).val(newVal);
 			item[0].setSelectionRange(selStart+1,selEnd+1);
 		}
 	}
@@ -488,5 +471,4 @@ var Global = function() {
 			SD = SD + 1;
 		}
 	}
-
 }

@@ -1,9 +1,9 @@
 
 /*
-@font-face { 
-	font-family: 'PT Sans'; 
-	src: url("../fonts/PTS55F-webfont.eot"); 
-	text-rendering: optimizeLegibility; 
+@font-face {
+	font-family: 'PT Sans';
+	src: url("../fonts/PTS55F-webfont.eot");
+	text-rendering: optimizeLegibility;
 }
 
 */
@@ -32,7 +32,7 @@ label {
 #Form_Container {
 	max-width:640px;
 	margin:15px;
-	
+
 }
 
 .form-header {
@@ -183,7 +183,7 @@ input[required=true]:before {
 
 
 .form-title {
-	font-size:18px; 
+	font-size:18px;
 	font-weight:900;
 	text-align:center;
 }
@@ -209,3 +209,5 @@ input[required=true]:before {
 	padding-bottom:10px;
 }
 
+#searchResults table { width: 100%; }
+#searchResults td { color: #337ab7; cursor: pointer; }
