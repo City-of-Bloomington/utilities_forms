@@ -1,9 +1,10 @@
 <?php
 /**
- * @copyright 2016 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
+ * @copyright 2016-2019 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 define('APPLICATION_HOME', __DIR__);
+define('VERSION', trim(file_get_contents(APPLICATION_HOME.'/VERSION')));
 define('BASE_URL', 'http://localhost/utilities_forms');
 define('BASE_URI', '/utilities_forms');
 
