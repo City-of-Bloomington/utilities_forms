@@ -56,7 +56,7 @@ label {
 }
 
 .hidden {
-	display:block;
+	display:block !important;
 }
 
 fieldset {

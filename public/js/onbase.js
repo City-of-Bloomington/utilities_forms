@@ -190,7 +190,9 @@
 				}
 			})
 			$("button[name='OBBtn_Save']").removeAttr("disabled");
-			$(".hidden").removeClass("hidden");
+			$(".hidden").css("display","block");
+			$("#Customer_Acct_Num").parent().css("display","block");
+			//$(".hidden").removeClass("hidden");
 			//setTimeout(function() {
 				//alert("Save button exists: " + $("button[name='OBBtn_Save']").length);
 				//alert("Save button is disabled: " + $("button[name='OBBtn_Save']").attr("disabled"));
