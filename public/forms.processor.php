@@ -259,8 +259,8 @@ class Forms {
 		$html = '';
 		$lines = file($url);
 		foreach ($lines as $line_num => $line) {
-			if (strpos($line,"global.js")) {
-				$line = str_replace("global.js","onbase.js",$line);
+			if (strpos($line,"global-1.1.0.js")) {
+				$line = str_replace("global-1.1.0.js","onbase.js",$line);
 			}
 			if (strpos($line,"Global = new Global;")) {
 				$line = str_replace("Global = new Global;","",$line);
@@ -277,8 +277,8 @@ class Forms {
 			if (strpos($line,"Add_More_Addresses") !== false) {
 				$line = str_replace("Add_More_Addresses","Add_More_Addresses_hide",$line);
 			}
-			if (strpos($line,"global.css") !== false) {
-				$line = str_replace("global.css","onbase.css",$line);
+			if (strpos($line,"global-1.1.0.css") !== false) {
+				$line = str_replace("global-1.1.0.css","onbase.css",$line);
 			}
 			if (strpos($line,"enctype=\"multipart/form-data\"") !== false) {
 				$line = str_replace("enctype=\"multipart/form-data\"","",$line);
