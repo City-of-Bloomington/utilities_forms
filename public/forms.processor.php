@@ -286,6 +286,9 @@ class Forms {
 			if (strpos($line,"g-recaptcha") !== false) {
 				$line = "";
 			}
+			if (strpos($line,".hidden") !== false) {
+				$line = str_replace(".hidden","",$line);				
+			}
 			if (strpos($line,"lookupAddress") !== false) {
 				$line = "<button id=\"Add_More_Addresses_hide\" disabled title=\"Lookup Address\" class=\"btn btn-primary lookupAddress\"><i class=\"fa fa-search\"></i> [Filler]</button>";
 			}
