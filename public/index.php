@@ -7,8 +7,8 @@ include '../configuration.inc';
 	<head>
         <?php include '../template/head.inc'; ?>
 
-		<script type="text/javascript" src="<?= BASE_URI; ?>/js/addressChooser-<?= VERSION; ?>.js"></script>
-		<script type="text/javascript" src="<?= BASE_URI; ?>/js/global-<?= VERSION; ?>.js"></script>
+		<script type="text/javascript" src="<?= BASE_URL; ?>/js/addressChooser-<?= VERSION; ?>.js"></script>
+		<script type="text/javascript" src="<?= BASE_URL; ?>/js/global-<?= VERSION; ?>.js"></script>
 		<script type="text/javascript">
             const BASE_URL        = '<?= BASE_URL; ?>',
                   BASE_URI        = '<?= BASE_URI; ?>',
