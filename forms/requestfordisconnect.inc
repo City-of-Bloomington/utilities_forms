@@ -117,8 +117,7 @@
                         </p>
 
 						<p>
-                            <b>* Aqua Pay customers: Final bills will NOT be automatically
-                            withdrawn from your bank account.</b>
+                            <b>* Aqua Pay customers: Final bills will be automatically withdrawn from your bank account.</b>
 						</p>
 					</div>
 				</div>
