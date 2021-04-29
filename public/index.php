@@ -1,5 +1,5 @@
 <?php
-include '../configuration.inc';
+include '../bootstrap.php';
 ?>
 <!-- saved from url=(0014)about:internet -->
 <!DOCTYPE html>

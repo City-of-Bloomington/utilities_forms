@@ -1,0 +1,33 @@
+<?php
+/**
+ * URL Generation settings
+ *
+ * Do NOT use trailing slashes
+ *
+ * If your site is being proxied, change BASE_HOST to the hostname
+ * used for the outside world.
+ */
+define('BASE_URI' , '/utilities_forms');
+define('BASE_HOST', isset($_SERVER['HTTP_X_FORWARDED_HOST'])
+                        ? $_SERVER['HTTP_X_FORWARDED_HOST']
+                        : $_SERVER['SERVER_NAME']);
+define('BASE_URL' , "$_SERVER[REQUEST_SCHEME]://".BASE_HOST.BASE_URI);
+
+/**
+ * Where to save files for FTPing to OnBase
+ */
+define('TEMP_PATH', __DIR__.'/files');
+
+/**
+ * FTP connection for OnBase
+ */
+define('ONBASE_HOST', 'onbase.server.gov');
+define('ONBASE_PATH', '/');
+define('ONBASE_USER', 'username');
+define('ONBASE_PASS', 'password');
+define('ONBASE_CERT', __DIR__.'/onbase.crt');
+
+define('RECAPTCHA_SITE_KEY', '');
+define('RECAPTCHA_SERVER_KEY', '');
+
+define('ADDRESS_SERVICE', 'http://localhost/master_address');

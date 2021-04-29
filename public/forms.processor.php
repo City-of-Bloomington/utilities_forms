@@ -1,5 +1,5 @@
 <?php
-require_once '../configuration.inc';
+require_once '../bootstrap.php';
 
 //CHECK CAPTCHA FIRST THING AND EXIT IF NOT VALID
 if (!Application\Models\Captcha::verify()) {
@@ -203,7 +203,7 @@ class Forms {
 	//GET NEXT CONFIRMATION NUMBER AND WRITE NEW CONFIRMATION NUMBER FOR NEXT REQUEST
 	private function Get_Next_Conf_Number()
 	{
-		$file = APPLICATION_HOME.'/data/nextConfirmationNumber';
+		$file = SITE_HOME.'/nextConfirmationNumber';
 		$counter = trim(file_get_contents($file));
 		if ($counter !== "") {
 			$counter = (int)$counter;
@@ -287,7 +287,7 @@ class Forms {
 				$line = "";
 			}
 			if (strpos($line,'<div class="hidden">') !== false) {
-				$line = str_replace('<div class="hidden">','<div class="">',$line);				
+				$line = str_replace('<div class="hidden">','<div class="">',$line);
 			}
 			if (strpos($line,"lookupAddress") !== false) {
 				$line = "<button id=\"Add_More_Addresses_hide\" disabled title=\"Lookup Address\" class=\"btn btn-primary lookupAddress\"><i class=\"fa fa-search\"></i> [Filler]</button>";
@@ -297,7 +297,7 @@ class Forms {
 			}
 			if (strpos($line,"Remove_Addresses") !== false) {
 				$line = "<button id=\"Add_More_Addresses_hide\" disabled title=\"Remove Address\" class=\"btn btn-danger Remove_Addresses\"><i class=\"fa fa-remove\"></i> [Filler]</button>";
-			}			
+			}
 
 			$m = false;
 			foreach ($_POST as $name => $value) {
