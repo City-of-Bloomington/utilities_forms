@@ -1,0 +1,13 @@
+{
+    "require": {
+        "php": ">=7.4",
+        "graylog2/gelf-php":               "@stable",
+        "laminas/laminas-log":             "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "./"
+        }
+    }
+}
+

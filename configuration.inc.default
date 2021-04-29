@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2016-2019 City of Bloomington, Indiana
+ * @copyright 2016-2021 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 define('APPLICATION_HOME', __DIR__);
@@ -18,23 +18,25 @@ define('ONBASE_CERT', APPLICATION_HOME.'/data/onbase.crt');
 
 define('RECAPTCHA_SITE_KEY', '');
 define('RECAPTCHA_SERVER_KEY', '');
-require_once APPLICATION_HOME.'/Models/Captcha.php';
 
 define('ADDRESS_SERVICE', 'http://localhost/master_address');
-require_once APPLICATION_HOME.'/Models/AddressService.php';
 
 /**
- * Skidder is a web service for error notifications.  Error reporting supports
- * posting errors to a Skidder server.  You must register for an application_id
- * on the skidder server you want to post errors to.
+ * Enable autoloading for the PHP libraries
+ */
+$loader = require APPLICATION_HOME.'/vendor/autoload.php';
+
+/**
+ * Send errors to our Graylog server, so developers can be notified when
+ * something bad happens.
  */
 /*
-define('APPLICATION_NAME', 'utilities_forms');
-define('SKIDDER_URL','https://localhost/skidder/index/index');
-define('SKIDDER_APPLICATION_ID', XX);
-$ERROR_REPORTING = ['SKIDDER'];
-require_once APPLICATION_HOME.'/Models/Error.php';
-set_error_handler         ('Blossom\Classes\Error::customErrorHandler');
-set_exception_handler     ('Blossom\Classes\Error::customExceptionHandler');
-register_shutdown_function('Blossom\Classes\Error::shutdownHandler');
+define('GRAYLOG_DOMAIN', 'graylog.somewhere.org');
+define('GRAYLOG_PORT',   12201);
+$graylog = new Application\Models\GraylogWriter(GRAYLOG_DOMAIN, GRAYLOG_PORT);
+$logger  = new Laminas\Log\Logger();
+$logger->addWriter($graylog);
+Laminas\Log\Logger::registerErrorHandler($logger);
+Laminas\Log\Logger::registerExceptionHandler($logger);
+Laminas\Log\Logger::registerFatalErrorShutdownFunction($logger);
 */
