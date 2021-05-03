@@ -180,7 +180,7 @@ class Forms {
 		if ($counter !== "") {
 			$counter = (int)$counter;
 
-			$this->Conf_Number = $counter . "-" . str_pad(rand(0, 9999), 4, "0", STR_PAD_LEFT);
+			$this->Conf_Number = $counter . "-" . str_pad((string)rand(0, 9999), 4, "0", STR_PAD_LEFT);
 
 			$counter++;
 			if (false === file_put_contents($file, $counter)) {
@@ -195,10 +195,14 @@ class Forms {
 	}
 
 	/**
-	 * @param array $params ['DocumentType'=>'', 'ob'=>'']
-	 * @return array ['docs'=> '', 'dip'=> '']
+	 * Returns the DIP field name for an OnBase keyword name.
+	 *
+	 * If the given keyword name does is not mapped, this returns null.
+	 *
+	 * @param  array $params ['DocumentType'=>'', 'ob'=>'']
+	 * @return array         ['docs'=> '', 'dip'=> '']
 	 */
-	public static function Get_Mapped_Name(array $params)
+	public static function Get_Mapped_Name(array $params): ?array
 	{
 		static $xml;
 		if (!$xml) {
@@ -316,12 +320,10 @@ class Forms {
 		$data = "";
 		foreach ($this->vals as $key => $val) {
             $map = self::Get_Mapped_Name(['DocumentType'=>$this->vals['DocumentType'], 'ob'=>$key]);
-            if (!$map) {
-                error_log("$key is not mapped");
-                error_log(print_r($_POST, true));
+            if ($map) {
+                $this->Docs = $map['docs'];
+                $data .= str_pad($map['dip'].":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
             }
-            $this->Docs = $map['docs'];
-			$data .= str_pad($map['dip'].":",30," ",STR_PAD_RIGHT) . $val . "\r\n";
 		}
 
 		self::saveToOnBase($this->form_dip_path, $data);
