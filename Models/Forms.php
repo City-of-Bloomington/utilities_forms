@@ -226,6 +226,7 @@ class Forms {
 				break(1);
 			}
 		}
+		return null;
 	}
 
 	private function Create_Form_HTML()
