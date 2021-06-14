@@ -153,10 +153,16 @@ class Forms {
 		$this->message = "";
 		foreach ($this->Files as $counter => $val) {
 			if (isset($val['Filename'])) {
+				$FileType = "2";
+				$extension = self::getExtension($val['Filename']);
+				if($extension == "pdf") {
+					$FileType = "16";
+				}
 				$data .= str_pad("DocumentTypeNum:",  30," ",STR_PAD_RIGHT) . "340\r\n";
 				$data .= str_pad("Conf_Number:",      30," ",STR_PAD_RIGHT) . $this->vals['Conf_Number'] . "\r\n";
 				$data .= str_pad("SupplementaryType:",30," ",STR_PAD_RIGHT) . $this->vals['Sup_Type_'.$counter] . "\r\n";
 				$data .= str_pad("Filename:",         30," ",STR_PAD_RIGHT) . $val['Filename'] . "\r\n";
+				$data .= str_pad("File Type:",        30," ",STR_PAD_RIGHT) . $FileType . "\r\n";				
 			}
 			$this->message .= "Message[" . $val['Old_Filename']. "]=" . $val['Response'] . "&";
 		}
