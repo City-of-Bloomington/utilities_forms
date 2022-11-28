@@ -142,7 +142,7 @@
 		<div class="row">
 			<div class="col-xs-11">
 				<label for="Name_of_Auth">Name of your Authorizing Authority</label>
-				<input type="text" class="form-control" id="Name_of_Auth" name="Name_of_Auth">
+				<input type="text" class="form-control" id="Name_of_Auth" name="Name_of_Auth" required="required" />
 			</div>
 		</div>
 	</div>
