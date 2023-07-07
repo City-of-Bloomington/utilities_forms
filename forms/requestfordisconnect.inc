@@ -109,10 +109,11 @@
 				<div class="col-xs-11">
 					<div class="form-legal-text">
                         <p>
-                            If water service is disconnected (without a new signer)
-                            a service fee of $45.00 will appear on your final billing
-                            statement. If you have any additional questions, please
-                            contact customer service at (812) 349-3930.
+If water service is disconnected, you will be charged a service fee
+of $45.00 on your final billing statement. If you have any additional questions, please
+contact Customer Service at (812) 349-3930. <br><br>
+
+
                         </p>
 
 						<p>

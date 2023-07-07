@@ -125,16 +125,7 @@
 				<input type="text" class="form-control" id="Owner_Phone_Number" name="Owner_Phone_Number" mask="(999) 999-9999" phone required>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-6">
-				<label for="Employers_Name">Employer's Name</label>
-				<input type="text" class="form-control" id="Employers_Name" name="Employers_Name">
-			</div>
-			<div class="col-xs-5">
-				<label for="Employers_Ph_Num">Employer's Phone Number</label>
-				<input type="text" class="form-control" id="Employers_Ph_Num" name="Employers_Ph_Num" mask="(999) 999-9999" phone>
-			</div>
-		</div>
+
 		<div class="row">
 			<div class="col-xs-8">
 				<label for="Date_of_Change">Requested Date of Change <br />(Please select a date after today and Monday - Friday)</label>
@@ -201,7 +192,12 @@
 		<div class="bottom-verbiage">
 			<div class="row">
 				<div class="col-xs-11">
-					<div class="form-legal-text">I affirm that the information contained herein, including attachment(s), is complete and accurate.</div>
+					<div class="form-legal-text">I affirm that the information contained herein, including attachment(s), is complete and accurate.<br><br>I hereby contract with City of Bloomington Utilities (CBU) for service and agree to pay
+CBU for such service in accordance with its established rates. I also agree to conform to
+all CBU Rules, Regulations, and Standards of Service and applicable Indiana Law,
+governing the use of water, wastewater, stormwater, and sanitation, now in force or
+which may hereafter be adopted.
+</div>
 				</div>
 			</div>
 			<div class="row">
