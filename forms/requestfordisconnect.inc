@@ -108,14 +108,6 @@
 			<div class="row">
 				<div class="col-xs-11">
 					<div class="form-legal-text">
-                        <p>
-If water service is disconnected, you will be charged a service fee
-of $45.00 on your final billing statement. If you have any additional questions, please
-contact Customer Service at (812) 349-3930. <br><br>
-
-
-                        </p>
-
 						<p>
                             <b>* Aqua Pay customers: Final bills will NOT be automatically withdrawn from your bank account.</b>
 						</p>
