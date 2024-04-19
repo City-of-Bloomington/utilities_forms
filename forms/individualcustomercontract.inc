@@ -156,7 +156,7 @@
 					<option value="">Please Select...</option>
 					<option value="Mail">Mail</option>
 					<option value="E-Mail">E-Mail</option>
-					<option value="Both">Mail & E-Mail</option>
+					<option value="Both">Mail &amp; E-Mail</option>
 				</select>
 			</div>
 		</div>

@@ -109,7 +109,7 @@
 				<div class="col-xs-11">
 					<div class="form-legal-text">
 						<p>
-                            <b>* Aqua Pay customers: Final bills will NOT be automatically withdrawn from your bank account.</b>
+                            <b>* Auto Pay customers: Final bills will NOT be automatically withdrawn from your bank account.</b>
 						</p>
 					</div>
 				</div>

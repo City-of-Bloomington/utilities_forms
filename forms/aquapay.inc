@@ -22,9 +22,9 @@
 
 	<div class="form-header">
         <?php include __DIR__.'/partials/form-title-logo.inc'; ?>
-		<div class="form-title"><h2>Authorization Agreement for Preauthorized Payments (Aqua Pay)</h2></div>
+		<div class="form-title"><h2>Authorization Agreement for Preauthorized Payments</h2></div>
 		<div class="description">
-			<b>Sign up for automatic payments </b>from either your checking or savings account. With AquaPay, your balance due will be automatically drawn each month on the due date of your bill. You will still receive a bill in the mail (or by e-mail for <a href="https://esuite.bloomington.in.gov/eSuite.Utilities/Default.aspx?ReturnUrl=%2Fesuite.utilities%2F">E-Bill</a> customers) for your records showing the charges each month, but once enrolled you will never need to write a check to us again!
+			<b>Sign up for automatic payments </b>from either your checking or savings account. Your balance due will be automatically drawn each month on the due date of your bill. You will still receive a bill in the mail (or by e-mail for <a href="https://esuite.bloomington.in.gov/eSuite.Utilities/Default.aspx?ReturnUrl=%2Fesuite.utilities%2F">E-Bill</a> customers) for your records showing the charges each month, but once enrolled you will never need to write a check to us again!
 		</div>
 		<?php
             include __DIR__.'/partials/contact-info.inc';
@@ -73,9 +73,9 @@
 				</div>
 			</div>
 		</div>
-		
+
             <?= Application\Models\AddressService::renderFormFields(1,true); ?>
-		
+
 		<hr>
 		<div class="row">
 			<div class="col-xs-11">
